@@ -245,6 +245,9 @@ h1:focus { outline: none; }
 .leeg { align-items: center; text-align: center; padding: 40px 24px; }
 .leeg-icoon { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; background: var(--primair-licht); color: var(--primair); }
 
+/* Inhoudsfouten */
+.foutenlijst { font-size: 14px; overflow-wrap: anywhere; }
+
 /* Melding */
 .dialoog {
   border: 0; padding: 20px; width: min(100vw - 24px, 456px); margin: auto auto 12px;

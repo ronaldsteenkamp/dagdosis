@@ -7,9 +7,11 @@
   "author": "Ronald Steenkamp",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/controleer-inhoud.ts && tsc --noEmit && vite build",
     "preview": "vite preview",
-    "deploy": "node scripts/deploy.mjs"
+    "deploy": "node scripts/deploy.mjs",
+    "controleer": "node scripts/controleer-inhoud.ts",
+    "test": "vitest run"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",
@@ -23,6 +25,7 @@
     "@vitejs/plugin-react": "^6.2.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.6",
-    "vite-plugin-pwa": "^2.0.0"
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0"
   }
 }
