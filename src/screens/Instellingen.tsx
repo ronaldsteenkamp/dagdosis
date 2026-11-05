@@ -24,6 +24,9 @@ export function Instellingen() {
   return (
     <main className="scherm">
       <Terugkop titel="Instellingen" />
+      <p className="gedempt klein">
+        De dagdosis van vandaag staat vast. Keuzes voor de samenstelling gelden vanaf morgen.
+      </p>
 
       <section className="kaart" aria-labelledby="insteek-kop">
         <h2 id="insteek-kop" className="sectiekop">
