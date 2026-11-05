@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-De app staat dan op http://localhost:5173/dagdosis/.
+De app staat dan op http://localhost:5173/dagdosis-site/.
 
 ## Deployen
 
@@ -21,5 +21,9 @@ De app staat dan op http://localhost:5173/dagdosis/.
 npm run deploy
 ```
 
-Dit bouwt de app en zet `dist/` op de branch `gh-pages`. Voor een andere host, zoals een
+Dit bouwt de app en zet `dist/` op de openbare repo `ronaldsteenkamp/dagdosis-site`.
+De site staat op https://ronaldsteenkamp.github.io/dagdosis-site/. De broncode blijft privé,
+maar de site zelf is openbaar, dus ook de vragen zijn voor iedereen met het adres leesbaar.
+
+Voor een andere host, zoals een
 Render Static Site: buildcommando `BASE_PATH=/ npm run build`, publicatiemap `dist`.

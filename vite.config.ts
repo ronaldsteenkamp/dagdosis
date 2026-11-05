@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// GitHub Pages serveert de site onder /dagdosis/. Op een eigen domein of
+// GitHub Pages serveert de site onder /dagdosis-site/. Op een eigen domein of
 // Render: BASE_PATH=/ npm run build
-const base = process.env.BASE_PATH ?? '/dagdosis/'
+const base = process.env.BASE_PATH ?? '/dagdosis-site/'
 
 export default defineConfig({
   base,
