@@ -1,7 +1,7 @@
 import { Icon } from '../components/Icon'
 import { Schakelaar, Segment } from '../components/Keuzes'
 import { Terugkop } from '../components/Kop'
-import { themas } from '../data/dummy'
+import { themas } from '../inhoud'
 import { useAppState } from '../state'
 import type { InsteekKeuze, ThemaFrequentie } from '../types'
 

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
-import { dummyVoortgang, themas } from '../data/dummy'
+import { dummyVoortgang } from '../data/dummy'
+import { themas } from '../inhoud'
 
 const ZWAK_ONDER = 60
 

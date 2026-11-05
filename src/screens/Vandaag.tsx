@@ -1,6 +1,7 @@
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
-import { dagdosis, dummyVoortgang, kaarten, weekScores } from '../data/dummy'
+import { dagdosis, dummyVoortgang, weekScores } from '../data/dummy'
+import { kaarten, themas, vragen } from '../inhoud'
 import { useAppState } from '../state'
 
 const dagen = ['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag']
@@ -54,6 +55,10 @@ export function Vandaag() {
   const datum = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' }).format(nu)
   const streak = dummyVoortgang.streak + (afgerond ? 1 : 0)
   const kaartVanDeWeek = kaarten[0]
+  const themaIds = new Set(
+    dagdosis.vraagIds.flatMap((id) => vragen.find((v) => v.id === id)?.themaIds ?? []),
+  )
+  const themaChips = themas.filter((t) => themaIds.has(t.id)).map((t) => t.naam)
 
   return (
     <main className="scherm scherm-met-balk">
@@ -93,7 +98,7 @@ export function Vandaag() {
               </span>
             </p>
             <ul className="pil-rij" aria-label="Thema's van vandaag">
-              {dagdosis.themaChips.map((chip) => (
+              {themaChips.map((chip) => (
                 <li key={chip} className="pil">
                   {chip}
                 </li>

@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
-import { startInstellingen } from './data/dummy'
+import { themas } from './inhoud'
 import type { Instellingen } from './types'
 
 // Fase 1 houdt alles in het geheugen; fase 3 en 4 zetten dit in IndexedDB.
@@ -20,6 +20,14 @@ interface AppState {
   zetAfgerond: (a: Afgerond) => void
   meldingen: Foutmelding[]
   voegMeldingToe: (m: Foutmelding) => void
+}
+
+const startInstellingen: Instellingen = {
+  insteek: 'gemengd',
+  ritme: false,
+  uitlegMetMechanisme: true,
+  bijsturen: true,
+  themaFrequentie: Object.fromEntries(themas.map((t) => [t.id, 'normaal'])),
 }
 
 const Context = createContext<AppState | null>(null)

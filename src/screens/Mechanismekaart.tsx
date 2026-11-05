@@ -1,7 +1,7 @@
 import { Bronregel } from '../components/Bronregel'
 import { Icon } from '../components/Icon'
 import { Terugkop } from '../components/Kop'
-import { kaarten, vragen } from '../data/dummy'
+import { kaarten, vragen } from '../inhoud'
 
 function Blok({ titel, tekst, kleur }: { titel: string; tekst: string; kleur: 'blauw' | 'wit' | 'amber' }) {
   return (

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { BottomNav } from './components/BottomNav'
+import { inhoudFouten } from './inhoud'
 import { leesRoute, useHash } from './router'
+import { InhoudFout } from './screens/InhoudFout'
 import { Instellingen } from './screens/Instellingen'
 import { Mechanismekaart } from './screens/Mechanismekaart'
 import { Sessie } from './screens/Sessie'
@@ -16,6 +18,8 @@ export function App() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [hash])
+
+  if (inhoudFouten.length > 0) return <InhoudFout fouten={inhoudFouten} />
 
   const metBalk = route.naam === 'vandaag' || route.naam === 'voortgang' || route.naam === 'team'
 
