@@ -118,7 +118,9 @@ Dit controleert de inhoud, bouwt de app en zet `dist/` op de openbare repo
 werken zichzelf bij zodra ze online worden geopend. Commit en push je broncode daarnaast zelf.
 
 Blijft de site na 10 minuten op de oude versie staan, kijk dan in de Actions van `dagdosis-site`.
-GitHub Pages liep daar een keer vast op een time-out; opnieuw `npm run deploy` loste dat op.
+GitHub Pages loopt soms vast op een time-out. Wacht dan tot de run klaar is en nog een paar minuten,
+en doe daarna één keer `npm run deploy`. Meerdere keren achter elkaar proberen kan de repo blokkeren
+met de fout "in progress deployment". Zet Pages dan niet uit, want dan gaat de site offline.
 
 GitHub Pages werkt op een gratis plan niet vanuit een privé-repo. Daarom staat alleen de gebouwde
 site in een aparte openbare repo. De site zelf is openbaar: iedereen met het adres kan de vragen
