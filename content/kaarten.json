@@ -1,0 +1,92 @@
+[
+  {
+    "id": "sglt2-remmers",
+    "groep": "SGLT2-remmers",
+    "voorbeelden": ["empagliflozine", "dapagliflozine", "canagliflozine"],
+    "aangrijpingspunt": "De natrium-glucose-cotransporter SGLT2 in de proximale tubulus van de nier.",
+    "directEffect": "Minder terugresorptie van glucose en natrium, dus meer glucose, natrium en water in de urine.",
+    "klinischEffect": "Lagere bloedglucose, een lichte bloeddrukdaling en gewichtsverlies. Daarnaast bescherming bij hartfalen en chronische nierschade.",
+    "afleidbareBijwerkingen": "Genitale schimmelinfecties en urineweginfecties door glucose in de urine. Duizeligheid, hypotensie en uitdroging door de diurese.",
+    "letOp": "Bij ziekte, vasten of een operatie kan ketoacidose ontstaan, ook bij een bijna normale glucose. Het glucoseverlagende effect neemt af bij een lagere nierfunctie.",
+    "bron": {
+      "label": "Farmacotherapeutisch Kompas, SGLT2-remmers",
+      "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/sglt2_remmers"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "glp1-agonisten",
+    "groep": "GLP-1-agonisten",
+    "voorbeelden": ["semaglutide", "liraglutide", "dulaglutide"],
+    "aangrijpingspunt": "De GLP-1-receptor op onder meer de bètacel, de alfacel en in de hersenen.",
+    "directEffect": "Glucoseafhankelijk meer insuline en minder glucagon. Daarnaast vertraagde maaglediging en meer verzadiging.",
+    "klinischEffect": "Lagere bloedglucose en gewichtsverlies, met als monotherapie weinig hypoglykemie.",
+    "afleidbareBijwerkingen": "Misselijkheid, braken en een vol gevoel door de tragere maaglediging, vooral bij het starten en ophogen.",
+    "letOp": "Bij combinatie met insuline of een sulfonylureumderivaat neemt de kans op hypoglykemie toe. Overweeg dan een lagere dosering van die middelen.",
+    "bron": {
+      "label": "Farmacotherapeutisch Kompas, GLP-1-agonisten",
+      "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/glp1_agonisten"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "dpp4-remmers",
+    "groep": "DPP-4-remmers",
+    "voorbeelden": ["sitagliptine", "linagliptine", "vildagliptine"],
+    "aangrijpingspunt": "Het enzym DPP-4, dat de incretinehormonen GLP-1 en GIP afbreekt.",
+    "directEffect": "Hogere spiegels van actief eigen GLP-1 en GIP na een maaltijd.",
+    "klinischEffect": "Glucoseafhankelijk meer insuline en minder glucagon, dus een lagere bloedglucose. Het gewicht verandert nauwelijks.",
+    "afleidbareBijwerkingen": "Door de glucoseafhankelijke werking als monotherapie weinig hypoglykemie. De spiegels blijven fysiologisch, waardoor het GLP-1-effect op maag en eetlust beperkt is.",
+    "letOp": "Sitagliptine wordt vooral via de nier uitgescheiden en vraagt om dosisaanpassing bij een lagere nierfunctie. Linagliptine gaat vooral via de feces.",
+    "bron": {
+      "label": "Farmacotherapeutisch Kompas, DPP-4-remmers",
+      "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/dpp4_remmers"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "ace-remmers",
+    "groep": "ACE-remmers",
+    "voorbeelden": ["enalapril", "lisinopril", "perindopril"],
+    "aangrijpingspunt": "Het angiotensineconverterend enzym (ACE).",
+    "directEffect": "Minder vorming van angiotensine II en minder afbraak van bradykinine.",
+    "klinischEffect": "Vaatverwijding en minder aldosteron, dus een lagere bloeddruk en minder belasting van het hart.",
+    "afleidbareBijwerkingen": "Prikkelhoest en angio-oedeem door bradykinine. Hyperkaliëmie door minder aldosteron. Daling van de nierfunctie doordat de efferente arteriole verwijdt.",
+    "letOp": "De combinatie met een NSAID en een diureticum kan acute nierschade geven. Niet gebruiken tijdens de zwangerschap. Minimaal 36 uur afstand tot sacubitril/valsartan.",
+    "bron": {
+      "label": "Farmacotherapeutisch Kompas, ACE-remmers",
+      "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/ace_remmers"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "arbs",
+    "groep": "ARB's",
+    "voorbeelden": ["losartan", "valsartan", "irbesartan"],
+    "aangrijpingspunt": "De AT1-receptor voor angiotensine II.",
+    "directEffect": "Angiotensine II kan niet meer aan de AT1-receptor binden. Renine en angiotensine II stijgen door het wegvallen van de terugkoppeling.",
+    "klinischEffect": "Vaatverwijding en minder aldosteron, dus een lagere bloeddruk.",
+    "afleidbareBijwerkingen": "Hyperkaliëmie door minder aldosteron en hypotensie. Daling van de nierfunctie doordat de efferente arteriole verwijdt. Prikkelhoest is zeldzaam, omdat bradykinine niet stijgt.",
+    "letOp": "Bij kinderwens en zwangerschap overstappen op een alternatief: RAS-remming schaadt de foetus in het tweede en derde trimester.",
+    "bron": {
+      "label": "Farmacotherapeutisch Kompas, losartan",
+      "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/losartan"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "statines",
+    "groep": "Statines",
+    "voorbeelden": ["simvastatine", "atorvastatine", "rosuvastatine", "pravastatine"],
+    "aangrijpingspunt": "Het enzym HMG-CoA-reductase in de lever.",
+    "directEffect": "Minder cholesterolsynthese in de levercel, waarna de lever meer LDL-receptoren aanmaakt.",
+    "klinischEffect": "Meer opname van LDL uit het bloed, dus een lager LDL-cholesterol en minder hart- en vaatziekten.",
+    "afleidbareBijwerkingen": "Spierklachten tot myopathie, met meer kans bij hogere spiegels. De lever is het doelorgaan, dus levertransaminasen kunnen stijgen.",
+    "letOp": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, dus sterke remmers verhogen hun spiegel. Pravastatine wordt niet via CYP450 omgezet.",
+    "bron": {
+      "label": "Farmacotherapeutisch Kompas, statinen",
+      "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/statinen"
+    },
+    "status": "concept"
+  }
+]

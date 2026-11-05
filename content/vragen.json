@@ -1,0 +1,617 @@
+[
+  {
+    "id": "sglt2-genitale-schimmel",
+    "type": "mechanisme-bijwerking",
+    "insteek": "farmacologie",
+    "themaIds": ["mechanisme-bijwerking"],
+    "kaartId": "sglt2-remmers",
+    "casus": "Iemand start met empagliflozine en vraagt je waarom genitale schimmelinfecties in de bijsluiter staan.",
+    "vraag": "Wat is de verklaring?",
+    "opties": [
+      { "id": "A", "tekst": "Onderdrukking van de lokale afweer door hogere cortisolspiegels" },
+      { "id": "B", "tekst": "Glucosurie door geremde terugresorptie van glucose via SGLT2 in de proximale tubulus" },
+      { "id": "C", "tekst": "Verstoring van de vaginale flora doordat empagliflozine zich ophoopt in het slijmvlies en daar blijft" },
+      { "id": "D", "tekst": "Minder urineproductie, waardoor de urinewegen minder goed worden gespoeld" }
+    ],
+    "juist": "B",
+    "waarom": "Empagliflozine remt SGLT2 in de proximale tubulus, waardoor glucose in de urine achterblijft. Die glucose is een voedingsbodem voor schimmels. De glucose trekt ook water mee (osmotische diurese), wat met de extra natriumuitscheiding bijdraagt aan de bloeddrukdaling. Het gewichtsverlies komt door het calorieverlies via de urine.",
+    "onthoud": "Suiker in de urine verklaart bijna het hele bijwerkingenprofiel.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, SGLT2-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/sglt2_remmers" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "glp1-weinig-hypoglykemie",
+    "type": "mechanisme-middel",
+    "insteek": "farmacologie",
+    "themaIds": ["receptoren-targets"],
+    "kaartId": "glp1-agonisten",
+    "vraag": "Waarom geeft een GLP-1-agonist als monotherapie weinig hypoglykemieën?",
+    "opties": [
+      { "id": "A", "tekst": "De glucose daalt alleen door gewichtsverlies, niet door insuline" },
+      { "id": "B", "tekst": "De glucagonafgifte stijgt bij elke glucosewaarde" },
+      { "id": "C", "tekst": "De receptor komt alleen in de lever voor, niet in de alvleesklier" },
+      { "id": "D", "tekst": "De insulineafgifte wordt alleen bij een verhoogde glucose versterkt" }
+    ],
+    "juist": "D",
+    "waarom": "Activatie van de GLP-1-receptor versterkt de insulineafgifte alleen als de glucose verhoogd is. Daalt de glucose, dan neemt dit effect vanzelf af. In combinatie met insuline of een sulfonylureumderivaat is het risico wel hoger, want die werken niet glucoseafhankelijk.",
+    "onthoud": "Glucoseafhankelijk: het effect stopt als er niets meer te verlagen valt.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, GLP-1-agonisten", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/glp1_agonisten" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "glp1-misselijkheid",
+    "type": "mechanisme-bijwerking",
+    "insteek": "farmacologie",
+    "themaIds": ["mechanisme-bijwerking"],
+    "kaartId": "glp1-agonisten",
+    "casus": "Iemand met wekelijkse semaglutide-injecties meldt na het ophogen misselijkheid en snel een vol gevoel.",
+    "vraag": "Welke verklaring past het best?",
+    "opties": [
+      { "id": "A", "tekst": "Tragere maaglediging en meer verzadiging door receptoractivatie" },
+      { "id": "B", "tekst": "Hypoglykemie door een sterk verhoogde insulineafgifte na elke maaltijd" },
+      { "id": "C", "tekst": "Lokale prikkeling van het maagslijmvlies door het geneesmiddel" },
+      { "id": "D", "tekst": "Cholinerge prikkeling van de darmwand door het geneesmiddel" }
+    ],
+    "juist": "A",
+    "waarom": "GLP-1-agonisten vertragen de maaglediging en versterken de verzadiging. Dat geeft misselijkheid en een vol gevoel, en draagt ook bij aan het gewichtsverlies. De klachten treden vooral op bij het starten en ophogen, daarom wordt de dosering stapsgewijs verhoogd.",
+    "onthoud": "Misselijkheid en gewichtsverlies komen uit hetzelfde mechanisme.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, semaglutide", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/s/semaglutide" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "dpp4-gewicht",
+    "type": "vergelijk",
+    "insteek": "farmacologie",
+    "themaIds": ["receptoren-targets"],
+    "kaartId": "dpp4-remmers",
+    "vraag": "Waarom geven DPP-4-remmers veel minder gewichtsverlies dan GLP-1-agonisten?",
+    "opties": [
+      { "id": "A", "tekst": "Ze blokkeren de GLP-1-receptor in de hersenen en remmen zo de verzadiging" },
+      { "id": "B", "tekst": "Ze stimuleren de eetlust via een hogere leptinespiegel" },
+      { "id": "C", "tekst": "Ze verhogen alleen de eigen GLP-1-spiegel, die fysiologisch blijft" },
+      { "id": "D", "tekst": "Ze worden niet opgenomen en werken dus alleen in de darm" }
+    ],
+    "juist": "C",
+    "waarom": "Een DPP-4-remmer remt de afbraak van eigen GLP-1 en GIP, waardoor de spiegels fysiologisch blijven. Een GLP-1-agonist geeft een veel sterkere receptoractivatie. Daardoor zijn de effecten op maag en verzadiging bij DPP-4-remmers beperkt en verandert het gewicht nauwelijks.",
+    "onthoud": "DPP-4-remmer: meer van het eigen hormoon. GLP-1-agonist: een farmacologische dosis.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, DPP-4-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/dpp4_remmers" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "ace-prikkelhoest",
+    "type": "mechanisme-bijwerking",
+    "insteek": "farmacologie",
+    "themaIds": ["mechanisme-bijwerking"],
+    "kaartId": "ace-remmers",
+    "vraag": "Waardoor geeft een ACE-remmer wel prikkelhoest en een ARB meestal niet?",
+    "opties": [
+      { "id": "A", "tekst": "ACE breekt ook bradykinine af, dus remming laat bradykinine stijgen" },
+      { "id": "B", "tekst": "ACE-remmers blokkeren bèta-2-receptoren in de luchtwegen" },
+      { "id": "C", "tekst": "ARB's hebben een eigen hoestdempend effect in de hersenstam" },
+      { "id": "D", "tekst": "ACE-remmers verhogen de angiotensine II-spiegel in de longen" }
+    ],
+    "juist": "A",
+    "waarom": "ACE zet angiotensine I om, maar breekt ook bradykinine af. Remming laat bradykinine stijgen, en dat prikkelt de luchtwegen. Een ARB blokkeert alleen de AT1-receptor en laat de afbraak van bradykinine ongemoeid.",
+    "onthoud": "De hoest hoort bij de bradykinine-kant van ACE, niet bij angiotensine.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, ACE-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/ace_remmers" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "arb-angiotensine-spiegel",
+    "type": "vergelijk",
+    "insteek": "farmacologie",
+    "themaIds": ["receptoren-targets"],
+    "kaartId": "arbs",
+    "vraag": "Wat gebeurt er met de angiotensine II-spiegel in het bloed bij de start van een ARB?",
+    "opties": [
+      { "id": "A", "tekst": "Die daalt, omdat de omzetting door ACE wordt geremd" },
+      { "id": "B", "tekst": "Die daalt, omdat de renineproductie direct wordt geremd" },
+      { "id": "C", "tekst": "Die blijft gelijk, omdat een ARB alleen in de nier werkt" },
+      { "id": "D", "tekst": "Die stijgt, omdat de terugkoppeling op renine wegvalt" }
+    ],
+    "juist": "D",
+    "waarom": "Een ARB blokkeert de AT1-receptor en grijpt niet in op de vorming van angiotensine II. Doordat de remmende terugkoppeling op renine wegvalt, stijgen renine en angiotensine II. Een ACE-remmer verlaagt juist de vorming van angiotensine II.",
+    "onthoud": "ACE-remmer: minder angiotensine II. ARB: meer angiotensine II, maar de AT1-receptor is dicht.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, losartan", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/losartan" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "statine-cyp-afhankelijkheid",
+    "type": "vergelijk",
+    "insteek": "farmacologie",
+    "themaIds": ["enzymen-transporters"],
+    "kaartId": "statines",
+    "vraag": "Welke statine wordt niet via CYP450-enzymen omgezet?",
+    "opties": [
+      { "id": "A", "tekst": "Simvastatine" },
+      { "id": "B", "tekst": "Atorvastatine" },
+      { "id": "C", "tekst": "Pravastatine" },
+      { "id": "D", "tekst": "Fluvastatine" }
+    ],
+    "juist": "C",
+    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, fluvastatine via CYP2C9. Pravastatine wordt niet via CYP450 omgezet. Daardoor is pravastatine een optie als iemand een sterke CYP-remmer nodig heeft.",
+    "onthoud": "Pravastatine ontloopt CYP450.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, pravastatine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/p/pravastatine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "digoxine-claritromycine-pgp",
+    "type": "casus",
+    "insteek": "farmacologie",
+    "themaIds": ["enzymen-transporters"],
+    "casus": "Iemand met digoxine krijgt een kuur claritromycine. Enkele dagen later is de digoxinespiegel duidelijk gestegen.",
+    "vraag": "Welk mechanisme verklaart dit vooral?",
+    "opties": [
+      { "id": "A", "tekst": "Remming van CYP2D6 in de lever" },
+      { "id": "B", "tekst": "Remming van P-glycoproteïne in darm en nier" },
+      { "id": "C", "tekst": "Verdringing van digoxine uit de eiwitbinding" },
+      { "id": "D", "tekst": "Stijging van de maag-pH, waardoor digoxine beter oplost" }
+    ],
+    "juist": "B",
+    "waarom": "Digoxine is een substraat van de effluxpomp P-glycoproteïne, die het middel terugpompt in de darm en uitscheidt in de nier. Claritromycine remt deze pomp, waardoor er meer digoxine wordt opgenomen en minder wordt uitgescheiden. Door de smalle therapeutische breedte kan dit snel tot toxiciteit leiden.",
+    "onthoud": "Digoxine: denk aan P-gp, niet aan CYP.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, claritromycine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/c/claritromycine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "codeine-paroxetine-cyp2d6",
+    "type": "casus",
+    "insteek": "farmacologie",
+    "themaIds": ["enzymen-transporters"],
+    "casus": "Iemand gebruikt paroxetine en krijgt codeïne tegen de pijn, maar merkt weinig effect.",
+    "vraag": "Wat is de meest waarschijnlijke verklaring?",
+    "opties": [
+      { "id": "A", "tekst": "Paroxetine versnelt de nierklaring van codeïne" },
+      { "id": "B", "tekst": "Paroxetine blokkeert de mu-opioïdreceptor en heft zo de werking van morfine op" },
+      { "id": "C", "tekst": "Paroxetine remt CYP2D6, waardoor minder morfine wordt gevormd" },
+      { "id": "D", "tekst": "Paroxetine remt de opname van codeïne uit de darm" }
+    ],
+    "juist": "C",
+    "waarom": "Codeïne werkt vooral via de omzetting naar morfine door CYP2D6. Paroxetine is een sterke CYP2D6-remmer, waardoor die omzetting afneemt. Hetzelfde effect zie je bij mensen die genetisch weinig CYP2D6-activiteit hebben.",
+    "onthoud": "Bij een prodrug geeft enzymremming minder effect, niet meer.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, codeïne", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/c/codeine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "kinetiek-steady-state",
+    "type": "kinetiek",
+    "insteek": "farmacologie",
+    "themaIds": ["farmacokinetiek"],
+    "vraag": "Een middel met lineaire kinetiek heeft een halfwaardetijd van 24 uur. Na hoeveel tijd is de steady state bij benadering bereikt?",
+    "opties": [
+      { "id": "A", "tekst": "Na ongeveer 12 uur" },
+      { "id": "B", "tekst": "Na ongeveer 1 dag" },
+      { "id": "C", "tekst": "Na ongeveer 2 dagen" },
+      { "id": "D", "tekst": "Na ongeveer 4 tot 5 dagen" }
+    ],
+    "juist": "D",
+    "waarom": "De steady state wordt na ongeveer 4 tot 5 halfwaardetijden bereikt, onafhankelijk van de hoogte van de dosering. Bij een halfwaardetijd van 24 uur is dat 4 tot 5 dagen. Hetzelfde geldt voor het uitwassen na het stoppen.",
+    "onthoud": "Vier tot vijf halfwaardetijden, zowel bij opbouw als bij uitwas.",
+    "bron": { "label": "Algemene farmacokinetiek (leerboekkennis)" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "kinetiek-oplaaddosis",
+    "type": "kinetiek",
+    "insteek": "farmacologie",
+    "themaIds": ["farmacokinetiek"],
+    "vraag": "Welke parameter bepaalt vooral de grootte van een oplaaddosis?",
+    "opties": [
+      { "id": "A", "tekst": "Het verdelingsvolume" },
+      { "id": "B", "tekst": "De eliminatiehalfwaardetijd" },
+      { "id": "C", "tekst": "De klaring" },
+      { "id": "D", "tekst": "De absorptiesnelheid" }
+    ],
+    "juist": "A",
+    "waarom": "Met een oplaaddosis vul je het verdelingsvolume in één keer tot de gewenste concentratie: dosis is ongeveer concentratie maal verdelingsvolume, gecorrigeerd voor de biologische beschikbaarheid. De onderhoudsdosis hangt juist af van de klaring.",
+    "onthoud": "Oplaaddosis volgt het volume, onderhoudsdosis volgt de klaring.",
+    "bron": { "label": "Algemene farmacokinetiek (leerboekkennis)" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "fenytoine-verzadiging",
+    "type": "kinetiek",
+    "insteek": "farmacologie",
+    "themaIds": ["farmacokinetiek"],
+    "casus": "Bij iemand met fenytoïne en een spiegel net onder de streefwaarde wordt de dosering met 10% verhoogd.",
+    "vraag": "Wat verwacht je?",
+    "opties": [
+      { "id": "A", "tekst": "Een stijging van de spiegel met ongeveer 10%" },
+      { "id": "B", "tekst": "Een onevenredig grote stijging, omdat het metabolisme verzadigt" },
+      { "id": "C", "tekst": "Geen stijging, doordat enzyminductie de extra dosis binnen enkele dagen volledig opvangt" },
+      { "id": "D", "tekst": "Een daling, doordat de eiwitbinding toeneemt" }
+    ],
+    "juist": "B",
+    "waarom": "De enzymen die fenytoïne afbreken raken al in het therapeutische gebied verzadigd. Daarom is de kinetiek niet-lineair en kan een kleine dosisverhoging de spiegel onevenredig sterk laten stijgen. Verhoog de dosering dus in kleine stappen en controleer de spiegel.",
+    "onthoud": "Fenytoïne: kleine stap in de dosering, grote stap in de spiegel.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, fenytoïne", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/f/fenytoine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "tirzepatide-dubbele-agonist",
+    "type": "mechanisme-middel",
+    "insteek": "farmacologie",
+    "themaIds": ["nieuwe-mechanismen"],
+    "kaartId": "glp1-agonisten",
+    "vraag": "Wat onderscheidt tirzepatide farmacologisch van semaglutide?",
+    "opties": [
+      { "id": "A", "tekst": "Het remt naast de GLP-1-receptor ook het enzym DPP-4" },
+      { "id": "B", "tekst": "Het blokkeert de glucagonreceptor in plaats van de GLP-1-receptor" },
+      { "id": "C", "tekst": "Het activeert zowel de GIP-receptor als de GLP-1-receptor" },
+      { "id": "D", "tekst": "Het remt naast de GLP-1-receptor ook de transporter SGLT2" }
+    ],
+    "juist": "C",
+    "waarom": "Tirzepatide is een langwerkende agonist van zowel de GIP- als de GLP-1-receptor. Semaglutide werkt alleen op de GLP-1-receptor. Beide zijn incretine-agonisten, dus de bijwerkingen in het maag-darmkanaal lijken op elkaar.",
+    "onthoud": "Tirzepatide: twee incretinereceptoren in één molecuul.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, tirzepatide", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/t/tirzepatide" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "sacubitril-ace-36-uur",
+    "type": "mechanisme-bijwerking",
+    "insteek": "farmacologie",
+    "themaIds": ["nieuwe-mechanismen"],
+    "kaartId": "arbs",
+    "casus": "Iemand met hartfalen gebruikt enalapril en gaat over op sacubitril/valsartan.",
+    "vraag": "Waarom moet er minimaal 36 uur zitten tussen de laatste dosis enalapril en de eerste dosis sacubitril/valsartan?",
+    "opties": [
+      { "id": "A", "tekst": "Beide middelen concurreren om dezelfde transporter in de nier" },
+      { "id": "B", "tekst": "Valsartan zou anders de werking van enalapril opheffen" },
+      { "id": "C", "tekst": "Na het stoppen van enalapril treedt eerst rebound-hypertensie op" },
+      { "id": "D", "tekst": "Remming van ACE én neprilysine geeft meer kans op angio-oedeem" }
+    ],
+    "juist": "D",
+    "waarom": "Sacubitril remt neprilysine, dat onder meer natriuretische peptiden en bradykinine afbreekt. Een ACE-remmer remt ook de afbraak van bradykinine. Samen stapelt bradykinine, wat de kans op angio-oedeem vergroot. Daarom geldt de 36 uur in beide richtingen.",
+    "onthoud": "ACE en neprilysine breken allebei bradykinine af: nooit samen remmen.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, sacubitril/valsartan", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/s/sacubitril_valsartan" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "inclisiran-evolocumab",
+    "type": "vergelijk",
+    "insteek": "farmacologie",
+    "themaIds": ["nieuwe-mechanismen"],
+    "vraag": "Wat is het verschil in werking tussen inclisiran en evolocumab?",
+    "opties": [
+      { "id": "A", "tekst": "Inclisiran bindt PCSK9 in het bloed; evolocumab remt de aanmaak ervan in de lever" },
+      { "id": "B", "tekst": "Inclisiran remt als siRNA de aanmaak van PCSK9; evolocumab bindt PCSK9 in het bloed" },
+      { "id": "C", "tekst": "Inclisiran blokkeert de LDL-receptor; evolocumab remt HMG-CoA-reductase" },
+      { "id": "D", "tekst": "Inclisiran remt de cholesterolopname in de darm; evolocumab bindt galzuren" }
+    ],
+    "juist": "B",
+    "waarom": "PCSK9 zorgt ervoor dat LDL-receptoren worden afgebroken. Evolocumab is een monoklonaal antilichaam dat PCSK9 in het bloed wegvangt. Inclisiran is een siRNA dat de aanmaak van PCSK9 in de levercel remt. Beide geven meer LDL-receptoren en dus een lager LDL.",
+    "onthoud": "Zelfde doelwit, ander niveau: het eiwit of de aanmaak ervan.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, inclisiran", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/i/inclisiran" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "pembrolizumab-immuunbijwerkingen",
+    "type": "mechanisme-bijwerking",
+    "insteek": "farmacologie",
+    "themaIds": ["oncolytica-biologicals"],
+    "vraag": "Waardoor kan pembrolizumab colitis, pneumonitis of thyreoïditis geven?",
+    "opties": [
+      { "id": "A", "tekst": "De rem op T-cellen valt weg, waardoor ook gezond weefsel wordt aangevallen" },
+      { "id": "B", "tekst": "Snel delende cellen in deze organen worden direct gedood door het antilichaam" },
+      { "id": "C", "tekst": "T-cellen worden onderdrukt, waardoor infecties in deze organen ontstaan" },
+      { "id": "D", "tekst": "Het antilichaam stapelt in sterk doorbloede organen en is daar toxisch" }
+    ],
+    "juist": "A",
+    "waarom": "Pembrolizumab bindt de PD-1-receptor, die normaal de T-cel afremt. Dat activeert de afweer tegen de tumor, maar de T-cellen kunnen ook gezond weefsel aanvallen. Zo ontstaan immuungerelateerde ontstekingen, die soms pas laat optreden.",
+    "onthoud": "Checkpointremmer: de bijwerking is een ontsteking, geen celdood.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, pembrolizumab", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/p/pembrolizumab" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "adalimumab-tuberculose",
+    "type": "mechanisme-bijwerking",
+    "insteek": "farmacologie",
+    "themaIds": ["oncolytica-biologicals"],
+    "casus": "Voor de start van adalimumab wordt gescreend op latente tuberculose.",
+    "vraag": "Wat is de reden?",
+    "opties": [
+      { "id": "A", "tekst": "Adalimumab beschadigt longweefsel dat al littekens van tuberculose heeft" },
+      { "id": "B", "tekst": "Adalimumab inactiveert de middelen die tegen tuberculose worden gebruikt" },
+      { "id": "C", "tekst": "TNF-alfa houdt de granulomen in stand die de bacterie insluiten" },
+      { "id": "D", "tekst": "Mycobacteriën breken adalimumab af, waardoor het minder werkt" }
+    ],
+    "juist": "C",
+    "waarom": "Adalimumab neutraliseert TNF-alfa. Dat cytokine is nodig om de granulomen in stand te houden waarin de afweer een latente tuberculose insluit. Zonder TNF-alfa kan de infectie weer actief worden, en actieve tuberculose is een contra-indicatie.",
+    "onthoud": "TNF-alfa houdt het granuloom dicht.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, adalimumab", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/a/adalimumab" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "capecitabine-dpd",
+    "type": "casus",
+    "insteek": "farmacologie",
+    "themaIds": ["oncolytica-biologicals", "enzymen-transporters"],
+    "casus": "Voor de start van capecitabine wordt het DPYD-gen bepaald.",
+    "vraag": "Wat is het doel van deze test?",
+    "opties": [
+      { "id": "A", "tekst": "Bepalen of de tumor gevoelig is voor capecitabine" },
+      { "id": "B", "tekst": "Vaststellen of CYP2D6 capecitabine kan activeren" },
+      { "id": "C", "tekst": "Een hoge DPD-activiteit opsporen, zodat de dosering omhoog kan" },
+      { "id": "D", "tekst": "Een lage DPD-activiteit opsporen, omdat fluorouracil dan stapelt" }
+    ],
+    "juist": "D",
+    "waarom": "Capecitabine wordt omgezet in fluorouracil, dat vooral door het enzym DPD wordt afgebroken. Bij een verminderde DPD-activiteit stapelt fluorouracil, met kans op ernstige en soms fatale toxiciteit. Daarom wordt vóór de start getest en wordt de dosering zo nodig aangepast of het middel vermeden.",
+    "onthoud": "Geen DPD, geen afbraak van fluorouracil.",
+    "bron": { "label": "EMA, aanbevelingen over DPD-testen", "url": "https://www.ema.europa.eu/en/news/ema-recommendations-dpd-testing-prior-treatment-fluorouracil-capecitabine-tegafur-flucytosine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "simvastatine-claritromycine",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["interacties"],
+    "kaartId": "statines",
+    "casus": "Iemand gebruikt simvastatine 40 mg en krijgt claritromycine voorgeschreven.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Beide doorgebruiken en spierklachten afwachten" },
+      { "id": "B", "tekst": "Simvastatine en claritromycine minstens 4 uur na elkaar innemen" },
+      { "id": "C", "tekst": "Simvastatine tijdens de kuur onderbreken, of overleggen over azitromycine" },
+      { "id": "D", "tekst": "De dosering simvastatine tijdens de kuur halveren en verder doorgaan" }
+    ],
+    "juist": "C",
+    "waarom": "Claritromycine remt CYP3A4 sterk, waardoor de simvastatinespiegel flink stijgt en de kans op myopathie toeneemt. Deze combinatie is gecontra-indiceerd. Spreiden van de inname helpt niet, want het gaat om enzymremming en niet om absorptie. Azitromycine remt CYP3A4 nauwelijks.",
+    "mechanismeRegel": "sterke CYP3A4-remming → hogere simvastatinespiegel → risico op myopathie",
+    "onthoud": "Bij enzymremming helpt spreiden van de inname niet.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, simvastatine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/s/simvastatine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "ace-diureticum-nsaid",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["interacties"],
+    "kaartId": "ace-remmers",
+    "casus": "Iemand van 78 gebruikt lisinopril en hydrochloorthiazide en vraagt om ibuprofen tegen rugpijn.",
+    "vraag": "Wat is het belangrijkste risico van deze combinatie?",
+    "opties": [
+      { "id": "A", "tekst": "Stapeling van lisinopril door remming van CYP3A4" },
+      { "id": "B", "tekst": "Acute nierschade door een lagere filtratiedruk in de glomerulus" },
+      { "id": "C", "tekst": "Kristalvorming in de urine door hydrochloorthiazide en ibuprofen" },
+      { "id": "D", "tekst": "Sterke bloeddrukdaling doordat ibuprofen de vaten verwijdt" }
+    ],
+    "juist": "B",
+    "waarom": "Het diureticum verlaagt het circulerend volume. Het NSAID remt de prostaglandinen die de afferente arteriole open houden, en de ACE-remmer verwijdt de efferente arteriole. Samen daalt de filtratiedruk, met kans op acute nierschade. Ouderen en mensen met uitdroging lopen het meeste risico.",
+    "mechanismeRegel": "minder volume + afferente vernauwing + efferente verwijding → lagere filtratiedruk → acute nierschade",
+    "onthoud": "ACE-remmer + diureticum + NSAID: drie klappen op de nier.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, ACE-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/ace_remmers" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "linagliptine-sitagliptine-nier",
+    "type": "vergelijk",
+    "insteek": "praktijk",
+    "themaIds": ["nierfunctie"],
+    "kaartId": "dpp4-remmers",
+    "casus": "Iemand met een creatinineklaring van 25 ml/min heeft een DPP-4-remmer nodig.",
+    "vraag": "Waarom heeft linagliptine hier een praktisch voordeel boven sitagliptine?",
+    "opties": [
+      { "id": "A", "tekst": "Linagliptine gaat vooral via de feces, dus de dosering hoeft niet aangepast" },
+      { "id": "B", "tekst": "Linagliptine verbetert de nierfunctie via een eigen effect op de glomerulus" },
+      { "id": "C", "tekst": "Linagliptine wordt sneller door de nier geklaard dan sitagliptine" },
+      { "id": "D", "tekst": "Linagliptine verlaagt de glucose bij een lage klaring sterker dan andere middelen" }
+    ],
+    "juist": "A",
+    "waarom": "Bij sitagliptine stijgt de blootstelling als de nierfunctie daalt, dus de dosering moet omlaag: bij een klaring van 15 tot 30 ml/min naar 25 mg per dag. Linagliptine wordt voor ongeveer 95% via de feces uitgescheiden. Daardoor is aanpassing bij een klaring boven 10 ml/min niet nodig.",
+    "mechanismeRegel": "lage klaring + renale eliminatie → hogere blootstelling → dosis omlaag",
+    "onthoud": "Linagliptine is de DPP-4-remmer zonder nieraanpassing.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, linagliptine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/linagliptine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "metformine-ernstige-nierfunctiestoornis",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["nierfunctie"],
+    "casus": "Iemand gebruikt metformine 2 dd 1000 mg. Uit recent lab blijkt een creatinineklaring van 12 ml/min.",
+    "vraag": "Wat is het juiste vervolg?",
+    "opties": [
+      { "id": "A", "tekst": "Niets wijzigen, want metformine wordt in de lever afgebroken" },
+      { "id": "B", "tekst": "Overleggen met de voorschrijver, want metformine moet nu worden vermeden" },
+      { "id": "C", "tekst": "De dosering verhogen om de lagere klaring te compenseren" },
+      { "id": "D", "tekst": "De inname verplaatsen naar de avond, zodat de nier overdag minder wordt belast" }
+    ],
+    "juist": "B",
+    "waarom": "Metformine wordt niet gemetaboliseerd en verdwijnt onveranderd via de nier. Bij een slechte nierfunctie stapelt het middel, waardoor de kans op lactaatacidose toeneemt. Bij een klaring van 15 ml/min of lager moet gebruik worden vermeden.",
+    "mechanismeRegel": "lage klaring → stapeling van metformine → risico op lactaatacidose",
+    "onthoud": "Metformine wordt onveranderd renaal geklaard en stapelt dus.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, metformine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/m/metformine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "doac-renale-klaring",
+    "type": "vergelijk",
+    "insteek": "praktijk",
+    "themaIds": ["nierfunctie"],
+    "vraag": "Welke DOAC is het sterkst afhankelijk van uitscheiding via de nier?",
+    "opties": [
+      { "id": "A", "tekst": "Apixaban" },
+      { "id": "B", "tekst": "Rivaroxaban" },
+      { "id": "C", "tekst": "Dabigatran" },
+      { "id": "D", "tekst": "Edoxaban" }
+    ],
+    "juist": "C",
+    "waarom": "Dabigatran wordt voornamelijk onveranderd met de urine uitgescheiden. Bij een dalende nierfunctie loopt de halfwaardetijd daardoor op. De factor Xa-remmers zijn minder afhankelijk van de nier, al vragen ook zij om aandacht bij een lage klaring.",
+    "mechanismeRegel": "voornamelijk renale eliminatie → stapeling bij lage klaring → meer kans op bloedingen",
+    "onthoud": "Dabigatran is de DOAC die het meest op de nier leunt.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, dabigatran", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/d/dabigatran" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "sglt2-lage-egfr",
+    "type": "mechanisme-middel",
+    "insteek": "praktijk",
+    "themaIds": ["nierfunctie"],
+    "kaartId": "sglt2-remmers",
+    "vraag": "Waarom neemt het glucoseverlagende effect van een SGLT2-remmer af bij een lagere eGFR?",
+    "opties": [
+      { "id": "A", "tekst": "Er wordt minder glucose gefiltreerd, dus er valt minder terugresorptie te remmen" },
+      { "id": "B", "tekst": "De tubuluscellen maken meer SGLT2 aan dan het middel kan remmen" },
+      { "id": "C", "tekst": "Het middel wordt bij een lage eGFR sneller in de lever afgebroken" },
+      { "id": "D", "tekst": "Het middel wordt bij een lage eGFR niet meer uit de darm opgenomen" }
+    ],
+    "juist": "A",
+    "waarom": "Een SGLT2-remmer werkt op de glucose die de glomerulus in de tubulus filtreert. Bij een lagere eGFR komt daar minder glucose aan, dus het effect op de bloedglucose neemt af. Overweeg bij diabetes een aanvullende behandeling als de eGFR onder 45 ml/min daalt.",
+    "mechanismeRegel": "lagere eGFR → minder gefiltreerde glucose → minder glucosurie → minder glucoseverlaging",
+    "onthoud": "Geen filtraat, geen glucosurie.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, empagliflozine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/e/empagliflozine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "losartan-kinderwens",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["zwangerschap-lactatie"],
+    "kaartId": "arbs",
+    "casus": "Een vrouw van 32 met hypertensie gebruikt losartan en vertelt dat ze zwanger wil worden.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Losartan doorgebruiken, omdat het de placenta niet passeert" },
+      { "id": "B", "tekst": "Overstappen op enalapril, omdat ACE-remmers bij zwangerschap wel veilig zijn, anders dan ARB's" },
+      { "id": "C", "tekst": "Alleen de dosering halveren zodra de zwangerschap is vastgesteld" },
+      { "id": "D", "tekst": "Via de voorschrijver vóór de zwangerschap overstappen op bijvoorbeeld labetalol" }
+    ],
+    "juist": "D",
+    "waarom": "ARB's en ACE-remmers schaden de foetus in het tweede en derde trimester, onder meer doordat de foetale nier minder goed werkt. Dat kan leiden tot oligohydramnie. Daarom wordt bij kinderwens al overgestapt op een alternatief, zoals labetalol.",
+    "mechanismeRegel": "RAS-remming bij de foetus → minder foetale nierfunctie → oligohydramnie",
+    "onthoud": "Kinderwens is het moment om een RAS-remmer te vervangen.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, losartan", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/losartan" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "nsaid-derde-trimester",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["zwangerschap-lactatie"],
+    "casus": "Een vrouw die 32 weken zwanger is, vraagt om ibuprofen tegen rugpijn.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Ibuprofen is toegestaan tot 36 weken zwangerschap" },
+      { "id": "B", "tekst": "Geen ibuprofen wegens de ductus arteriosus; adviseer paracetamol" },
+      { "id": "C", "tekst": "Ibuprofen is toegestaan als ze er een maagbeschermer bij neemt" },
+      { "id": "D", "tekst": "Geen ibuprofen, maar wel naproxen, omdat dat de placenta niet passeert" }
+    ],
+    "juist": "B",
+    "waarom": "NSAID's remmen de prostaglandinesynthese. Bij de foetus kan dat leiden tot vernauwing of sluiting van de ductus arteriosus en tot een gestoorde nierfunctie met oligohydramnie. Gebruik in het derde trimester is gecontra-indiceerd, en dat geldt voor de hele groep.",
+    "mechanismeRegel": "COX-remming → minder prostaglandinen → vernauwing van de ductus arteriosus",
+    "onthoud": "Derde trimester: geen NSAID's.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, ibuprofen", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/i/ibuprofen__systemisch_" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "codeine-borstvoeding",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["zwangerschap-lactatie"],
+    "casus": "Een vrouw die borstvoeding geeft, krijgt codeïne voorgeschreven.",
+    "vraag": "Waarom is dit een probleem?",
+    "opties": [
+      { "id": "A", "tekst": "Codeïne stopt de melkproductie volledig" },
+      { "id": "B", "tekst": "Codeïne stapelt in het vetweefsel van de zuigeling" },
+      { "id": "C", "tekst": "Codeïne geeft bij de zuigeling een allergische reactie op eiwitten uit de moedermelk" },
+      { "id": "D", "tekst": "Bij een ultrasnelle CYP2D6-omzetter kan veel morfine in de melk komen" }
+    ],
+    "juist": "D",
+    "waarom": "Codeïne en de metaboliet morfine gaan over in de moedermelk. Bij een moeder die codeïne ultrasnel omzet, kan de morfinespiegel zo hoog worden dat de zuigeling ademhalingsdepressie krijgt. Je weet dit meestal niet van tevoren, daarom is de combinatie gecontra-indiceerd.",
+    "mechanismeRegel": "ultrasnel CYP2D6 → veel morfine in de melk → ademhalingsdepressie bij de zuigeling",
+    "onthoud": "Codeïne en borstvoeding gaan niet samen.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, codeïne", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/c/codeine" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "rode-gist-rijst-statine",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["zelfzorg"],
+    "kaartId": "statines",
+    "casus": "Iemand met atorvastatine wil er rode gist rijst uit de drogist bij gaan gebruiken.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Afraden, want het bevat monacoline K, dat chemisch gelijk is aan lovastatine" },
+      { "id": "B", "tekst": "Geen probleem, want een plantaardig product heeft geen interacties" },
+      { "id": "C", "tekst": "Geen probleem, als het 2 uur na de atorvastatine wordt ingenomen" },
+      { "id": "D", "tekst": "Afraden, want het remt de opname van atorvastatine in de darm" }
+    ],
+    "juist": "A",
+    "waarom": "Rode gist rijst bevat monacoline K, en dat is chemisch hetzelfde als lovastatine. Wie het bij een statine gebruikt, remt HMG-CoA-reductase dus dubbel. Dat geeft meer kans op spierklachten, zonder dat de hoeveelheid werkzame stof in het product goed vaststaat.",
+    "mechanismeRegel": "monacoline K = lovastatine → dubbele HMG-CoA-reductaseremming → meer kans op spierklachten",
+    "onthoud": "Rode gist rijst is een statine in een supplementpotje.",
+    "bron": { "label": "EFSA, advies over monacolines in rode gist rijst (2018)", "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5368" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "sint-janskruid-pil",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["zelfzorg", "interacties"],
+    "casus": "Iemand die de combinatiepil gebruikt, wil sint-janskruid kopen tegen somberheid.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Geen probleem, want kruidenmiddelen zijn niet systemisch actief" },
+      { "id": "B", "tekst": "Afraden, want enzyminductie kan de pil minder betrouwbaar maken" },
+      { "id": "C", "tekst": "Afraden, want enzymremming verhoogt de kans op trombose" },
+      { "id": "D", "tekst": "Geen probleem, als het 4 uur na de pil wordt ingenomen" }
+    ],
+    "juist": "B",
+    "waarom": "Sint-janskruid induceert onder meer CYP3A4. Daardoor worden de hormonen uit de pil sneller afgebroken en kan de anticonceptieve werking afnemen. Spreiden van de inname helpt niet, want inductie werkt door de hele dag.",
+    "mechanismeRegel": "enzyminductie → snellere afbraak van de hormonen → minder betrouwbare anticonceptie",
+    "onthoud": "Sint-janskruid is een krachtige enzyminductor, ook al staat het in de drogist.",
+    "bron": { "label": "CBG Geneesmiddeleninformatiebank, SmPC combinatiepil, rubriek 4.5", "url": "https://www.geneesmiddeleninformatiebank.nl/" },
+    "status": "concept",
+    "versie": 1
+  },
+  {
+    "id": "antacidum-ciprofloxacine",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["zelfzorg", "interacties"],
+    "casus": "Iemand met een kuur ciprofloxacine vraagt om een antacidum met magnesium en aluminium.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Tegelijk innemen, dan beschermt het antacidum de maag tegen de kuur" },
+      { "id": "B", "tekst": "Niet combineren, want het antacidum remt de omzetting van ciprofloxacine in de lever" },
+      { "id": "C", "tekst": "Ciprofloxacine ten minste 1 tot 2 uur vóór of 4 uur na het antacidum innemen" },
+      { "id": "D", "tekst": "De kuur stoppen en overleggen over een ander antibioticum" }
+    ],
+    "juist": "C",
+    "waarom": "Magnesium en aluminium vormen in de darm een complex met ciprofloxacine, waardoor er minder wordt opgenomen. De kuur kan daardoor minder goed werken. Omdat het om de opname gaat, helpt spreiden hier wel.",
+    "mechanismeRegel": "meerwaardige kationen → chelaatvorming in de darm → minder opname → minder effect",
+    "onthoud": "Bij een absorptie-interactie helpt spreiden wel, bij enzymremming niet.",
+    "bron": { "label": "Farmacotherapeutisch Kompas, ciprofloxacine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/c/ciprofloxacine" },
+    "status": "concept",
+    "versie": 1
+  }
+]
