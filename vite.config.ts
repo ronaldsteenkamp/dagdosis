@@ -33,6 +33,10 @@ export default defineConfig({
         ],
       },
       workbox: {
+        // Met injectRegister: false zet de plug-in deze twee niet zelf aan. Zonder blijft een
+        // nieuwe versie wachten tot de app helemaal gesloten is.
+        skipWaiting: true,
+        clientsClaim: true,
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
       },
     }),
