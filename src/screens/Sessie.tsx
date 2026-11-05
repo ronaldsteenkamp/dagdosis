@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Bronregel } from '../components/Bronregel'
 import { Icon } from '../components/Icon'
 import { Segment } from '../components/Keuzes'
 import { Titel } from '../components/Kop'
-import { dagdosis } from '../data/dummy'
 import { kaarten, vragen } from '../inhoud'
+import { geldigeVoortgang, gevolgTekst, planVolgende } from '../logica/herhaling'
+import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
 import { useAppState } from '../state'
-import type { Vraag, VraagType, Zekerheid } from '../types'
+import type { Resultaat, Vraag, VraagType, Zekerheid } from '../types'
+import { Mechanismekaart } from './Mechanismekaart'
 
 const typeLabel: Record<VraagType, string> = {
   casus: 'Casus',
@@ -18,18 +20,6 @@ const typeLabel: Record<VraagType, string> = {
 }
 
 const ONZEKER = 'onzeker'
-
-interface Resultaat {
-  vraag: Vraag
-  goed: boolean
-}
-
-// Tijdelijke tekst; fase 3 berekent dit met de echte herhalingslogica.
-function gevolgTekst(goed: boolean, zekerheid: Zekerheid) {
-  if (!goed || zekerheid === 'gok') return 'Deze vraag komt morgen terug.'
-  if (zekerheid === 'twijfel') return 'Deze vraag komt over 3 dagen terug.'
-  return 'Deze vraag komt over 7 dagen terug.'
-}
 
 function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
   return (
@@ -57,37 +47,30 @@ function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
 }
 
 function MeldFout({ vraag }: { vraag: Vraag }) {
-  const { voegMeldingToe } = useAppState()
+  const { meldingen, voegMeldingToe } = useAppState()
   const dialoog = useRef<HTMLDialogElement>(null)
   const [notitie, zetNotitie] = useState('')
-  const [opgeslagen, zetOpgeslagen] = useState(false)
+  const gemeld = meldingen.some((m) => m.vraagId === vraag.id && m.versie === vraag.versie)
 
   return (
     <>
       <button type="button" className="tekstknop" onClick={() => dialoog.current?.showModal()}>
         <Icon naam="vlag" maat={16} />
-        {opgeslagen ? 'Gemeld' : 'Meld fout'}
+        {gemeld ? 'Gemeld' : 'Meld fout'}
       </button>
-      <dialog ref={dialoog} className="dialoog" aria-labelledby={`meld-${vraag.id}`}>
+      <dialog ref={dialoog} className="dialoog" aria-label="Fout melden">
         <form
           method="dialog"
           onSubmit={() => {
-            voegMeldingToe({ vraagId: vraag.id, notitie })
-            zetOpgeslagen(true)
+            voegMeldingToe(vraag, notitie)
+            zetNotitie('')
           }}
         >
-          <h2 id={`meld-${vraag.id}`} className="sectiekop">
-            Fout melden
-          </h2>
-          <label className="klein gedempt" htmlFor={`notitie-${vraag.id}`}>
+          <h2 className="sectiekop">Fout melden</h2>
+          <label className="klein gedempt">
             Wat klopt er niet? De notitie blijft op dit toestel.
+            <textarea value={notitie} required onChange={(e) => zetNotitie(e.target.value)} />
           </label>
-          <textarea
-            id={`notitie-${vraag.id}`}
-            value={notitie}
-            required
-            onChange={(e) => zetNotitie(e.target.value)}
-          />
           <div className="knoprij">
             <button type="button" className="knop knop-licht" onClick={() => dialoog.current?.close()}>
               Annuleren
@@ -157,15 +140,17 @@ function Uitlegscherm({
   keuze,
   positie,
   totaal,
+  onOpenKaart,
   onVolgende,
 }: {
   vraag: Vraag
   keuze: string
   positie: number
   totaal: number
-  onVolgende: () => void
+  onOpenKaart: (id: string) => void
+  onVolgende: (zekerheid: Zekerheid) => void
 }) {
-  const { instellingen } = useAppState()
+  const { instellingen, voortgang } = useAppState()
   const goed = keuze === vraag.juist
   const onzeker = keuze === ONZEKER
   const [zekerheid, zetZekerheid] = useState<Zekerheid | undefined>(onzeker ? 'gok' : undefined)
@@ -173,6 +158,7 @@ function Uitlegscherm({
   const kaart = kaarten.find((k) => k.id === vraag.kaartId)
   const toonRegel =
     vraag.mechanismeRegel && vraag.insteek === 'praktijk' && instellingen.uitlegMetMechanisme
+  const bakje = geldigeVoortgang(vraag, voortgang[vraag.id])?.bakje ?? 1
 
   return (
     <main className="scherm scherm-sessie">
@@ -213,13 +199,13 @@ function Uitlegscherm({
         {vraag.status === 'concept' && <MeldFout vraag={vraag} />}
       </div>
       {kaart && (
-        <a href={`#/kaart/${kaart.id}`} className="linkrij">
+        <button type="button" className="linkrij" onClick={() => onOpenKaart(kaart.id)}>
           <Icon naam="keten" maat={20} />
           Mechanismekaart {kaart.groep}
-        </a>
+        </button>
       )}
 
-      <section className="kaart" aria-labelledby="zeker-kop">
+      <section className="kaart" aria-labelledby={onzeker ? undefined : 'zeker-kop'}>
         {!onzeker && (
           <>
             <h2 id="zeker-kop" className="sectiekop">
@@ -240,42 +226,61 @@ function Uitlegscherm({
         {zekerheid && (
           <p className="gevolg" role="status">
             <Icon naam="herhaal" maat={18} />
-            {gevolgTekst(goed, zekerheid)}
+            {gevolgTekst(planVolgende(bakje, goed, zekerheid).dagen)}
           </p>
         )}
       </section>
 
-      <button type="button" className="knop knop-primair" disabled={!zekerheid} onClick={onVolgende}>
+      <button
+        type="button"
+        className="knop knop-primair"
+        disabled={!zekerheid}
+        onClick={() => zekerheid && onVolgende(zekerheid)}
+      >
         {positie === totaal ? 'Bekijk samenvatting' : 'Volgende vraag'}
       </button>
     </main>
   )
 }
 
-function Samenvatting({ resultaten }: { resultaten: Resultaat[] }) {
+function Samenvatting({
+  lijst,
+  resultaten,
+  streak,
+}: {
+  lijst: Vraag[]
+  resultaten: Resultaat[]
+  streak?: number
+}) {
   const goed = resultaten.filter((r) => r.goed).length
   return (
     <main className="scherm scherm-sessie">
-      <Titel className="titel-groot">Dosis binnen</Titel>
+      <Titel className="titel-groot">{streak === undefined ? 'Test afgerond' : 'Dosis binnen'}</Titel>
       <section className="kaart" aria-label="Score">
         <p className="score-groot">
           {goed}/{resultaten.length}
         </p>
         <p className="gedempt">vragen goed beantwoord</p>
+        {streak !== undefined && (
+          <p className="pil pil-amber" style={{ alignSelf: 'flex-start' }}>
+            <Icon naam="vlam" maat={18} />
+            {streak} {streak === 1 ? 'dag' : 'dagen'} op rij
+          </p>
+        )}
       </section>
       <section className="kaart" aria-labelledby="overzicht-kop">
         <h2 id="overzicht-kop" className="sectiekop">
           Overzicht
         </h2>
         <ul>
-          {resultaten.map(({ vraag, goed }) => (
-            <li key={vraag.id} className="samenvatting-rij">
-              <span className={`status-rond ${goed ? 'status-goed' : 'status-fout'}`}>
-                <Icon naam={goed ? 'check' : 'kruis'} maat={16} />
+          {resultaten.map((r) => (
+            <li key={r.vraagId} className="samenvatting-rij">
+              <span className={`status-rond ${r.goed ? 'status-goed' : 'status-fout'}`}>
+                <Icon naam={r.goed ? 'check' : 'kruis'} maat={16} />
               </span>
               <span>
-                <span className="sr-only">{goed ? 'Goed: ' : 'Niet goed: '}</span>
-                {vraag.vraag}
+                <span className="sr-only">{r.goed ? 'Goed: ' : 'Niet goed: '}</span>
+                {lijst.find((v) => v.id === r.vraagId)?.vraag}
               </span>
             </li>
           ))}
@@ -291,53 +296,87 @@ function Samenvatting({ resultaten }: { resultaten: Resultaat[] }) {
 }
 
 export function Sessie({ kaartId }: { kaartId?: string }) {
-  const { zetAfgerond } = useAppState()
+  const { beantwoord, dosis, dosissen, vandaag } = useAppState()
+  const [testResultaten, zetTestResultaten] = useState<Resultaat[]>([])
+  const [keuze, zetKeuze] = useState<string | null>(null)
+  const [openKaart, zetOpenKaart] = useState<string | null>(null)
+  const startTijd = useRef(0)
+  const scrollVoorKaart = useRef(0)
+
   const lijst = kaartId
     ? vragen.filter((v) => v.kaartId === kaartId)
-    : dagdosis.vraagIds.map((id) => vragen.find((v) => v.id === id)!)
+    : dosis.vraagIds.flatMap((id) => vragen.filter((v) => v.id === id))
+  const resultaten = kaartId ? testResultaten : dosis.resultaten
+  const vraag = lijst.find((v) => !resultaten.some((r) => r.vraagId === v.id))
+  const positie = lijst.length - lijst.filter((v) => !resultaten.some((r) => r.vraagId === v.id)).length + 1
 
-  const [index, zetIndex] = useState(0)
-  const [keuze, zetKeuze] = useState<string | null>(null)
-  const [resultaten, zetResultaten] = useState<Resultaat[]>([])
+  useEffect(() => {
+    if (lijst.length === 0) ga('#/')
+  }, [lijst.length])
 
-  const klaar = index >= lijst.length
-  const score = resultaten.filter((r) => r.goed).length
+  // De leertijd loopt vanaf het openen van de vraag.
+  useEffect(() => {
+    startTijd.current = Date.now()
+  }, [vraag?.id])
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    if (klaar && !kaartId) zetAfgerond({ goed: score, totaal: lijst.length })
-  }, [index, keuze, klaar, kaartId, score, lijst.length, zetAfgerond])
+  }, [vraag?.id, keuze])
 
-  if (lijst.length === 0) {
-    ga('#/')
-    return null
+  useLayoutEffect(() => {
+    window.scrollTo(0, openKaart ? 0 : scrollVoorKaart.current)
+  }, [openKaart])
+
+  if (lijst.length === 0) return null
+  if (!vraag) {
+    return (
+      <Samenvatting
+        lijst={lijst}
+        resultaten={resultaten}
+        streak={kaartId ? undefined : berekenStreak(dosissen, vandaag)}
+      />
+    )
   }
-  if (klaar) return <Samenvatting resultaten={resultaten} />
 
-  const vraag = lijst[index]
   if (keuze === null) {
     return (
       <Vraagscherm
         key={vraag.id}
         vraag={vraag}
-        positie={index + 1}
+        positie={positie}
         totaal={lijst.length}
         onControleer={zetKeuze}
       />
     )
   }
+
   return (
-    <Uitlegscherm
-      key={vraag.id}
-      vraag={vraag}
-      keuze={keuze}
-      positie={index + 1}
-      totaal={lijst.length}
-      onVolgende={() => {
-        zetResultaten((r) => [...r, { vraag, goed: keuze === vraag.juist }])
-        zetKeuze(null)
-        zetIndex((i) => i + 1)
-      }}
-    />
+    <>
+      {openKaart && <Mechanismekaart id={openKaart} onTerug={() => zetOpenKaart(null)} />}
+      <div hidden={!!openKaart}>
+        <Uitlegscherm
+          key={vraag.id}
+          vraag={vraag}
+          keuze={keuze}
+          positie={positie}
+          totaal={lijst.length}
+          onOpenKaart={(id) => {
+            scrollVoorKaart.current = window.scrollY
+            zetOpenKaart(id)
+          }}
+          onVolgende={(zekerheid) => {
+            beantwoord({
+              vraag,
+              keuze,
+              zekerheid,
+              duurMs: Date.now() - startTijd.current,
+              inDosis: !kaartId,
+            })
+            if (kaartId) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed: keuze === vraag.juist }])
+            zetKeuze(null)
+          }}
+        />
+      </div>
+    </>
   )
 }

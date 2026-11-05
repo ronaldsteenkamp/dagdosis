@@ -1,19 +1,28 @@
-import { useState } from 'react'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
-import { dummyVoortgang } from '../data/dummy'
-import { themas } from '../inhoud'
+import { downloadCsv } from '../download'
+import { themas, vragen } from '../inhoud'
+import {
+  leertijdDitJaarMs,
+  maakLeerlogCsv,
+  maakMeldingenCsv,
+  morgenAandacht,
+  percentageGoed,
+  themaScore,
+  ZWAK_ONDER,
+} from '../logica/voortgang'
+import { useAppState } from '../state'
 
-const ZWAK_ONDER = 60
-
-function leertijd(minuten: number) {
+function leertijd(ms: number) {
+  const minuten = Math.round(ms / 60000)
   const uren = Math.floor(minuten / 60)
   return uren > 0 ? `${uren} u ${minuten % 60} min` : `${minuten} min`
 }
 
 export function Voortgang() {
-  const [melding, zetMelding] = useState('')
-  const v = dummyVoortgang
+  const { antwoorden, meldingen, voortgang, vandaag } = useAppState()
+  const percentage = percentageGoed(antwoorden, vandaag)
+  const aandacht = morgenAandacht(vragen, themas, voortgang, antwoorden, vandaag)
 
   return (
     <main className="scherm scherm-met-balk">
@@ -21,11 +30,11 @@ export function Voortgang() {
 
       <div className="stats">
         <section className="kaart">
-          <p className="stat-getal">{v.percentageGoed}%</p>
+          <p className="stat-getal">{percentage === null ? '–' : `${percentage}%`}</p>
           <p className="gedempt klein">goed, laatste 30 dagen</p>
         </section>
         <section className="kaart">
-          <p className="stat-getal">{leertijd(v.leertijdMinuten)}</p>
+          <p className="stat-getal">{leertijd(leertijdDitJaarMs(antwoorden, vandaag))}</p>
           <p className="gedempt klein">leertijd dit jaar</p>
         </section>
       </div>
@@ -35,18 +44,18 @@ export function Voortgang() {
           Per thema
         </h2>
         <ul className="themabalken">
-          {v.themaScores.map(({ themaId, pct }) => {
-            const naam = themas.find((t) => t.id === themaId)?.naam ?? themaId
+          {themas.map((t) => {
+            const score = themaScore(antwoorden, t.id)
             return (
-              <li key={themaId}>
+              <li key={t.id}>
                 <div className="themabalk-kop">
-                  <span>{naam}</span>
-                  <span>{pct}%</span>
+                  <span>{t.naam}</span>
+                  <span>{score === null ? 'nog geen' : `${score}%`}</span>
                 </div>
                 <div className="themabalk-spoor" aria-hidden="true">
                   <div
-                    className={`themabalk-vulling${pct < ZWAK_ONDER ? ' zwak' : ''}`}
-                    style={{ width: `${pct}%` }}
+                    className={`themabalk-vulling${score !== null && score < ZWAK_ONDER ? ' zwak' : ''}`}
+                    style={{ width: `${score ?? 0}%` }}
                   />
                 </div>
               </li>
@@ -60,24 +69,36 @@ export function Voortgang() {
           <Icon naam="waarschuwing" maat={20} />
           Morgen extra aandacht
         </h2>
-        <ul>
-          {v.morgen.map((regel) => (
-            <li key={regel}>{regel}</li>
-          ))}
-        </ul>
+        {aandacht.length > 0 ? (
+          <ul>
+            {aandacht.map((regel) => (
+              <li key={regel}>{regel}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>Morgen staat er niets extra's klaar.</p>
+        )}
       </section>
 
       <button
         type="button"
         className="knop knop-licht"
-        onClick={() => zetMelding('De export werkt vanaf fase 3, met je echte leerlog.')}
+        onClick={() => downloadCsv(`dagdosis-leerlog-${vandaag}.csv`, maakLeerlogCsv(antwoorden, themas))}
       >
         <Icon naam="download" maat={20} />
         Leerlog exporteren
       </button>
-      <p className="gedempt klein" role="status">
-        {melding}
-      </p>
+
+      {meldingen.length > 0 && (
+        <button
+          type="button"
+          className="knop knop-licht"
+          onClick={() => downloadCsv(`dagdosis-meldingen-${vandaag}.csv`, maakMeldingenCsv(meldingen))}
+        >
+          <Icon naam="vlag" maat={20} />
+          Gemelde fouten exporteren ({meldingen.length})
+        </button>
+      )}
     </main>
   )
 }

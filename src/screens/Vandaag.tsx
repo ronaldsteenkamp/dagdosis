@@ -1,9 +1,11 @@
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
-import { dagdosis, dummyVoortgang, weekScores } from '../data/dummy'
 import { kaarten, themas, vragen } from '../inhoud'
+import { weeknummer, weekdagIndex } from '../logica/datum'
+import { berekenStreak, isAfgerond, weekOverzicht } from '../logica/voortgang'
 import { useAppState } from '../state'
 
+const SECONDEN_PER_VRAAG = 36
 const dagen = ['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag']
 
 function begroeting(uur: number) {
@@ -13,32 +15,31 @@ function begroeting(uur: number) {
   return 'Goedenavond'
 }
 
-function Weekoverzicht({ scoreVandaag }: { scoreVandaag: number | null }) {
-  const vandaagIndex = (new Date().getDay() + 6) % 7
-  const totaal = dagdosis.vraagIds.length
+function Weekoverzicht() {
+  const { dosissen, vandaag } = useAppState()
+  const vandaagIndex = weekdagIndex(vandaag)
   return (
     <section className="kaart" aria-labelledby="week-kop">
       <h2 id="week-kop" className="sectiekop">
         Deze week
       </h2>
       <ol className="week">
-        {dagen.map((dag, i) => {
+        {weekOverzicht(dosissen, vandaag).map(({ datum, goed, totaal }, i) => {
+          const dag = dagen[i]
+          const gedaan = goed !== null
           const verleden = i < vandaagIndex
-          const vandaag = i === vandaagIndex
-          const score = vandaag ? scoreVandaag : verleden ? weekScores[i % weekScores.length] : null
-          const gedaan = score !== null
           const beschrijving = gedaan
-            ? `${dag}: ${score} van ${totaal} goed`
+            ? `${dag}: ${goed} van ${totaal} goed`
             : verleden
               ? `${dag}: niet gedaan`
-              : vandaag
+              : i === vandaagIndex
                 ? `${dag}: nog te doen`
                 : `${dag}: komt nog`
           return (
-            <li key={dag} className={vandaag ? 'week-vandaag' : undefined}>
+            <li key={datum} className={i === vandaagIndex ? 'week-vandaag' : undefined}>
               <span aria-hidden="true">{dag.slice(0, 2)}</span>
               <span className={`week-dag${gedaan ? ' gedaan' : verleden ? ' gemist' : ''}`} aria-hidden="true">
-                {gedaan ? `${score}/${totaal}` : ''}
+                {gedaan ? `${goed}/${totaal}` : ''}
               </span>
               <span className="sr-only">{beschrijving}</span>
             </li>
@@ -49,16 +50,80 @@ function Weekoverzicht({ scoreVandaag }: { scoreVandaag: number | null }) {
   )
 }
 
+function Doskaart() {
+  const { dosis } = useAppState()
+  const totaal = dosis.vraagIds.length
+
+  if (totaal === 0) {
+    return (
+      <>
+        <p>Er zijn vandaag geen vragen, omdat alle thema's van deze insteek uit staan.</p>
+        <a href="#/instellingen" className="knop knop-wit">
+          Naar instellingen
+        </a>
+      </>
+    )
+  }
+
+  if (isAfgerond(dosis)) {
+    const goed = dosis.resultaten.filter((r) => r.goed).length
+    return (
+      <>
+        <p className="doskaart-feiten">
+          <span>
+            <Icon naam="check" maat={20} />
+            Afgerond: {goed} van {totaal} goed
+          </span>
+        </p>
+        <p>Morgen staat er een nieuwe dosis klaar.</p>
+        <a href="#/sessie" className="knop knop-wit">
+          Bekijk samenvatting
+        </a>
+      </>
+    )
+  }
+
+  const herhalingen = new Set(dosis.herhalingIds)
+  const themaIds = new Set(
+    dosis.vraagIds
+      .filter((id) => !herhalingen.has(id))
+      .flatMap((id) => vragen.find((v) => v.id === id)?.themaIds ?? []),
+  )
+  const minuten = Math.max(1, Math.round((totaal * SECONDEN_PER_VRAAG) / 60))
+  const gedaan = dosis.resultaten.length
+
+  return (
+    <>
+      <p className="doskaart-feiten">
+        <span>{gedaan > 0 ? `${gedaan} van ${totaal} gedaan` : `${totaal} vragen`}</span>
+        <span>
+          <Icon naam="klok" maat={18} />± {minuten} {minuten === 1 ? 'minuut' : 'minuten'}
+        </span>
+      </p>
+      <ul className="pil-rij" aria-label="Thema's van vandaag">
+        {themas
+          .filter((t) => themaIds.has(t.id))
+          .map((t) => (
+            <li key={t.id} className="pil">
+              {t.naam}
+            </li>
+          ))}
+        {herhalingen.size > 0 && <li className="pil pil-amber">+ {herhalingen.size} herhaling</li>}
+      </ul>
+      <a href="#/sessie" className="knop knop-wit">
+        {gedaan > 0 ? 'Verder' : 'Start'}
+        <Icon naam="pijlRechts" maat={20} />
+      </a>
+    </>
+  )
+}
+
 export function Vandaag() {
-  const { afgerond } = useAppState()
+  const { dosissen, vandaag } = useAppState()
   const nu = new Date()
   const datum = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' }).format(nu)
-  const streak = dummyVoortgang.streak + (afgerond ? 1 : 0)
-  const kaartVanDeWeek = kaarten[0]
-  const themaIds = new Set(
-    dagdosis.vraagIds.flatMap((id) => vragen.find((v) => v.id === id)?.themaIds ?? []),
-  )
-  const themaChips = themas.filter((t) => themaIds.has(t.id)).map((t) => t.naam)
+  const streak = berekenStreak(dosissen, vandaag)
+  const kaartVanDeWeek = kaarten[weeknummer(vandaag) % kaarten.length]
 
   return (
     <main className="scherm scherm-met-balk">
@@ -74,43 +139,12 @@ export function Vandaag() {
 
       <p className="pil pil-amber" style={{ alignSelf: 'flex-start' }}>
         <Icon naam="vlam" maat={18} />
-        {streak} dagen op rij
+        {streak === 0 ? 'Begin vandaag je reeks' : `${streak} ${streak === 1 ? 'dag' : 'dagen'} op rij`}
       </p>
 
       <section className="kaart doskaart" aria-labelledby="dosis-kop">
         <h2 id="dosis-kop">Dagdosis van vandaag</h2>
-        {afgerond ? (
-          <>
-            <p className="doskaart-feiten">
-              <span>
-                <Icon naam="check" maat={20} />
-                Afgerond: {afgerond.goed} van {afgerond.totaal} goed
-              </span>
-            </p>
-            <p>Morgen staat er een nieuwe dosis klaar.</p>
-          </>
-        ) : (
-          <>
-            <p className="doskaart-feiten">
-              <span>{dagdosis.vraagIds.length} vragen</span>
-              <span>
-                <Icon naam="klok" maat={18} />± {dagdosis.minuten} minuten
-              </span>
-            </p>
-            <ul className="pil-rij" aria-label="Thema's van vandaag">
-              {themaChips.map((chip) => (
-                <li key={chip} className="pil">
-                  {chip}
-                </li>
-              ))}
-              <li className="pil pil-amber">+ {dagdosis.herhalingen} herhaling</li>
-            </ul>
-            <a href="#/sessie" className="knop knop-wit">
-              Start
-              <Icon naam="pijlRechts" maat={20} />
-            </a>
-          </>
-        )}
+        <Doskaart />
       </section>
 
       <a href={`#/kaart/${kaartVanDeWeek.id}`} className="kaart kaart-link">
@@ -124,7 +158,7 @@ export function Vandaag() {
         <Icon naam="pijlRechts" maat={20} />
       </a>
 
-      <Weekoverzicht scoreVandaag={afgerond?.goed ?? null} />
+      <Weekoverzicht />
     </main>
   )
 }

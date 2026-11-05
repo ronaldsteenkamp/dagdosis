@@ -3,8 +3,8 @@
 Elke dag 5 vragen (± 3 minuten) om je kennis als apotheker op peil te houden.
 Installeerbare webapp, alles blijft op het toestel. Gemaakt door Ronald.
 
-**Stand:** fase 2. De vragen en mechanismekaarten komen uit `/content`. De dagdosis en de
-voortgang zijn nog voorbeeldgegevens uit `src/data/dummy.ts`, en er wordt nog niets bewaard.
+**Stand:** fase 3. De vragen en mechanismekaarten komen uit `/content`. De dagdosis, herhalingen,
+voortgang en meldingen werken echt en staan alleen op het toestel, in IndexedDB.
 
 ## Ontwikkelen
 

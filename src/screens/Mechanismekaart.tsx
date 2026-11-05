@@ -20,20 +20,21 @@ function Pijl() {
   )
 }
 
-export function Mechanismekaart({ id }: { id: string }) {
+/** Met onTerug is dit een tussenstap in een sessie, zonder eigen test. */
+export function Mechanismekaart({ id, onTerug }: { id: string; onTerug?: () => void }) {
   const kaart = kaarten.find((k) => k.id === id)
   if (!kaart) {
     return (
       <main className="scherm">
-        <Terugkop titel="Kaart niet gevonden" />
+        <Terugkop titel="Kaart niet gevonden" onTerug={onTerug} />
       </main>
     )
   }
-  const heeftVragen = vragen.some((v) => v.kaartId === id)
+  const kanTesten = !onTerug && vragen.some((v) => v.kaartId === id)
 
   return (
     <main className="scherm">
-      <Terugkop titel={kaart.groep} />
+      <Terugkop titel={kaart.groep} onTerug={onTerug} />
       <p className="gedempt">{kaart.voorbeelden.join(', ')}</p>
 
       <div className="keten">
@@ -56,7 +57,7 @@ export function Mechanismekaart({ id }: { id: string }) {
         </section>
       )}
 
-      {heeftVragen && (
+      {kanTesten && (
         <a href={`#/sessie/kaart/${kaart.id}`} className="knop knop-primair">
           Test jezelf op deze groep
         </a>

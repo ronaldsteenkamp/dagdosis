@@ -255,7 +255,7 @@ h1:focus { outline: none; }
 }
 .dialoog::backdrop { background: rgba(20, 35, 31, 0.5); }
 .dialoog form { display: flex; flex-direction: column; gap: 12px; }
-.dialoog textarea { width: 100%; min-height: 110px; padding: 12px; border: 1.5px solid #76847f; border-radius: 14px; background: #fff; resize: vertical; }
+.dialoog textarea { display: block; margin-top: 6px; width: 100%; min-height: 110px; padding: 12px; color: var(--tekst); border: 1.5px solid #76847f; border-radius: 14px; background: #fff; resize: vertical; }
 .knoprij { display: flex; gap: 8px; }
 
 @media (prefers-reduced-motion: reduce) {

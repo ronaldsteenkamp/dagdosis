@@ -14,12 +14,18 @@ export function Titel({ children, className }: { children: ReactNode; className?
   )
 }
 
-export function Terugkop({ titel, terug = '#/' }: { titel: string; terug?: string }) {
+export function Terugkop({ titel, onTerug }: { titel: string; onTerug?: () => void }) {
   return (
     <header className="terugkop">
-      <a href={terug} className="icoonknop" aria-label="Terug">
-        <Icon naam="terug" />
-      </a>
+      {onTerug ? (
+        <button type="button" className="icoonknop" aria-label="Terug" onClick={onTerug}>
+          <Icon naam="terug" />
+        </button>
+      ) : (
+        <a href="#/" className="icoonknop" aria-label="Terug">
+          <Icon naam="terug" />
+        </a>
+      )}
       <Titel>{titel}</Titel>
     </header>
   )

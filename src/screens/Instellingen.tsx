@@ -78,7 +78,7 @@ export function Instellingen() {
             <Segment<ThemaFrequentie>
               klein
               label={t.naam}
-              waarde={i.themaFrequentie[t.id]}
+              waarde={i.themaFrequentie[t.id] ?? 'normaal'}
               opties={frequenties}
               onChange={(f) =>
                 zetInstellingen({ ...i, themaFrequentie: { ...i.themaFrequentie, [t.id]: f } })
