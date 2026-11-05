@@ -172,11 +172,12 @@ h1:focus { outline: none; }
 .uitslag-fout { background: var(--amber-vlak); color: var(--amber-tekst); }
 .uitslag-tekst { font-size: 15px; font-weight: 600; }
 .uitleg-voet { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.uitleg-voet .tekstknop { flex: none; white-space: nowrap; }
 .tipvlak { background: var(--tip-vlak); color: var(--tip-tekst); display: flex; gap: 10px; padding: 14px 16px; border-radius: var(--r-kaart); font-size: 15px; font-weight: 600; }
 .mechanismeregel { background: var(--blauw-vlak); color: var(--blauw-tekst); padding: 14px 16px; border-radius: var(--r-kaart); font-size: 15px; font-weight: 600; }
 .mechanismeregel strong { display: block; font-size: 13px; font-weight: 800; }
-.bronregel { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--gedempt); }
-.bronregel a { display: inline-block; padding: 12px 0; color: var(--primair); font-weight: 700; }
+.bronregel { display: flex; align-items: center; gap: 8px; padding: 12px 0; font-size: 14px; color: var(--gedempt); }
+.bronregel a { padding: 13px 0; color: var(--primair); font-weight: 700; }
 .linkrij { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--primair); font-size: 15px; font-weight: 800; text-decoration: none; }
 .gevolg { display: flex; gap: 8px; align-items: center; font-size: 14px; font-weight: 700; color: var(--primair); background: var(--primair-licht); border-radius: 14px; padding: 10px 12px; }
 

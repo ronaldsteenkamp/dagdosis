@@ -244,11 +244,9 @@ function Uitlegscherm({
         )}
       </section>
 
-      <div className="onderkant-vast">
-        <button type="button" className="knop knop-primair" disabled={!zekerheid} onClick={onVolgende}>
-          {positie === totaal ? 'Bekijk samenvatting' : 'Volgende vraag'}
-        </button>
-      </div>
+      <button type="button" className="knop knop-primair" disabled={!zekerheid} onClick={onVolgende}>
+        {positie === totaal ? 'Bekijk samenvatting' : 'Volgende vraag'}
+      </button>
     </main>
   )
 }
