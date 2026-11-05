@@ -36,6 +36,11 @@ export function Mechanismekaart({ id, onTerug }: { id: string; onTerug?: () => v
     <main className="scherm">
       <Terugkop titel={kaart.groep} onTerug={onTerug} />
       <p className="gedempt">{kaart.voorbeelden.join(', ')}</p>
+      {kaart.status === 'concept' && (
+        <p className="pil pil-amber" style={{ alignSelf: 'flex-start' }}>
+          concept
+        </p>
+      )}
 
       <div className="keten">
         <Blok titel="Aangrijpingspunt" tekst={kaart.aangrijpingspunt} kleur="blauw" />

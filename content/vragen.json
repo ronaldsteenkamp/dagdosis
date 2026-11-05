@@ -55,7 +55,7 @@
       { "id": "D", "tekst": "Cholinerge prikkeling van de darmwand door het geneesmiddel" }
     ],
     "juist": "A",
-    "waarom": "GLP-1-agonisten vertragen de maaglediging en versterken de verzadiging. Dat geeft misselijkheid en een vol gevoel, en draagt ook bij aan het gewichtsverlies. De klachten treden vooral op bij het starten en ophogen, daarom wordt de dosering stapsgewijs verhoogd.",
+    "waarom": "GLP-1-agonisten vertragen de maaglediging en werken op receptoren in het centrale zenuwstelsel, wat de verzadiging versterkt. Dat geeft misselijkheid en een vol gevoel, en draagt ook bij aan het gewichtsverlies. De klachten treden vooral op bij het starten en ophogen, daarom wordt de dosering stapsgewijs verhoogd.",
     "onthoud": "Misselijkheid en gewichtsverlies komen uit hetzelfde mechanisme.",
     "bron": { "label": "Farmacotherapeutisch Kompas, semaglutide", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/s/semaglutide" },
     "status": "concept",
@@ -117,7 +117,7 @@
     "juist": "D",
     "waarom": "Een ARB blokkeert de AT1-receptor en grijpt niet in op de vorming van angiotensine II. Doordat de remmende terugkoppeling op renine wegvalt, stijgen renine en angiotensine II. Een ACE-remmer verlaagt juist de vorming van angiotensine II.",
     "onthoud": "ACE-remmer: minder angiotensine II. ARB: meer angiotensine II, maar de AT1-receptor is dicht.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, losartan", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/losartan" },
+    "bron": { "label": "Farmacotherapeutisch Kompas, ARB's", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/arb_s" },
     "status": "concept",
     "versie": 1
   },
@@ -135,7 +135,7 @@
       { "id": "D", "tekst": "Fluvastatine" }
     ],
     "juist": "C",
-    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, fluvastatine via CYP2C9. Pravastatine wordt niet via CYP450 omgezet. Daardoor is pravastatine een optie als iemand een sterke CYP-remmer nodig heeft.",
+    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, en fluvastatine gaat via meerdere CYP450-routes. Pravastatine wordt niet via CYP450 omgezet. Daardoor is pravastatine een optie als iemand een sterke CYP-remmer nodig heeft.",
     "onthoud": "Pravastatine ontloopt CYP450.",
     "bron": { "label": "Farmacotherapeutisch Kompas, pravastatine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/p/pravastatine" },
     "status": "concept",
@@ -398,7 +398,7 @@
     "waarom": "Het diureticum verlaagt het circulerend volume. Het NSAID remt de prostaglandinen die de afferente arteriole open houden, en de ACE-remmer verwijdt de efferente arteriole. Samen daalt de filtratiedruk, met kans op acute nierschade. Ouderen en mensen met uitdroging lopen het meeste risico.",
     "mechanismeRegel": "minder volume + afferente vernauwing + efferente verwijding → lagere filtratiedruk → acute nierschade",
     "onthoud": "ACE-remmer + diureticum + NSAID: drie klappen op de nier.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, ACE-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/ace_remmers" },
+    "bron": { "label": "Farmacotherapeutisch Kompas, lisinopril", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/lisinopril" },
     "status": "concept",
     "versie": 1
   },
@@ -458,7 +458,7 @@
       { "id": "D", "tekst": "Edoxaban" }
     ],
     "juist": "C",
-    "waarom": "Dabigatran wordt voornamelijk onveranderd met de urine uitgescheiden. Bij een dalende nierfunctie loopt de halfwaardetijd daardoor op. De factor Xa-remmers zijn minder afhankelijk van de nier, al vragen ook zij om aandacht bij een lage klaring.",
+    "waarom": "Dabigatran wordt voornamelijk onveranderd met de urine uitgescheiden. Bij een dalende nierfunctie loopt de halfwaardetijd daardoor op. Bij apixaban, rivaroxaban en edoxaban gaat ongeveer een derde of minder onveranderd via de urine.",
     "mechanismeRegel": "voornamelijk renale eliminatie → stapeling bij lage klaring → meer kans op bloedingen",
     "onthoud": "Dabigatran is de DOAC die het meest op de nier leunt.",
     "bron": { "label": "Farmacotherapeutisch Kompas, dabigatran", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/d/dabigatran" },
@@ -479,7 +479,7 @@
       { "id": "D", "tekst": "Het middel wordt bij een lage eGFR niet meer uit de darm opgenomen" }
     ],
     "juist": "A",
-    "waarom": "Een SGLT2-remmer werkt op de glucose die de glomerulus in de tubulus filtreert. Bij een lagere eGFR komt daar minder glucose aan, dus het effect op de bloedglucose neemt af. Overweeg bij diabetes een aanvullende behandeling als de eGFR onder 45 ml/min daalt.",
+    "waarom": "Een SGLT2-remmer werkt op de glucose die de glomerulus in de tubulus filtreert. Bij een lagere eGFR komt daar minder glucose aan, dus het effect op de bloedglucose neemt af. Bij empagliflozine geldt: overweeg bij diabetes een aanvullende behandeling als de eGFR onder 45 ml/min daalt.",
     "mechanismeRegel": "lagere eGFR → minder gefiltreerde glucose → minder glucosurie → minder glucoseverlaging",
     "onthoud": "Geen filtraat, geen glucosurie.",
     "bron": { "label": "Farmacotherapeutisch Kompas, empagliflozine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/e/empagliflozine" },
@@ -589,7 +589,7 @@
     "waarom": "Sint-janskruid induceert onder meer CYP3A4. Daardoor worden de hormonen uit de pil sneller afgebroken en kan de anticonceptieve werking afnemen. Spreiden van de inname helpt niet, want inductie werkt door de hele dag.",
     "mechanismeRegel": "enzyminductie → snellere afbraak van de hormonen → minder betrouwbare anticonceptie",
     "onthoud": "Sint-janskruid is een krachtige enzyminductor, ook al staat het in de drogist.",
-    "bron": { "label": "CBG Geneesmiddeleninformatiebank, SmPC combinatiepil, rubriek 4.5", "url": "https://www.geneesmiddeleninformatiebank.nl/" },
+    "bron": { "label": "Farmacotherapeutisch Kompas, ethinylestradiol/desogestrel", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/e/ethinylestradiol_desogestrel__eenfase_" },
     "status": "concept",
     "versie": 1
   },
