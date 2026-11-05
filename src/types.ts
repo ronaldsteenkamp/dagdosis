@@ -60,3 +60,49 @@ export interface Instellingen {
   bijsturen: boolean
   themaFrequentie: Record<string, ThemaFrequentie>
 }
+
+// Alles hieronder staat op het toestel. Antwoorden zijn een oplopend logboek met unieke id's,
+// zodat een backend ze later kan overnemen zonder de opbouw te wijzigen.
+export interface HistoriePunt {
+  datum: string
+  keuze: string
+  goed: boolean
+  zekerheid: Zekerheid
+}
+
+export interface VraagVoortgang {
+  vraagId: string
+  versie: number
+  bakje: number
+  volgendeDatum: string
+  geschiedenis: HistoriePunt[]
+}
+
+export interface Antwoord extends HistoriePunt {
+  id: string
+  tijdstip: string
+  vraagId: string
+  versie: number
+  duurMs: number
+  themaIds: string[]
+}
+
+export interface Resultaat {
+  vraagId: string
+  goed: boolean
+}
+
+export interface Dosis {
+  datum: string
+  vraagIds: string[]
+  herhalingIds: string[]
+  resultaten: Resultaat[]
+}
+
+export interface Melding {
+  id: string
+  datum: string
+  vraagId: string
+  versie: number
+  notitie: string
+}
