@@ -12,8 +12,14 @@ ik het uit de SmPC. Het Kompas geeft bij een klaring van 15–30 ml/min echter e
 van 500 mg per dag, en pas bij 15 ml/min of lager "gebruik vermijden". Op de Kompas-pagina
 vond ik onder de contra-indicaties geen eGFR-grens.
 
+De EMA bevestigt de contra-indicatie bij een GFR onder 30 ml/min
+([referral 2016](https://www.ema.europa.eu/en/medicines/human/referrals/metformin-metformin-containing-medicines)).
+De actuele NHG-tekst kon ik niet openen.
+
 **Gedaan:** de vraag `metformine-ernstige-nierfunctiestoornis` gebruikt een klaring van
-12 ml/min, zodat het antwoord in beide bronnen klopt.
+12 ml/min, zodat het antwoord in beide bronnen klopt. De uitleg noemt sinds 6 november 2026
+beide grenzen, zodat niemand concludeert dat 15–30 ml/min zonder meer veilig is. De bronlink
+van de vraag blijft het Kompas.
 **Aan jou:** wil je het gebied 15–30 ml/min als aparte vraag, en welke bron is dan leidend?
 
 ### Nitrofurantoïne en de nierfunctiegrens
@@ -37,8 +43,29 @@ komt uit mijn eigen kennis.
 
 ### `nsaid-derde-trimester`
 De vraag gebruikt 32 weken, omdat het derde trimester eenduidig is. Bij ibuprofen beschrijft
-het Kompas effecten vanaf week 20 en een contra-indicatie in het derde trimester. Over het
-gebruik tussen week 20 en het derde trimester gaat de vraag bewust niet.
+het Kompas effecten vanaf week 20 en een contra-indicatie in het derde trimester. De uitleg en
+de onthoudzin noemen sinds 6 november 2026 ook de eerste helft van de zwangerschap. Over het
+gebruik tussen week 20 en het derde trimester geeft de vraag bewust geen eigen advies.
+
+### `statine-cyp-afhankelijkheid`
+De uitleg noemt ciclosporine en claritromycine bij pravastatine, uit de Kompas-tekst van
+pravastatine. Dat pravastatine vaak gekozen wordt naast een CYP3A4-remmer staat er niet meer in,
+omdat de tekst dat niet zo zegt.
+
+### `linagliptine-sitagliptine-nier`
+Het Kompas noemt ongeveer 95% via de feces, de SmPC van Trajenta 80% feces en 5% urine, van
+circa 85% teruggevonden radioactiviteit. De uitleg volgt de SmPC, terwijl de bronlink het Kompas
+blijft. Het Kompas noemt geen aanpassing boven 10 ml/min en geen algemeen advies daaronder. De
+vraag gaat over 25 ml/min, dus de uitleg laat die grens weg.
+
+### `doac-renale-klaring`
+De cijfers voor edoxaban (35% van de dosis, 50% van de totale klaring) komen uit rubriek 5.2 van
+de SmPC van Lixiana. De bronlink blijft het Kompas.
+
+### `rode-gist-rijst-statine`
+Het maximum komt uit [Verordening (EU) 2022/860](https://eur-lex.europa.eu/eli/reg/2022/860) en
+[Lareb](https://lareb.nl/news/maximum-voor-monacolinen-in-rode-gist-rijst). De bronlink blijft
+EFSA. Een zoekresultaat noemde een voorstel uit 2026 voor een verbod; dat kon ik niet bevestigen.
 
 ### `losartan-kinderwens`
 Het Kompas zegt dat er bij kinderwens op een alternatief moet worden ingesteld. Labetalol als
@@ -81,5 +108,7 @@ direct af te leiden dan bij de andere kaarten.
 
 ### Kaart DPP-4-remmers
 Deze groep heeft weinig bijwerkingen die uit het mechanisme volgen. Maag-darmklachten staan er
-als typerende bijwerking, maar het verband met het mechanisme is minder direct. Pancreatitis heb
-ik weggelaten, omdat ik het niet in de Kompas-groepstekst vond.
+als typerende bijwerking, maar het verband met het mechanisme is minder direct. Pancreatitis en
+hartfalen staan onder "let op". Ze staan niet in de groepstekst die als bron op de kaart staat,
+maar wel in de preparaatteksten: het advies om te staken bij sitagliptine, saxagliptine en
+linagliptine, de bijwerking pancreatitis ook bij vildagliptine, en hartfalen bij saxagliptine.

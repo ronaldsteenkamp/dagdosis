@@ -31,7 +31,7 @@
     ],
     "aangrijpingspunt": "De GLP-1-receptor op onder meer de bètacel en in het centrale zenuwstelsel.",
     "directEffect": "Glucoseafhankelijk meer insuline en minder glucagon. Daarnaast vertraagde maaglediging en meer verzadiging.",
-    "klinischEffect": "Lagere bloedglucose, met als monotherapie weinig hypoglykemie. Liraglutide en semaglutide geven ook gewichtsafname.",
+    "klinischEffect": "Lagere bloedglucose, met als monotherapie weinig hypoglykemie. Liraglutide, semaglutide en tirzepatide geven ook gewichtsafname.",
     "afleidbareBijwerkingen": "Misselijkheid, braken en een vol gevoel door de tragere maaglediging, vooral bij het starten en ophogen.",
     "letOp": "Bij combinatie met insuline of een sulfonylureumderivaat neemt de kans op hypoglykemie toe. Overweeg dan een lagere dosering van die middelen.",
     "bron": {
@@ -53,7 +53,7 @@
     "directEffect": "Hogere spiegels van actief eigen GLP-1 en GIP na een maaltijd.",
     "klinischEffect": "Glucoseafhankelijk meer insuline en minder glucagon, dus een lagere bloedglucose. Het gewicht verandert nauwelijks.",
     "afleidbareBijwerkingen": "Maag-darmklachten zijn de typerende bijwerking. Door de glucoseafhankelijke werking geven deze middelen als monotherapie weinig hypoglykemie.",
-    "letOp": "Sitagliptine wordt vooral via de nier uitgescheiden en vraagt om dosisaanpassing bij een lagere nierfunctie. Linagliptine gaat vooral via de feces.",
+    "letOp": "Sitagliptine wordt vooral via de nier uitgescheiden en vraagt om dosisaanpassing bij een lagere nierfunctie. Linagliptine gaat vooral via de feces. Bij aanhoudende, ernstige buikpijn: denk aan pancreatitis en staak het middel. Wees bij saxagliptine voorzichtig bij een voorgeschiedenis van hartfalen.",
     "bron": {
       "label": "Farmacotherapeutisch Kompas, DPP-4-remmers",
       "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/dpp4_remmers"
@@ -77,7 +77,7 @@
     "aangrijpingspunt": "Het angiotensineconverterend enzym (ACE).",
     "directEffect": "Minder vorming van angiotensine II en minder afbraak van bradykinine.",
     "klinischEffect": "Vaatverwijding en minder aldosteron, dus een lagere bloeddruk en minder belasting van het hart.",
-    "afleidbareBijwerkingen": "Hypotensie door de vaatverwijding, vooral na de eerste dosis. Prikkelhoest en angio-oedeem door bradykinine. Hyperkaliëmie door minder aldosteron. Daling van de nierfunctie doordat de efferente arteriole verwijdt.",
+    "afleidbareBijwerkingen": "Hypotensie door de vaatverwijding, vooral na de eerste dosis. Prikkelhoest en angio-oedeem, vermoedelijk door bradykinine. Hyperkaliëmie door minder aldosteron. Daling van de nierfunctie doordat de efferente arteriole verwijdt.",
     "letOp": "De combinatie met een NSAID en een diureticum kan acute nierschade geven. Niet gebruiken tijdens de zwangerschap. Minimaal 36 uur afstand tot sacubitril/valsartan.",
     "bron": {
       "label": "Farmacotherapeutisch Kompas, ACE-remmers",
@@ -122,7 +122,7 @@
     "directEffect": "Minder cholesterolsynthese in de levercel, waarna de lever meer LDL-receptoren aanmaakt.",
     "klinischEffect": "Meer opname van LDL uit het bloed, dus een lager LDL-cholesterol en minder hart- en vaatziekten.",
     "afleidbareBijwerkingen": "Spierklachten tot myopathie, met meer kans bij hogere spiegels. De lever is het doelorgaan, dus levertransaminasen kunnen stijgen.",
-    "letOp": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, dus sterke remmers verhogen hun spiegel. Pravastatine wordt niet via CYP450 omgezet.",
+    "letOp": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, dus sterke remmers verhogen hun spiegel. Pravastatine wordt niet via CYP450 omgezet, maar ciclosporine verhoogt de spiegel wel.",
     "bron": {
       "label": "Farmacotherapeutisch Kompas, statinen",
       "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/statinen"

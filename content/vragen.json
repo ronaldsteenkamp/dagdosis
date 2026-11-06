@@ -14,11 +14,11 @@
       { "id": "D", "tekst": "Minder urineproductie, waardoor de urinewegen minder goed worden gespoeld" }
     ],
     "juist": "B",
-    "waarom": "Empagliflozine remt SGLT2 in de proximale tubulus, waardoor glucose in de urine achterblijft. Die glucose is een voedingsbodem voor schimmels. De glucose trekt ook water mee (osmotische diurese), wat met de extra natriumuitscheiding bijdraagt aan de bloeddrukdaling. Het gewichtsverlies komt door het calorieverlies via de urine.",
-    "onthoud": "Suiker in de urine verklaart bijna het hele bijwerkingenprofiel.",
+    "waarom": "Empagliflozine remt SGLT2 in de proximale tubulus, waardoor glucose in de urine achterblijft. Die glucose is een voedingsbodem voor schimmels. De glucose trekt ook water mee (osmotische diurese), wat met de extra natriumuitscheiding bijdraagt aan de bloeddrukdaling. Het gewichtsverlies komt door het calorieverlies via de urine. De ernstigste bijwerking past niet in dit rijtje: ketoacidose is zeldzaam en treedt meestal op bij een (bijna) normale glucose, met meer risico bij ziekte, vasten of een streng koolhydraatarm dieet.",
+    "onthoud": "Suiker in de urine verklaart veel, maar denk bij ziekte of vasten aan ketoacidose.",
     "bron": { "label": "Farmacotherapeutisch Kompas, SGLT2-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/sglt2_remmers" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "glp1-weinig-hypoglykemie",
@@ -71,7 +71,7 @@
     "opties": [
       { "id": "A", "tekst": "Ze blokkeren de GLP-1-receptor in de hersenen en remmen zo de verzadiging" },
       { "id": "B", "tekst": "Ze stimuleren de eetlust via een hogere leptinespiegel" },
-      { "id": "C", "tekst": "Ze verhogen alleen de eigen GLP-1-spiegel, die fysiologisch blijft" },
+      { "id": "C", "tekst": "Ze verhogen alleen de eigen incretinespiegels, die fysiologisch blijven" },
       { "id": "D", "tekst": "Ze worden niet opgenomen en werken dus alleen in de darm" }
     ],
     "juist": "C",
@@ -79,7 +79,7 @@
     "onthoud": "DPP-4-remmer: meer van het eigen hormoon. GLP-1-agonist: een farmacologische dosis.",
     "bron": { "label": "Farmacotherapeutisch Kompas, DPP-4-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/dpp4_remmers" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "ace-prikkelhoest",
@@ -95,11 +95,11 @@
       { "id": "D", "tekst": "ACE-remmers verhogen de angiotensine II-spiegel in de longen" }
     ],
     "juist": "A",
-    "waarom": "ACE zet angiotensine I om, maar breekt ook bradykinine af. Remming laat bradykinine stijgen, en dat prikkelt de luchtwegen. Een ARB blokkeert alleen de AT1-receptor en laat de afbraak van bradykinine ongemoeid.",
-    "onthoud": "De hoest hoort bij de bradykinine-kant van ACE, niet bij angiotensine.",
+    "waarom": "ACE zet angiotensine I om, maar breekt ook bradykinine af. Remming laat bradykinine stijgen. Men veronderstelt dat dit de hoest deels verklaart, mogelijk samen met prostaglandinen en substance P. Een ARB blokkeert alleen de AT1-receptor en laat de afbraak van bradykinine ongemoeid.",
+    "onthoud": "De hoest hoort vermoedelijk bij de bradykinine-kant van ACE, niet bij angiotensine.",
     "bron": { "label": "Farmacotherapeutisch Kompas, ACE-remmers", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/ace_remmers" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "arb-angiotensine-spiegel",
@@ -135,11 +135,11 @@
       { "id": "D", "tekst": "Fluvastatine" }
     ],
     "juist": "C",
-    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, en fluvastatine gaat via meerdere CYP450-routes. Pravastatine wordt niet via CYP450 omgezet. Daardoor is pravastatine een optie als iemand een sterke CYP-remmer nodig heeft.",
-    "onthoud": "Pravastatine ontloopt CYP450.",
+    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, en fluvastatine gaat via meerdere CYP450-routes. Pravastatine wordt niet via CYP450 omgezet, maar is niet vrij van interacties. Ciclosporine verhoogt de pravastatinespiegel met een factor vier, en naast claritromycine blijft de kans op myopathie verhoogd. Controleer de combinatie dus per middel.",
+    "onthoud": "Pravastatine ontloopt CYP450, maar niet elke interactie.",
     "bron": { "label": "Farmacotherapeutisch Kompas, pravastatine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/p/pravastatine" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "digoxine-claritromycine-pgp",
@@ -417,12 +417,12 @@
       { "id": "D", "tekst": "Linagliptine verlaagt de glucose bij een lage klaring sterker dan andere middelen" }
     ],
     "juist": "A",
-    "waarom": "Bij sitagliptine stijgt de blootstelling als de nierfunctie daalt, dus de dosering moet omlaag: bij een klaring van 15 tot 30 ml/min naar 25 mg per dag. Linagliptine wordt voor ongeveer 95% via de feces uitgescheiden. Daardoor is aanpassing bij een klaring boven 10 ml/min niet nodig.",
+    "waarom": "Bij sitagliptine stijgt de blootstelling als de nierfunctie daalt, dus de dosering moet omlaag: bij een klaring van 15 tot 30 ml/min naar 25 mg per dag. Linagliptine wordt vooral via de feces uitgescheiden: in de SmPC 80% van de dosis, tegen 5% via de urine. Daardoor is aanpassing bij deze klaring niet nodig.",
     "mechanismeRegel": "lage klaring + renale eliminatie → hogere blootstelling → dosis omlaag",
-    "onthoud": "Linagliptine is de DPP-4-remmer zonder nieraanpassing.",
+    "onthoud": "Linagliptine gaat vooral via de feces en vraagt hier geen nieraanpassing.",
     "bron": { "label": "Farmacotherapeutisch Kompas, linagliptine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/l/linagliptine" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "metformine-ernstige-nierfunctiestoornis",
@@ -438,12 +438,12 @@
       { "id": "D", "tekst": "De inname verplaatsen naar de avond, zodat de nier overdag minder wordt belast" }
     ],
     "juist": "B",
-    "waarom": "Metformine wordt niet gemetaboliseerd en verdwijnt onveranderd via de nier. Bij een slechte nierfunctie stapelt het middel, waardoor de kans op lactaatacidose toeneemt. Bij een klaring van 15 ml/min of lager moet gebruik worden vermeden.",
+    "waarom": "Metformine wordt niet gemetaboliseerd en verdwijnt onveranderd via de nier. Bij een slechte nierfunctie stapelt het middel, waardoor de kans op lactaatacidose toeneemt. Bij een klaring van 15 ml/min of lager moet gebruik volgens het Kompas worden vermeden. Daarboven verschillen de bronnen: het Kompas geeft bij 15 tot 30 ml/min een KNMP-advies van 500 mg per dag, terwijl metformine volgens de EMA bij een GFR onder 30 ml/min gecontra-indiceerd is. Overleg dus ook in dat gebied met de voorschrijver.",
     "mechanismeRegel": "lage klaring → stapeling van metformine → risico op lactaatacidose",
     "onthoud": "Metformine wordt onveranderd renaal geklaard en stapelt dus.",
     "bron": { "label": "Farmacotherapeutisch Kompas, metformine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/m/metformine" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "doac-renale-klaring",
@@ -458,12 +458,12 @@
       { "id": "D", "tekst": "Edoxaban" }
     ],
     "juist": "C",
-    "waarom": "Dabigatran wordt voornamelijk onveranderd met de urine uitgescheiden. Bij een dalende nierfunctie loopt de halfwaardetijd daardoor op. Bij apixaban, rivaroxaban en edoxaban gaat ongeveer een derde of minder onveranderd via de urine.",
+    "waarom": "Dabigatran wordt voornamelijk onveranderd met de urine uitgescheiden. Bij een dalende nierfunctie loopt de halfwaardetijd daardoor op. Bij apixaban en rivaroxaban gaat ongeveer een derde of minder onveranderd via de urine. Bij edoxaban is dat ongeveer 35% van de dosis, maar de nier neemt daar wel de helft van de totale klaring voor zijn rekening.",
     "mechanismeRegel": "voornamelijk renale eliminatie → stapeling bij lage klaring → meer kans op bloedingen",
     "onthoud": "Dabigatran is de DOAC die het meest op de nier leunt.",
     "bron": { "label": "Farmacotherapeutisch Kompas, dabigatran", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/d/dabigatran" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "sglt2-lage-egfr",
@@ -479,12 +479,12 @@
       { "id": "D", "tekst": "Het middel wordt bij een lage eGFR niet meer uit de darm opgenomen" }
     ],
     "juist": "A",
-    "waarom": "Een SGLT2-remmer werkt op de glucose die de glomerulus in de tubulus filtreert. Bij een lagere eGFR komt daar minder glucose aan, dus het effect op de bloedglucose neemt af. Bij empagliflozine geldt: overweeg bij diabetes een aanvullende behandeling als de eGFR onder 45 ml/min daalt.",
+    "waarom": "Een SGLT2-remmer werkt op de glucose die de glomerulus in de tubulus filtreert. Bij een lagere eGFR komt daar minder glucose aan, dus het effect op de bloedglucose neemt af. Bij empagliflozine geldt: overweeg bij diabetes type 2 zo nodig een aanvullende glucoseverlagende behandeling als de eGFR onder 45 ml/min/1,73 m² daalt. Dat is geen stopgrens: gecontra-indiceerd is alleen starten bij een eGFR onder 15 ml/min/1,73 m².",
     "mechanismeRegel": "lagere eGFR → minder gefiltreerde glucose → minder glucosurie → minder glucoseverlaging",
     "onthoud": "Geen filtraat, geen glucosurie.",
     "bron": { "label": "Farmacotherapeutisch Kompas, empagliflozine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/e/empagliflozine" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "losartan-kinderwens",
@@ -522,12 +522,12 @@
       { "id": "D", "tekst": "Geen ibuprofen, maar wel naproxen, omdat dat de placenta niet passeert" }
     ],
     "juist": "B",
-    "waarom": "NSAID's remmen de prostaglandinesynthese. Bij de foetus kan dat leiden tot vernauwing of sluiting van de ductus arteriosus en tot een gestoorde nierfunctie met oligohydramnie. Gebruik in het derde trimester is gecontra-indiceerd, en dat geldt voor de hele groep.",
+    "waarom": "NSAID's remmen de prostaglandinesynthese. Bij de foetus kan dat leiden tot vernauwing of sluiting van de ductus arteriosus en tot een gestoorde nierfunctie met oligohydramnie. Gebruik in het derde trimester is gecontra-indiceerd, en dat geldt voor de hele groep. Ook eerder gelden beperkingen: de ductus kan al vanaf het tweede trimester vernauwen en oligohydramnie kan vanaf week 20 optreden. In de eerste helft van de zwangerschap alleen op strikte indicatie, zo laag en zo kort mogelijk (max. 1 week).",
     "mechanismeRegel": "COX-remming → minder prostaglandinen → vernauwing van de ductus arteriosus",
-    "onthoud": "Derde trimester: geen NSAID's.",
+    "onthoud": "Derde trimester: geen NSAID's. Eerste helft: alleen op strikte indicatie.",
     "bron": { "label": "Farmacotherapeutisch Kompas, ibuprofen", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/i/ibuprofen__systemisch_" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "codeine-borstvoeding",
@@ -565,12 +565,12 @@
       { "id": "D", "tekst": "Afraden, want het remt de opname van atorvastatine in de darm" }
     ],
     "juist": "A",
-    "waarom": "Rode gist rijst bevat monacoline K, en dat is chemisch hetzelfde als lovastatine. Wie het bij een statine gebruikt, remt HMG-CoA-reductase dus dubbel. Dat geeft meer kans op spierklachten, zonder dat de hoeveelheid werkzame stof in het product goed vaststaat.",
+    "waarom": "Rode gist rijst bevat monacoline K, en dat is chemisch hetzelfde als lovastatine. Wie het bij een statine gebruikt, remt HMG-CoA-reductase dus dubbel. Dat geeft meer kans op spierklachten. Sinds 2022 geldt in de EU een maximum van minder dan 3 mg monacolinen per dagportie, met waarschuwingen op de verpakking. Ook dan blijft het een extra statine naast de atorvastatine.",
     "mechanismeRegel": "monacoline K = lovastatine → dubbele HMG-CoA-reductaseremming → meer kans op spierklachten",
     "onthoud": "Rode gist rijst is een statine in een supplementpotje.",
     "bron": { "label": "EFSA, advies over monacolines in rode gist rijst (2018)", "url": "https://www.efsa.europa.eu/en/efsajournal/pub/5368" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "sint-janskruid-pil",
