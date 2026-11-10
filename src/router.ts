@@ -6,6 +6,7 @@ export type Route =
   | { naam: 'voortgang' }
   | { naam: 'team' }
   | { naam: 'instellingen' }
+  | { naam: 'overzicht' }
   | { naam: 'kaart'; id: string }
   | { naam: 'sessie'; kaartId?: string; terugval?: boolean }
 
@@ -15,6 +16,7 @@ export function leesRoute(hash: string): Route {
     case 'voortgang':
     case 'team':
     case 'instellingen':
+    case 'overzicht':
       return { naam: eerste }
     case 'kaart':
       return tweede ? { naam: 'kaart', id: tweede } : { naam: 'vandaag' }

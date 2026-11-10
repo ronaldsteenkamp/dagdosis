@@ -23,7 +23,7 @@ function leertijd(ms: number) {
 }
 
 export function Voortgang() {
-  const { antwoorden, meldingen, meta, voortgang, vandaag } = useAppState()
+  const { antwoorden, meldingen, meta, reflecties, voortgang, vandaag } = useAppState()
   const herinnering = backupHerinnering(meta.laatsteBackupOp, vandaag, antwoorden.length > 0)
   const percentage = percentageGoed(antwoorden, vandaag)
   const aandacht = morgenAandacht(vragen, themas, voortgang, antwoorden, vandaag)
@@ -127,10 +127,15 @@ export function Voortgang() {
         </section>
       )}
 
+      <a href="#/overzicht" className="knop knop-licht">
+        <Icon naam="boek" maat={20} />
+        Leeroverzicht voor je portfolio
+      </a>
+
       <button
         type="button"
         className="knop knop-licht"
-        onClick={() => downloadCsv(`dagdosis-leerlog-${vandaag}.csv`, maakLeerlogCsv(antwoorden, themas))}
+        onClick={() => downloadCsv(`dagdosis-leerlog-${vandaag}.csv`, maakLeerlogCsv(antwoorden, themas, reflecties))}
       >
         <Icon naam="download" maat={20} />
         Leerlog exporteren

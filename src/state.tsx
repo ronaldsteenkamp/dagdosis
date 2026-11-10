@@ -11,10 +11,11 @@ import {
   bewaarInstellingen,
   bewaarMelding,
   bewaarMeta,
+  bewaarReflectie,
   laadAlles,
   vervangAlles,
 } from './opslag'
-import type { Antwoord, Dosis, Gegevens, Instellingen, Melding, Meta, Vraag, Zekerheid } from './types'
+import type { Antwoord, Dosis, Gegevens, Instellingen, Melding, Meta, Reflectie, Vraag, Zekerheid } from './types'
 
 const startInstellingen: Instellingen = {
   insteek: 'gemengd',
@@ -37,6 +38,8 @@ interface AppState extends Gegevens {
   }) => void
   voegMeldingToe: (vraag: Vraag, notitie: string, keuze?: string) => void
   bevestigWelkom: () => void
+  /** Slaat een reflectie op; een lege tekst verwijdert hem. */
+  zetReflectie: (r: Omit<Reflectie, 'tijdstip'>) => void
   /** Maakt de back-up en onthoudt de datum. */
   maakBackup: () => Backup
   /** Overschrijft alle gegevens met die uit de back-up. */
@@ -153,6 +156,16 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       const meta = { ...gegevens.meta, welkomGezienOp: datumVan() }
       zetGegevens({ ...gegevens, meta })
       bewaarMeta(meta).catch(meldFout)
+    },
+
+    zetReflectie(invoer) {
+      const bestaand = gegevens.reflecties.find((r) => r.id === invoer.id)
+      const reflectie: Reflectie = { ...invoer, tijdstip: bestaand?.tijdstip ?? new Date().toISOString() }
+      const leeg = reflectie.tekst.trim() === ''
+      if (bestaand?.tekst === reflectie.tekst || (!bestaand && leeg)) return
+      const overig = gegevens.reflecties.filter((r) => r.id !== invoer.id)
+      zetGegevens({ ...gegevens, reflecties: leeg ? overig : [...overig, reflectie] })
+      bewaarReflectie(reflectie).catch(meldFout)
     },
 
     maakBackup() {

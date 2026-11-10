@@ -70,7 +70,7 @@ export function BackupKaart() {
       </h2>
       <p className="gedempt klein">
         Je voortgang staat alleen op dit toestel. Een back-up is één bestand met al je antwoorden,
-        meldingen en instellingen. Zo neem je alles mee naar een ander toestel.
+        reflecties, meldingen en instellingen. Zo neem je alles mee naar een ander toestel.
       </p>
       <p className="klein">
         {meta.laatsteBackupOp ? `Laatste back-up: ${datumTekst(meta.laatsteBackupOp)}.` : 'Nog geen back-up gemaakt.'}
@@ -100,8 +100,9 @@ export function BackupKaart() {
           {s && (
             <p className="klein">
               Back-up van {s.gemaaktOp ? datumTekst(s.gemaaktOp) : 'onbekende datum'}: {s.antwoorden}{' '}
-              {s.antwoorden === 1 ? 'antwoord' : 'antwoorden'} op {s.dagen} {s.dagen === 1 ? 'dag' : 'dagen'} en{' '}
-              {s.meldingen} {s.meldingen === 1 ? 'melding' : 'meldingen'}.
+              {s.antwoorden === 1 ? 'antwoord' : 'antwoorden'} op {s.dagen} {s.dagen === 1 ? 'dag' : 'dagen'},{' '}
+              {s.meldingen} {s.meldingen === 1 ? 'melding' : 'meldingen'} en {s.reflecties}{' '}
+              {s.reflecties === 1 ? 'reflectie' : 'reflecties'}.
             </p>
           )}
           <p className="klein">

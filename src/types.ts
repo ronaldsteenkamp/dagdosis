@@ -115,6 +115,16 @@ export interface Melding {
   keuze?: string
 }
 
+/** Wat iemand na een sessie meeneemt naar de praktijk. Optioneel, één per sessie. */
+export interface Reflectie {
+  /** Bij de dagdosis "dagdosis-JJJJ-MM-DD", zodat je hem later nog kunt aanpassen. */
+  id: string
+  datum: string
+  tijdstip: string
+  soort: 'dagdosis' | 'test'
+  tekst: string
+}
+
 /** Losse gegevens over het gebruik van de app op dit toestel. */
 export interface Meta {
   /** Datum waarop de uitleg bij de eerste start is weggeklikt. */
@@ -131,6 +141,7 @@ export interface Gegevens {
   antwoorden: Antwoord[]
   dosissen: Record<string, Dosis>
   meldingen: Melding[]
+  reflecties: Reflectie[]
   instellingen: Instellingen
   meta: Meta
 }

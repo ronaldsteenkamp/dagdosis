@@ -1,5 +1,5 @@
 import { openDB, type DBSchema } from 'idb'
-import type { Antwoord, Dosis, Gegevens, Instellingen, Melding, Meta, VraagVoortgang } from './types'
+import type { Antwoord, Dosis, Gegevens, Instellingen, Melding, Meta, Reflectie, VraagVoortgang } from './types'
 
 interface Schema extends DBSchema {
   voortgang: { key: string; value: VraagVoortgang }
@@ -8,14 +8,15 @@ interface Schema extends DBSchema {
   meldingen: { key: string; value: Melding }
   instellingen: { key: string; value: Instellingen }
   meta: { key: string; value: Meta }
+  reflecties: { key: string; value: Reflectie }
 }
 
 const INSTELLINGEN_SLEUTEL = 'instellingen'
 const META_SLEUTEL = 'meta'
 
-// Versie 2 voegt "meta" toe. Bestaande gegevens blijven staan.
+// Versie 2 voegt "meta" toe, versie 3 "reflecties". Bestaande gegevens blijven staan.
 const db = () =>
-  openDB<Schema>('dagdosis', 2, {
+  openDB<Schema>('dagdosis', 3, {
     upgrade(d, oudeVersie) {
       if (oudeVersie < 1) {
         d.createObjectStore('voortgang', { keyPath: 'vraagId' })
@@ -25,18 +26,20 @@ const db = () =>
         d.createObjectStore('instellingen')
       }
       if (oudeVersie < 2) d.createObjectStore('meta')
+      if (oudeVersie < 3) d.createObjectStore('reflecties', { keyPath: 'id' })
     },
   })
 
 export async function laadAlles() {
   const d = await db()
-  const [voortgang, antwoorden, dosissen, meldingen, instellingen, meta] = await Promise.all([
+  const [voortgang, antwoorden, dosissen, meldingen, instellingen, meta, reflecties] = await Promise.all([
     d.getAll('voortgang'),
     d.getAll('antwoorden'),
     d.getAll('dosissen'),
     d.getAll('meldingen'),
     d.get('instellingen', INSTELLINGEN_SLEUTEL),
     d.get('meta', META_SLEUTEL),
+    d.getAll('reflecties'),
   ])
   return {
     voortgang: Object.fromEntries(voortgang.map((v) => [v.vraagId, v])),
@@ -45,6 +48,7 @@ export async function laadAlles() {
     meldingen,
     instellingen,
     meta: meta ?? {},
+    reflecties,
   }
 }
 
@@ -79,7 +83,7 @@ export async function bewaarMeta(meta: Meta) {
 /** Vervangt alle gegevens in één keer, bijvoorbeeld bij het terugzetten van een back-up. */
 export async function vervangAlles(g: Gegevens) {
   const d = await db()
-  const namen = ['voortgang', 'antwoorden', 'dosissen', 'meldingen', 'instellingen', 'meta'] as const
+  const namen = ['voortgang', 'antwoorden', 'dosissen', 'meldingen', 'instellingen', 'meta', 'reflecties'] as const
   const tx = d.transaction(namen, 'readwrite')
   await Promise.all(namen.map((n) => tx.objectStore(n).clear()))
   await Promise.all([
@@ -87,8 +91,16 @@ export async function vervangAlles(g: Gegevens) {
     ...g.antwoorden.map((a) => tx.objectStore('antwoorden').put(a)),
     ...Object.values(g.dosissen).map((x) => tx.objectStore('dosissen').put(x)),
     ...g.meldingen.map((m) => tx.objectStore('meldingen').put(m)),
+    ...g.reflecties.map((r) => tx.objectStore('reflecties').put(r)),
     tx.objectStore('instellingen').put(g.instellingen, INSTELLINGEN_SLEUTEL),
     tx.objectStore('meta').put(g.meta, META_SLEUTEL),
     tx.done,
   ])
+}
+
+/** Een lege tekst verwijdert de reflectie. */
+export async function bewaarReflectie(reflectie: Reflectie) {
+  const d = await db()
+  if (reflectie.tekst.trim() === '') await d.delete('reflecties', reflectie.id)
+  else await d.put('reflecties', reflectie)
 }

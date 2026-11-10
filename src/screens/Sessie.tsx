@@ -8,7 +8,7 @@ import { meldingUrl } from '../logica/melding'
 import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
 import { useAppState } from '../state'
-import type { Resultaat, Vraag, VraagType } from '../types'
+import type { Reflectie, Resultaat, Vraag, VraagType } from '../types'
 import { Mechanismekaart } from './Mechanismekaart'
 
 const typeLabel: Record<VraagType, string> = {
@@ -223,14 +223,39 @@ function Uitlegscherm({
   )
 }
 
+function ReflectieVeld({ id, soort }: { id: string; soort: Reflectie['soort'] }) {
+  const { reflecties, vandaag, zetReflectie } = useAppState()
+  const bestaand = reflecties.find((r) => r.id === id)
+  const [tekst, zetTekst] = useState(bestaand?.tekst ?? '')
+  const bewaar = () => zetReflectie({ id, datum: bestaand?.datum ?? vandaag, soort, tekst: tekst.trim() })
+  // Ook bewaren als iemand de sessie sluit zonder het veld te verlaten.
+  const laatste = useRef(bewaar)
+  laatste.current = bewaar
+  useEffect(() => () => laatste.current(), [])
+
+  return (
+    <section className="kaart" aria-labelledby="reflectie-kop">
+      <h2 id="reflectie-kop" className="sectiekop">
+        Wat neem ik mee naar de praktijk?
+      </h2>
+      <label className="klein gedempt">
+        Optioneel. Komt in je leerlog en je overzicht, en blijft op dit toestel. Schrijf geen patiëntgegevens op.
+        <textarea className="invoerveld" value={tekst} onChange={(e) => zetTekst(e.target.value)} onBlur={bewaar} />
+      </label>
+    </section>
+  )
+}
+
 function Samenvatting({
   lijst,
   resultaten,
   streak,
+  reflectieId,
 }: {
   lijst: Vraag[]
   resultaten: Resultaat[]
   streak?: number
+  reflectieId: string
 }) {
   const goed = resultaten.filter((r) => r.goed).length
   return (
@@ -266,6 +291,7 @@ function Samenvatting({
           ))}
         </ul>
       </section>
+      <ReflectieVeld id={reflectieId} soort={streak === undefined ? 'test' : 'dagdosis'} />
       <div className="onderkant-vast">
         <a href="#/" className="knop knop-primair">
           Klaar
@@ -280,6 +306,7 @@ export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boo
   const { beantwoord, dosis, dosissen, vandaag, voortgang } = useAppState()
   const isTest = !!kaartId || !!terugval
   // De lijst ligt vast bij de start, anders verdwijnt een vraag zodra je hem weer goed hebt.
+  const [testId] = useState(() => `test-${crypto.randomUUID()}`)
   const [terugvalIds] = useState(() => (terugval ? teruggevallen(vragen, voortgang).map((t) => t.vraag.id) : []))
   const [testResultaten, zetTestResultaten] = useState<Resultaat[]>([])
   const [keuze, zetKeuze] = useState<string | null>(null)
@@ -318,6 +345,7 @@ export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boo
         lijst={lijst}
         resultaten={resultaten}
         streak={isTest ? undefined : berekenStreak(dosissen, vandaag)}
+        reflectieId={isTest ? testId : `dagdosis-${dosis.datum}`}
       />
     )
   }

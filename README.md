@@ -177,10 +177,29 @@ De app staat dan op http://localhost:5173/dagdosis/.
 Voor een latere backend: antwoorden, meldingen en dosissen zijn losse records met een eigen sleutel.
 Alleen `src/opslag.ts` hoeft dan te veranderen.
 
+## Leeroverzicht en reflectie
+
+**Reflectie.** Onder de samenvatting van een sessie staat een optioneel veld "Wat neem ik mee naar de
+praktijk?". Het wordt bewaard als je het veld verlaat of de sessie sluit. Bij de dagdosis is er één
+reflectie per dag, die je later nog kunt aanpassen; elke losse test krijgt een eigen reflectie. Een
+leeg veld verwijdert de reflectie. Reflecties staan in de leerlog-CSV (kolom "Reflectie", per dag
+samengevoegd) en in het leeroverzicht.
+
+**Leeroverzicht.** Voortgang → "Leeroverzicht voor je portfolio" (`#/overzicht`). Kies een
+kalenderjaar of een eigen periode. Het overzicht toont leertijd, aantal vragen (en hoeveel
+verschillende), percentage goed, aantal dagen, scores per thema, de onderwerpen en de reflecties.
+Onderwerp is de groep van de mechanismekaart, of het eerste thema als een vraag geen kaart heeft.
+"Afdrukken of als PDF bewaren" opent het afdrukvenster van de browser; knoppen en invoervelden
+worden niet afgedrukt. Een naam op het overzicht is optioneel en wordt niet bewaard.
+
+Het overzicht is een eigen registratie. De app zegt nergens iets over accreditatie, en dat moet zo
+blijven.
+
 ## Back-up en meldingen
 
 **Back-up.** Onder Instellingen staat "Back-up maken": één JSON-bestand met voortgang, antwoorden,
-dosissen, meldingen, instellingen en meta. Het bestand heeft een `formaat`-nummer (nu 1). Bij
+dosissen, meldingen, reflecties, instellingen en meta. Het bestand heeft een `formaat`-nummer (nu 2;
+een back-up van formaat 1, zonder reflecties, wordt omgezet). Bij
 "Back-up terugzetten" controleert de app het bestand eerst. Is het in orde, dan toont de app wat
 erin staat en vraagt bevestiging. Pas na "Overschrijven" worden de gegevens op het toestel
 vervangen, in één keer. Een back-up uit een nieuwere versie van de app wordt geweigerd.

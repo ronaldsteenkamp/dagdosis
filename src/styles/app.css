@@ -257,3 +257,31 @@ h1:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* Invoervelden buiten een dialoog */
+.invoerveld { display: block; margin-top: 6px; width: 100%; min-height: 44px; padding: 10px 12px; color: var(--tekst); border: 1.5px solid #76847f; border-radius: 14px; background: #fff; }
+textarea.invoerveld { min-height: 96px; resize: vertical; }
+
+/* Leeroverzicht */
+.periode { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.periode label { font-size: 14px; font-weight: 700; color: var(--gedempt); }
+.jaarknoppen { display: flex; flex-wrap: wrap; gap: 8px; }
+.jaarknoppen .knop { flex: 0 0 auto; min-height: 40px; padding: 8px 14px; }
+.overzicht-tabel { width: 100%; border-collapse: collapse; font-size: 15px; }
+.overzicht-tabel th, .overzicht-tabel td { text-align: left; padding: 6px 0; border-top: 1px solid var(--lijn); }
+.overzicht-tabel th { font-size: 13px; color: var(--gedempt); border-top: 0; }
+.overzicht-tabel .getal { text-align: right; padding-left: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.reflectielijst li { padding: 8px 0; border-top: 1px solid var(--lijn); }
+.reflectielijst li:first-child { border-top: 0; }
+.alleen-afdruk { display: none; }
+
+@media print {
+  @page { margin: 16mm; }
+  :root, body { background: #fff; }
+  .niet-afdrukken, .onderbalk { display: none !important; }
+  .alleen-afdruk { display: block; }
+  .scherm { max-width: none; padding: 0; gap: 12px; }
+  .kaart { border: 1px solid #ccc; break-inside: avoid; padding: 12px; }
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  a { text-decoration: none; }
+}

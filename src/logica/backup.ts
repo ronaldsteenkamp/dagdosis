@@ -4,7 +4,8 @@
 import type { Gegevens } from '../types'
 import { dagenTussen, type Datum } from './datum'
 
-export const BACKUP_FORMAAT = 1
+/** 1: eerste versie. 2: reflecties erbij. */
+export const BACKUP_FORMAAT = 2
 export const BACKUP_HERINNERING_DAGEN = 30
 
 export interface Backup {
@@ -98,12 +99,24 @@ const isInstellingen = (w: unknown) =>
     themaFrequentie: (x) => isItem(x) && Object.values(x).every((f) => FREQUENTIES.includes(f as string)),
   })
 
+const isReflectie = (w: unknown) =>
+  voldoet(w, {
+    id: isTekst,
+    datum: isDatum,
+    tijdstip: isTekst,
+    soort: (x) => x === 'dagdosis' || x === 'test',
+    tekst: isTekst,
+  })
+
 const isMeta = (w: unknown) =>
   isItem(w) && Object.values(w).every((x) => x === undefined || isDatum(x))
 
-/** Oudere formaten omzetten naar het huidige. Er is nu alleen formaat 1. */
+/** Oudere formaten omzetten naar het huidige. */
 function zetOm(ruw: Item): Item {
-  return ruw
+  let b = ruw
+  // Formaat 1 kende nog geen reflecties.
+  if (b.formaat === 1 && isItem(b.gegevens)) b = { ...b, formaat: 2, gegevens: { ...b.gegevens, reflecties: [] } }
+  return b
 }
 
 export type Inlezen = { ok: true; backup: Backup } | { ok: false; fout: string }
@@ -140,6 +153,7 @@ export function leesBackup(tekst: string): Inlezen {
   lijst('antwoorden', isAntwoord, 'Antwoorden', true)
   lijst('dosissen', isDosis, 'Dosissen', false)
   lijst('meldingen', isMelding, 'Meldingen', true)
+  lijst('reflecties', isReflectie, 'Reflecties', true)
   if (!isInstellingen(g.instellingen)) fouten.push('Instellingen: klopt niet')
   if (g.meta !== undefined && !isMeta(g.meta)) fouten.push('Meta: klopt niet')
   if (fouten.length > 0) return { ok: false, fout: `De back-up is beschadigd: ${fouten.join('; ')}.` }
@@ -164,6 +178,7 @@ export function backupSamenvatting(b: Backup) {
     antwoorden: g.antwoorden.length,
     dagen,
     meldingen: g.meldingen.length,
+    reflecties: g.reflecties.length,
   }
 }
 

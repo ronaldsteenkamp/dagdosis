@@ -5,6 +5,7 @@ import { leesRoute, useHash } from './router'
 import { InhoudFout } from './screens/InhoudFout'
 import { Instellingen } from './screens/Instellingen'
 import { Mechanismekaart } from './screens/Mechanismekaart'
+import { Overzicht } from './screens/Overzicht'
 import { Sessie } from './screens/Sessie'
 import { Team } from './screens/Team'
 import { Vandaag } from './screens/Vandaag'
@@ -29,6 +30,7 @@ export function App() {
       {route.naam === 'voortgang' && <Voortgang />}
       {route.naam === 'team' && <Team />}
       {route.naam === 'instellingen' && <Instellingen />}
+      {route.naam === 'overzicht' && <Overzicht />}
       {route.naam === 'kaart' && <Mechanismekaart key={route.id} id={route.id} />}
       {route.naam === 'sessie' && (
         <Sessie

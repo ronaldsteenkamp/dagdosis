@@ -1,4 +1,4 @@
-import type { Antwoord, Dosis, Melding, Thema, Vraag, VraagVoortgang } from '../types'
+import type { Antwoord, Dosis, Melding, Reflectie, Thema, Vraag, VraagVoortgang } from '../types'
 import { maandagVan, plusDagen, type Datum } from './datum'
 import { geldigeVoortgang } from './herhaling'
 
@@ -100,24 +100,30 @@ function csv(rijen: (string | number)[][]) {
   return `﻿${rijen.map((rij) => rij.map(csvVeld).join(';')).join('\r\n')}\r\n`
 }
 
-export function maakLeerlogCsv(antwoorden: Antwoord[], themas: Thema[]) {
+export function maakLeerlogCsv(antwoorden: Antwoord[], themas: Thema[], reflecties: Reflectie[] = []) {
   const perDag = new Map<Datum, Antwoord[]>()
   for (const a of antwoorden) perDag.set(a.datum, [...(perDag.get(a.datum) ?? []), a])
+  for (const r of reflecties) if (!perDag.has(r.datum)) perDag.set(r.datum, [])
   const naam = (id: string) => themas.find((t) => t.id === id)?.naam ?? id
 
   const rijen = [...perDag.keys()].sort().map((datum) => {
     const dag = perDag.get(datum)!
     const minuten = dag.reduce((som, a) => som + a.duurMs, 0) / 60000
     const themaNamen = [...new Set(dag.flatMap((a) => a.themaIds))].map(naam).sort()
+    const reflectie = reflecties
+      .filter((r) => r.datum === datum)
+      .sort((a, b) => a.tijdstip.localeCompare(b.tijdstip))
+      .map((r) => r.tekst)
     return [
       datum,
       minuten.toFixed(1).replace('.', ','),
       dag.length,
       dag.filter((a) => a.goed).length,
       themaNamen.join(', '),
+      reflectie.join(' | '),
     ]
   })
-  return csv([['Datum', 'Tijd besteed (min)', 'Aantal vragen', 'Aantal goed', "Thema's"], ...rijen])
+  return csv([['Datum', 'Tijd besteed (min)', 'Aantal vragen', 'Aantal goed', "Thema's", 'Reflectie'], ...rijen])
 }
 
 export function maakMeldingenCsv(meldingen: Melding[]) {

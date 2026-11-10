@@ -10,6 +10,9 @@ const gegevens: Gegevens = {
     '2026-11-05': { datum: '2026-11-05', vraagIds: ['v1'], herhalingIds: [], resultaten: [{ vraagId: 'v1', goed: true }] },
   },
   meldingen: [{ id: 'm1', datum: '2026-11-05', vraagId: 'v1', versie: 1, notitie: 'Klopt niet', keuze: 'B' }],
+  reflecties: [
+    { id: 'dagdosis-2026-11-05', datum: '2026-11-05', tijdstip: '2026-11-05T12:00:00Z', soort: 'dagdosis', tekst: 'Let op nierfunctie' },
+  ],
   instellingen: maakInstellingen({ themaFrequentie: { f1: 'vaak' } }),
   meta: { welkomGezienOp: '2026-11-01' },
 }
@@ -24,7 +27,16 @@ describe('back-up', () => {
   })
 
   it('zet een formaatnummer en de app-naam in het bestand', () => {
-    expect(geldig()).toMatchObject({ app: 'dagdosis', formaat: 1, gemaaktOp: '2026-11-10T09:00:00.000Z' })
+    expect(geldig()).toMatchObject({ app: 'dagdosis', formaat: 2, gemaaktOp: '2026-11-10T09:00:00.000Z' })
+  })
+
+  it('zet een back-up van formaat 1 om: zonder reflecties', () => {
+    const b = geldig()
+    b.formaat = 1
+    delete b.gegevens.reflecties
+    const uit = leesBackup(tekst(b))
+    expect(uit.ok && uit.backup.formaat).toBe(2)
+    expect(uit.ok && uit.backup.gegevens.reflecties).toEqual([])
   })
 
   it('vult een ontbrekende meta aan', () => {
@@ -53,6 +65,8 @@ describe('back-up', () => {
     ['melding zonder notitie', (b: any) => delete b.gegevens.meldingen[0].notitie, 'Meldingen'],
     ['onbekende insteek', (b: any) => (b.gegevens.instellingen.insteek = 'alles'), 'Instellingen'],
     ['dosissen als lijst', (b: any) => (b.gegevens.dosissen = []), 'Dosissen: ontbreekt'],
+    ['reflectie van onbekende soort', (b: any) => (b.gegevens.reflecties[0].soort = 'cursus'), 'Reflecties'],
+    ['formaat 2 zonder reflecties', (b: any) => delete b.gegevens.reflecties, 'Reflecties: ontbreekt'],
     ['ontbrekende antwoorden', (b: any) => delete b.gegevens.antwoorden, 'Antwoorden: ontbreekt'],
   ])('vindt een beschadigde back-up: %s', (_naam, beschadig, melding) => {
     const b = geldig()
@@ -68,6 +82,7 @@ describe('back-up', () => {
       antwoorden: 2,
       dagen: 2,
       meldingen: 1,
+      reflecties: 1,
     })
   })
 })
