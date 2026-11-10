@@ -104,3 +104,21 @@ Nieuwe kaarten: Vitamine K-antagonisten, DOAC's, Opioïden.
 | `lithium-streefwaarde-ouderen` | casus | psychofarmaca | IM lithiumcarbonaat: [S2149](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2149.html) |
 
 Nieuwe thema's: Antibiotica, Psychofarmaca en lithium. Nieuwe kaart: Lithium.
+
+## Fase 7, batch 3
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `benzodiazepine-slaapmiddel-oudere` | vergelijk | ouderen | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `benzodiazepine-afbouwen-oudere` | casus | ouderen | IM oxazepam: [S1077](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1077.html); IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `tca-oudere-nortriptyline` | vergelijk | ouderen, psychofarmaca | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `urge-incontinentie-mirabegron` | vergelijk | ouderen | IM urologische spasmolytica: [G2013](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G2013.html); IM oxybutynine: [S2027](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2027.html) |
+| `mb-sertraline-thiazide-natrium` | medicatiebewaking (afleveren met advies) | ouderen, interacties | MB SSRI's + thiaziden: [743-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/743-1.html) |
+| `reken-amoxicilline-suspensie` | reken (4 ml) | kinderen, antibiotica | IM amoxicilline: [S1516](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1516.html) |
+| `reken-paracetamol-kind` | reken (270 mg) | kinderen | IM paracetamol: [S90](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S90.html) |
+| `codeine-kind-onder-12` | casus | kinderen, opioïden | MB leeftijd < 12 jaar: codeïne: [8254-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8254-1.html) |
+| `xylometazoline-kind-4` | casus | kinderen, zelfzorg | IM xylometazoline: [S1234](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1234.html) |
+| `tetracycline-kind-tanden` | casus | kinderen, antibiotica | IM antibacteriële middelen: [G815](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G815.html) |
+
+Nieuwe thema's: Ouderen: vallen en anticholinerge last, Dosering bij kinderen. Nieuwe kaart:
+Middelen met anticholinerge werking.

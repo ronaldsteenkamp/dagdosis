@@ -13,5 +13,7 @@
   { "id": "opioiden-pijn", "naam": "Opioïden en pijnstilling", "insteek": "praktijk" },
   { "id": "qt-serotonerg", "naam": "QT-verlenging en serotonerge combinaties", "insteek": "praktijk" },
   { "id": "antibiotica", "naam": "Antibiotica", "insteek": "praktijk" },
-  { "id": "psychofarmaca", "naam": "Psychofarmaca en lithium", "insteek": "praktijk" }
+  { "id": "psychofarmaca", "naam": "Psychofarmaca en lithium", "insteek": "praktijk" },
+  { "id": "ouderen", "naam": "Ouderen: vallen en anticholinerge last", "insteek": "praktijk" },
+  { "id": "kinderen", "naam": "Dosering bij kinderen", "insteek": "praktijk" }
 ]

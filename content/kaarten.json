@@ -204,5 +204,25 @@
       "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2149.html"
     },
     "status": "concept"
+  },
+  {
+    "id": "anticholinergica",
+    "groep": "Middelen met anticholinerge werking",
+    "voorbeelden": [
+      "oxybutynine",
+      "solifenacine",
+      "tolterodine",
+      "amitriptyline (tricyclisch antidepressivum)"
+    ],
+    "aangrijpingspunt": "De muscarinereceptoren voor acetylcholine, in de blaas, de darm, de klieren, het oog en de hersenen.",
+    "directEffect": "Blokkade van de parasympathische prikkeling.",
+    "klinischEffect": "Bij de urologische spasmolytica: een rustigere blaas bij urgency-incontinentie. Bij tricyclische antidepressiva is het anticholinerge effect vooral een bijwerking.",
+    "afleidbareBijwerkingen": "Droge mond, obstipatie, urineretentie, wazig zien, hartkloppingen, en in de hersenen sufheid, verwardheid en soms hallucinaties.",
+    "letOp": "Ouderen zijn extra gevoelig, en de anticholinerge last telt op over alle middelen. Binnen de tricyclische antidepressiva heeft nortriptyline bij ouderen de voorkeur. Mirabegron en vibegron werken niet anticholinerg. Oxybutynine is gecontra-indiceerd bij de ziekte van Parkinson.",
+    "bron": {
+      "label": "KNMP Kennisbank, Informatorium Medicamentorum: urologische spasmolytica",
+      "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G2013.html"
+    },
+    "status": "concept"
   }
 ]

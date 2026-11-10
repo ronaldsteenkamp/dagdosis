@@ -143,6 +143,23 @@ kennis. Daarom zegt de uitleg alleen "verhoogt de clozapinespiegel".
 De 72 uur en het afraden komen uit de KNMP, onder "niet beoordeeld". De klachten van een
 disulfiramachtige reactie heb ik bewust niet genoemd.
 
+## Fase 7, batch 3 (ouderen en kinderen)
+
+### `benzodiazepine-slaapmiddel-oudere`
+De voorkeur (lorazepam, lormetazepam, oxazepam, temazepam) en het ontraden van een lange
+halfwaardetijd komen uit de KNMP. Het valgevaar in de `mechanismeRegel` vond ik niet in die tekst;
+het is algemene kennis.
+
+### `tetracycline-kind-tanden`
+De KNMP beschrijft de binding aan calcium en de blijvende tandverkleuring onder zwangerschap, dus bij
+het ongeboren kind. Dat hetzelfde geldt voor jonge kinderen, leid ik daaruit af en uit de
+leeftijdsgrenzen voor Lyme (NHG tot 8 jaar, richtlijn Lymeziekte onder 9 jaar), die wel in de KNMP
+staan.
+
+### Kaart Middelen met anticholinerge werking
+De bijwerkingen komen uit de KNMP-tekst bij oxybutynine. De ligging van de muscarinereceptoren (blaas,
+darm, klieren, oog, hersenen) is algemene kennis. Hoe mirabegron werkt, heb ik bewust weggelaten.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
