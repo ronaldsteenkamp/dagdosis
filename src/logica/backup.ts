@@ -132,7 +132,7 @@ export function leesBackup(tekst: string): Inlezen {
   const lijst = (veld: string, ok: (w: unknown) => boolean, naam: string, alsLijst: boolean) => {
     const waarde = g[veld]
     if (alsLijst ? !Array.isArray(waarde) : !isItem(waarde)) return fouten.push(`${naam}: ontbreekt`)
-    const items = Object.values(waarde)
+    const items = Object.values(waarde as object)
     const fout = items.findIndex((x) => !ok(x))
     if (fout >= 0) fouten.push(`${naam}: record ${fout + 1} klopt niet`)
   }
