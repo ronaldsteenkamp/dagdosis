@@ -187,5 +187,22 @@
       "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G806.html"
     },
     "status": "concept"
+  },
+  {
+    "id": "lithium",
+    "groep": "Lithium",
+    "voorbeelden": [
+      "lithiumcarbonaat"
+    ],
+    "aangrijpingspunt": "Niet precies bekend. Lithium is een klein kation dat op natrium lijkt en ingrijpt op signaalroutes binnen de zenuwcel.",
+    "directEffect": "Een stabielere signaaloverdracht in de hersenen. De nier behandelt lithium grotendeels als natrium.",
+    "klinischEffect": "Stemmingsstabilisatie bij een bipolaire stoornis, in de acute fase en als onderhoud.",
+    "afleidbareBijwerkingen": "Bij een te hoge spiegel: braken, diarree, onduidelijk praten, wankel lopen, spierschokken, spierzwakte en sufheid.",
+    "letOp": "Smalle therapeutische breedte: doseer op geleide van de spiegel, 12 uur na inname. De spiegel stijgt door NSAID's, thiaziden, lisdiuretica, RAAS-remmers, metronidazol en topiramaat, en daalt door SGLT2-remmers en theofylline.",
+    "bron": {
+      "label": "KNMP Kennisbank, Informatorium Medicamentorum: lithiumcarbonaat",
+      "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2149.html"
+    },
+    "status": "concept"
   }
 ]

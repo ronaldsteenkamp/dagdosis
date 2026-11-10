@@ -11,5 +11,7 @@
   { "id": "zelfzorg", "naam": "Zelfzorg", "insteek": "praktijk" },
   { "id": "antistolling", "naam": "Antistolling", "insteek": "praktijk" },
   { "id": "opioiden-pijn", "naam": "Opioïden en pijnstilling", "insteek": "praktijk" },
-  { "id": "qt-serotonerg", "naam": "QT-verlenging en serotonerge combinaties", "insteek": "praktijk" }
+  { "id": "qt-serotonerg", "naam": "QT-verlenging en serotonerge combinaties", "insteek": "praktijk" },
+  { "id": "antibiotica", "naam": "Antibiotica", "insteek": "praktijk" },
+  { "id": "psychofarmaca", "naam": "Psychofarmaca en lithium", "insteek": "praktijk" }
 ]

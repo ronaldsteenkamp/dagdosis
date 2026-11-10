@@ -87,3 +87,20 @@ De Kennisbank vraagt om in te loggen. Toelichting bij de twijfelgevallen staat i
 
 Nieuwe thema's: Antistolling, Opioïden en pijnstilling, QT-verlenging en serotonerge combinaties.
 Nieuwe kaarten: Vitamine K-antagonisten, DOAC's, Opioïden.
+
+## Fase 7, batch 2
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-metronidazol-alcohol` | medicatiebewaking (afleveren met advies) | antibiotica | IM metronidazol: [S364](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S364.html) |
+| `fluorochinolon-prednisolon-pees` | casus | antibiotica, interacties | MB fluorchinolonen + corticosteroïden: [8072-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8072-1.html) |
+| `trimethoprim-methotrexaat` | casus | antibiotica, interacties | MB methotrexaat + cotrimoxazol/trimethoprim: [448-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/448-2.html); IM trimethoprim: [S1418](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1418.html) |
+| `doxycycline-inname` | casus | antibiotica | IM doxycycline: [S547](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S547.html) |
+| `mb-clozapine-ciprofloxacine` | medicatiebewaking (overleggen) | antibiotica, psychofarmaca | MB clozapine + ciprofloxacine: [836-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/836-2.html) |
+| `mb-lithium-ibuprofen-balie` | medicatiebewaking (niet afleveren) | psychofarmaca, zelfzorg | MB lithium + NSAID's: [444-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/444-4.html) |
+| `lithium-thiazide-intoxicatie` | casus | psychofarmaca, interacties | MB lithium + diuretica: [442-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/442-4.html) |
+| `lithium-spiegel-12-uur` | kinetiek | psychofarmaca | IM lithiumcarbonaat: [S2149](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2149.html) |
+| `clozapine-stoppen-roken` | kinetiek | enzymen, psychofarmaca | IM clozapine: [S2233](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2233.html) |
+| `lithium-streefwaarde-ouderen` | casus | psychofarmaca | IM lithiumcarbonaat: [S2149](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2149.html) |
+
+Nieuwe thema's: Antibiotica, Psychofarmaca en lithium. Nieuwe kaart: Lithium.

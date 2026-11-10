@@ -126,6 +126,23 @@ Het aangrijpingspunt, de halfwaardetijden, de obstipatie via µ-receptoren en de
 tramadol komen uit de KNMP-groepsteksten. De voorbeelden van bloedingen (blauwe plekken, bloedend
 tandvlees) en de werking van opioïden in ruggenmerg en hersenen zijn algemene kennis.
 
+## Fase 7, batch 2 (antibiotica, psychofarmaca en lithium)
+
+### Mechanisme bij lithium
+De KNMP zegt dat thiaziden, NSAID's en andere middelen de lithiumspiegel verhogen, maar niet hoe.
+Dat de nier lithium als natrium behandelt en dat de uitscheiding daalt (`mechanismeRegel` van
+`mb-lithium-ibuprofen-balie` en `lithium-thiazide-intoxicatie`, en de kaart Lithium), is algemene
+kennis. Het aangrijpingspunt op de kaart is bewust vaag gehouden.
+
+### `mb-clozapine-ciprofloxacine`
+De KNMP noemt CYP1A2 als hoofdroute van clozapine en zegt dat ciprofloxacine de spiegel verhoogt.
+Dat ciprofloxacine dat doet door CYP1A2 te remmen, staat niet op die pagina; het komt uit mijn eigen
+kennis. Daarom zegt de uitleg alleen "verhoogt de clozapinespiegel".
+
+### `mb-metronidazol-alcohol`
+De 72 uur en het afraden komen uit de KNMP, onder "niet beoordeeld". De klachten van een
+disulfiramachtige reactie heb ik bewust niet genoemd.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
