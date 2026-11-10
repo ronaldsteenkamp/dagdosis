@@ -4,8 +4,8 @@ import { stelDosisSamen } from './logica/dagdosis'
 import { datumVan } from './logica/datum'
 import { verwerkAntwoord } from './logica/herhaling'
 import { begrensDuur } from './logica/voortgang'
-import { bewaarAntwoord, bewaarDosis, bewaarInstellingen, bewaarMelding, laadAlles } from './opslag'
-import type { Antwoord, Dosis, Instellingen, Melding, Vraag, VraagVoortgang, Zekerheid } from './types'
+import { bewaarAntwoord, bewaarDosis, bewaarInstellingen, bewaarMelding, bewaarMeta, laadAlles } from './opslag'
+import type { Antwoord, Dosis, Instellingen, Melding, Meta, Vraag, VraagVoortgang, Zekerheid } from './types'
 
 const startInstellingen: Instellingen = {
   insteek: 'gemengd',
@@ -21,6 +21,7 @@ interface Gegevens {
   dosissen: Record<string, Dosis>
   meldingen: Melding[]
   instellingen: Instellingen
+  meta: Meta
 }
 
 interface AppState extends Gegevens {
@@ -35,6 +36,7 @@ interface AppState extends Gegevens {
     inDosis: boolean
   }) => void
   voegMeldingToe: (vraag: Vraag, notitie: string) => void
+  bevestigWelkom: () => void
 }
 
 const Context = createContext<AppState | null>(null)
@@ -132,6 +134,12 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       }
       zetGegevens({ ...gegevens, meldingen: [...gegevens.meldingen, melding] })
       bewaarMelding(melding).catch(meldFout)
+    },
+
+    bevestigWelkom() {
+      const meta = { ...gegevens.meta, welkomGezienOp: datumVan() }
+      zetGegevens({ ...gegevens, meta })
+      bewaarMeta(meta).catch(meldFout)
     },
   }
 

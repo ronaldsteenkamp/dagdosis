@@ -55,8 +55,27 @@ describe('valideerInhoud', () => {
     ['onbekende kaart', { kaartId: 'bestaat-niet' }, 'kaartId'],
     ['typefout in veldnaam', { mechanismeregel: 'x' }, 'mechanismeregel'],
     ['ongeldige bronlink', { bron: { label: 'Bron', url: 'www.voorbeeld.nl' } }, 'url'],
+    ['datum in verkeerde vorm', { herzienVoor: '1-12-2027' }, 'herzienVoor'],
+    ['niet-bestaande datum', { gecontroleerdOp: '2026-02-30' }, 'gecontroleerdOp'],
+    ['lege controleur', { gecontroleerdDoor: ' ' }, 'gecontroleerdDoor'],
   ])('vindt: %s', (_naam, wijziging, veld) => {
     expect(fouten(wijziging).join('\n')).toContain(veld)
+  })
+
+  it('accepteert de controlevelden', () => {
+    expect(
+      fouten({ status: 'gecontroleerd', gecontroleerdDoor: 'R. Steenkamp', gecontroleerdOp: '2026-11-10', herzienVoor: '2027-11-10' }),
+    ).toEqual([])
+  })
+
+  it('eist bij "gecontroleerd" wie en wanneer', () => {
+    expect(fouten({ status: 'gecontroleerd' })).toEqual([
+      'vragen.json › v1 › gecontroleerdDoor: ontbreekt; verplicht bij status "gecontroleerd"',
+      'vragen.json › v1 › gecontroleerdOp: ontbreekt; verplicht bij status "gecontroleerd"',
+    ])
+    expect(fouten({ status: 'gecontroleerd', gecontroleerdDoor: 'R. Steenkamp' }).join('\n')).toContain(
+      'gecontroleerdOp',
+    )
   })
 
   it('weigert "alle bovenstaande" als optie', () => {

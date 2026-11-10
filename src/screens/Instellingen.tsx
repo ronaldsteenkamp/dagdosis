@@ -1,3 +1,4 @@
+import { Disclaimer } from '../components/Disclaimer'
 import { Icon } from '../components/Icon'
 import { Schakelaar, Segment } from '../components/Keuzes'
 import { Terugkop } from '../components/Kop'
@@ -95,6 +96,13 @@ export function Instellingen() {
         <Icon naam="herhaal" maat={20} />
         Herhalingen van eerder fout of gegokt gaan altijd voor.
       </p>
+
+      <section className="kaart" aria-labelledby="over-kop">
+        <h2 id="over-kop" className="sectiekop">
+          Over Dagdosis
+        </h2>
+        <Disclaimer />
+      </section>
     </main>
   )
 }

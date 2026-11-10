@@ -21,7 +21,9 @@ const KAART_VELDEN = [
 const VRAAG_VELDEN = [
   'id', 'type', 'insteek', 'themaIds', 'kaartId', 'casus', 'vraag', 'opties', 'juist',
   'waarom', 'mechanismeRegel', 'onthoud', 'bron', 'status', 'versie',
+  'gecontroleerdDoor', 'gecontroleerdOp', 'herzienVoor',
 ]
+const DATUM_VELDEN = ['gecontroleerdOp', 'herzienVoor']
 
 type Item = Record<string, unknown>
 
@@ -31,6 +33,14 @@ function isItem(w: unknown): w is Item {
 
 function isTekst(w: unknown): w is string {
   return typeof w === 'string' && w.trim() !== ''
+}
+
+/** Een bestaande datum in de vorm JJJJ-MM-DD. */
+export function isDatum(w: unknown): w is string {
+  if (typeof w !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(w)) return false
+  const [j, m, d] = w.split('-').map(Number)
+  const datum = new Date(Date.UTC(j, m - 1, d))
+  return datum.getUTCFullYear() === j && datum.getUTCMonth() === m - 1 && datum.getUTCDate() === d
 }
 
 class Controle {
@@ -104,6 +114,18 @@ function controleerVraag(c: Controle, v: Item, plek: string, themas: Map<string,
 
   if (!Number.isInteger(v.versie) || (v.versie as number) < 1) {
     c.fout(`${plek} › versie`, 'moet een heel getal van 1 of hoger zijn')
+  }
+
+  c.optioneleTekst(v, 'gecontroleerdDoor', plek)
+  for (const veld of DATUM_VELDEN) {
+    if (v[veld] !== undefined && !isDatum(v[veld])) {
+      c.fout(`${plek} › ${veld}`, `"${String(v[veld])}" is geen datum; gebruik JJJJ-MM-DD`)
+    }
+  }
+  if (v.status === 'gecontroleerd') {
+    for (const veld of ['gecontroleerdDoor', 'gecontroleerdOp']) {
+      if (v[veld] === undefined) c.fout(`${plek} › ${veld}`, 'ontbreekt; verplicht bij status "gecontroleerd"')
+    }
   }
 
   if (v.kaartId !== undefined && !kaartIds.has(v.kaartId as string)) {
