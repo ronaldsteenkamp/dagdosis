@@ -6,8 +6,14 @@ describe('startinhoud', () => {
     expect(inhoudFouten).toEqual([])
   })
 
-  it('bevat 10 thema\'s, 6 kaarten en 30 vragen', () => {
-    expect([themas.length, kaarten.length, vragen.length]).toEqual([10, 6, 30])
+  it('bevat 10 thema\'s, 6 kaarten en 34 vragen', () => {
+    expect([themas.length, kaarten.length, vragen.length]).toEqual([10, 6, 34])
+  })
+
+  it('heeft van elk nieuw vraagtype minstens 2 voorbeeldvragen', () => {
+    for (const type of ['reken', 'medicatiebewaking']) {
+      expect(vragen.filter((v) => v.type === type).length, type).toBeGreaterThanOrEqual(2)
+    }
   })
 
   it('geeft elke kaart minstens 2 eigen vragen', () => {
