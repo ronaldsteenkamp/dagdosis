@@ -1,7 +1,7 @@
 # Dagdosis
 
 Elke dag 5 vragen (± 3 minuten) om je kennis als apotheker op peil te houden, met herhaling
-op basis van hoe zeker je was. Installeerbare webapp die offline werkt. Gemaakt door Ronald.
+op basis van je antwoorden. Installeerbare webapp die offline werkt. Gemaakt door Ronald.
 
 Live: https://ronaldsteenkamp.github.io/dagdosis/
 
@@ -154,11 +154,10 @@ Alleen `src/opslag.ts` hoeft dan te veranderen.
 
 | Antwoord | Gevolg |
 | --- | --- |
-| Fout, of goed maar gegokt | Morgen opnieuw, terug naar bakje 1 |
-| Goed met twijfel | Over 3 dagen, bakje blijft gelijk |
-| Goed en zeker | Een bakje hoger |
+| Fout | Morgen opnieuw, terug naar bakje 1 |
+| Goed | Een bakje hoger |
 
-"Weet ik niet zeker" telt als fout.
+Oudere antwoorden die als twijfel of gok zijn opgeslagen, tellen nog volgens de oude regels.
 
 **Dagdosis.** Eén keer per dag samengesteld, daarna vast.
 

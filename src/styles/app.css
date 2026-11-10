@@ -153,10 +153,6 @@ h1:focus { outline: none; }
 .optie:has(input:checked) { border-color: var(--primair); background: var(--primair-licht); }
 .optie:has(input:checked) .optie-letter { background: var(--primair); color: #fff; }
 .optie:has(input:focus-visible) { outline: 3px solid var(--blauw-tekst); outline-offset: 2px; }
-.optie-onzeker { background: transparent; border: 2px dashed #76847f; align-items: center; }
-.optie-onzeker .optie-tekst { color: var(--gedempt); font-weight: 700; }
-.optie-onzeker:has(input:checked) { border-style: solid; }
-.optie-onzeker:has(input:checked) .optie-tekst { color: var(--primair); }
 .vraagmeta { display: flex; align-items: center; gap: 6px; }
 .vraagmeta .pil { white-space: nowrap; padding: 5px 10px; }
 .vraagmeta .tekstknop { margin-left: auto; white-space: nowrap; }

@@ -1,14 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Bronregel } from '../components/Bronregel'
 import { Icon } from '../components/Icon'
-import { Segment } from '../components/Keuzes'
 import { Titel } from '../components/Kop'
 import { kaarten, vragen } from '../inhoud'
 import { geldigeVoortgang, gevolgTekst, planVolgende } from '../logica/herhaling'
 import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
 import { useAppState } from '../state'
-import type { Resultaat, Vraag, VraagType, Zekerheid } from '../types'
+import type { Resultaat, Vraag, VraagType } from '../types'
 import { Mechanismekaart } from './Mechanismekaart'
 
 const typeLabel: Record<VraagType, string> = {
@@ -18,8 +17,6 @@ const typeLabel: Record<VraagType, string> = {
   vergelijk: 'Vergelijk',
   kinetiek: 'Kinetiek',
 }
-
-const ONZEKER = 'onzeker'
 
 function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
   return (
@@ -116,10 +113,6 @@ function Vraagscherm({
             <span className="optie-tekst">{o.tekst}</span>
           </label>
         ))}
-        <label className="optie optie-onzeker">
-          <input type="radio" name="antwoord" checked={keuze === ONZEKER} onChange={() => zetKeuze(ONZEKER)} />
-          <span className="optie-tekst">Weet ik niet zeker — laat me het antwoord zien</span>
-        </label>
       </fieldset>
       <div className="onderkant-vast">
         <button
@@ -148,12 +141,10 @@ function Uitlegscherm({
   positie: number
   totaal: number
   onOpenKaart: (id: string) => void
-  onVolgende: (zekerheid: Zekerheid) => void
+  onVolgende: () => void
 }) {
   const { instellingen, voortgang } = useAppState()
   const goed = keuze === vraag.juist
-  const onzeker = keuze === ONZEKER
-  const [zekerheid, zetZekerheid] = useState<Zekerheid | undefined>(onzeker ? 'gok' : undefined)
   const juisteOptie = vraag.opties.find((o) => o.id === vraag.juist)
   const kaart = kaarten.find((k) => k.id === vraag.kaartId)
   const toonRegel =
@@ -164,9 +155,9 @@ function Uitlegscherm({
     <main className="scherm scherm-sessie">
       <Sessiekop positie={positie} totaal={totaal} />
       <div className={`uitslag ${goed ? 'uitslag-goed' : 'uitslag-fout'}`}>
-        <Icon naam={goed ? 'check' : onzeker ? 'lamp' : 'kruis'} />
+        <Icon naam={goed ? 'check' : 'kruis'} />
         <div>
-          <Titel className="uitslag-titel">{goed ? 'Goed' : onzeker ? 'Het juiste antwoord' : 'Niet goed'}</Titel>
+          <Titel className="uitslag-titel">{goed ? 'Goed' : 'Niet goed'}</Titel>
           <p className="uitslag-tekst">
             {vraag.juist}. {juisteOptie?.tekst}
           </p>
@@ -205,37 +196,15 @@ function Uitlegscherm({
         </button>
       )}
 
-      <section className="kaart" aria-labelledby={onzeker ? undefined : 'zeker-kop'}>
-        {!onzeker && (
-          <>
-            <h2 id="zeker-kop" className="sectiekop">
-              Hoe zeker was je?
-            </h2>
-            <Segment<Zekerheid>
-              label="Hoe zeker was je?"
-              waarde={zekerheid}
-              onChange={zetZekerheid}
-              opties={[
-                { waarde: 'zeker', label: 'Zeker' },
-                { waarde: 'twijfel', label: 'Twijfel' },
-                { waarde: 'gok', label: 'Gok' },
-              ]}
-            />
-          </>
-        )}
-        {zekerheid && (
-          <p className="gevolg" role="status">
-            <Icon naam="herhaal" maat={18} />
-            {gevolgTekst(planVolgende(bakje, goed, zekerheid).dagen)}
-          </p>
-        )}
-      </section>
+      <p className="gevolg" role="status">
+        <Icon naam="herhaal" maat={18} />
+        {gevolgTekst(planVolgende(bakje, goed, 'zeker').dagen)}
+      </p>
 
       <button
         type="button"
         className="knop knop-primair"
-        disabled={!zekerheid}
-        onClick={() => zekerheid && onVolgende(zekerheid)}
+        onClick={onVolgende}
       >
         {positie === totaal ? 'Bekijk samenvatting' : 'Volgende vraag'}
       </button>
@@ -364,11 +333,11 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
             scrollVoorKaart.current = window.scrollY
             zetOpenKaart(id)
           }}
-          onVolgende={(zekerheid) => {
+          onVolgende={() => {
             beantwoord({
               vraag,
               keuze,
-              zekerheid,
+              zekerheid: 'zeker',
               duurMs: Date.now() - startTijd.current,
               inDosis: !kaartId,
             })
