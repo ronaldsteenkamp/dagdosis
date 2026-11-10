@@ -202,3 +202,18 @@ en werken.
 | `mb-clozapine-25-ciprofloxacine` | medicatiebewaking (afleveren) | psychofarmaca, antibiotica | MB clozapine + ciprofloxacine: [836-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/836-2.html) |
 | `lithium-thiazide-bewust` | casus | psychofarmaca | MB lithium + diuretica: [442-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/442-4.html) |
 | `codeine-cyp2d6-poor-metabolizer` | casus | enzymen | IM codeïne (farmacogenetica): [S743](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S743.html) |
+
+## Batch 9
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-pil-amoxicilline` | medicatiebewaking (afleveren) | anticonceptie, antibiotica | MB anticonceptiva + antibiotica: [1086-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/1086-1.html) |
+| `mb-sumatriptan-sertraline` | medicatiebewaking (afleveren) | serotonerg, interacties | MB triptanen + SSRI's: [877-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/877-1.html) |
+| `mb-alendroninezuur-calcium` | medicatiebewaking (afleveren met advies) | ouderen, interacties | MB bisfosfonaten + antacida/ijzer/calcium: [497-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/497-2.html) |
+| `mb-loperamide-bloed-koorts` | medicatiebewaking (niet afleveren) | zelfzorg | IM loperamide: [S2575](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2575.html) |
+| `levothyroxine-ijzer` | casus | interacties | MB thyreomimetica + ijzer: [503-5](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/503-5.html) |
+| `nitraat-sildenafil` | casus | interacties | MB nitraten + fosfodiësteraseremmers: [533-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/533-2.html) |
+| `isotretinoine-anticonceptie` | casus | anticonceptie, zwangerschap | IM isotretinoïne: [S1847](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1847.html) |
+| `finasteride-zwangere-partner` | casus | zwangerschap | IM finasteride: [S2428](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2428.html) |
+| `reken-paracetamol-zetpil-kind` | reken (240 mg) | kinderen | IM paracetamol: [S90](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S90.html) |
+| `triptan-ssri-receptoren` | mechanisme-middel | receptoren | MB triptanen + SSRI's: [877-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/877-1.html) |

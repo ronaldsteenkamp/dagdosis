@@ -250,6 +250,20 @@ verwisseling van dag- en weekdosering heb ik niet gevonden.
 Clozapine in een lage dosis bij psychose bij Parkinson is gangbaar, maar dat heb ik niet in de KNMP
 nagekeken; het antwoord hangt alleen af van de grens van 50 mg.
 
+## Batch 9
+
+### Mechanismen uit algemene kennis
+- `finasteride-zwangere-partner`: het advies staat in de KNMP; de remming van de omzetting naar
+  dihydrotestosteron en het gevolg voor een mannelijke foetus (`mechanismeRegel`) zijn algemene kennis.
+- `nitraat-sildenafil`: de bloeddrukdaling en het advies staan in de KNMP; de route via cGMP is
+  algemene kennis.
+- `triptan-ssri-receptoren`: dat serotonerge toxiciteit vooral via 5-HT2A loopt, staat in de KNMP; dat
+  triptanen 5-HT1B/1D-agonisten zijn, is algemene kennis.
+- `isotretinoine-anticonceptie`: de anticonceptie-eisen en het type afwijkingen staan in de KNMP; de
+  formulering van de `mechanismeRegel` is een samenvatting.
+- `mb-loperamide-bloed-koorts`: de contra-indicatie staat in de KNMP; de verklaring (de verwekker blijft
+  langer in de darm) is algemene kennis.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
