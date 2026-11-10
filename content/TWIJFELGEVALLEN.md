@@ -110,6 +110,22 @@ hartfalen staan onder "let op". Ze staan niet in de groepstekst die als bron op 
 maar wel in de preparaatteksten: het advies om te staken bij sitagliptine, saxagliptine en
 linagliptine, de bijwerking pancreatitis ook bij vildagliptine, en hartfalen bij saxagliptine.
 
+## Fase 7, batch 1 (antistolling, opioïden, QT en serotonine)
+
+### `citalopram-max-ouderen`
+De maxima (boven 65 jaar 20 mg tabletten of 16 mg druppels) en de QTc-verlenging staan in de
+KNMP. Dat de verlenging van het QTc-interval dosisafhankelijk is (de `mechanismeRegel`), komt uit
+mijn kennis van het EMA-besluit uit 2011, niet uit de Kennisbank.
+
+### `mb-vka-cotrimoxazol`
+Het advies (vervangen, behalve bij pneumocystispneumonie) komt uit de KNMP. Het mechanisme heb ik
+bewust weggelaten, omdat de beslisregel het niet noemt.
+
+### Kaarten Vitamine K-antagonisten, DOAC's en Opioïden
+Het aangrijpingspunt, de halfwaardetijden, de obstipatie via µ-receptoren en de werking van
+tramadol komen uit de KNMP-groepsteksten. De voorbeelden van bloedingen (blauwe plekken, bloedend
+tandvlees) en de werking van opioïden in ruggenmerg en hersenen zijn algemene kennis.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

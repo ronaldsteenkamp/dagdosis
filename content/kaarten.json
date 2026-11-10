@@ -128,5 +128,64 @@
       "url": "https://www.farmacotherapeutischkompas.nl/bladeren/groepsteksten/statinen"
     },
     "status": "concept"
+  },
+  {
+    "id": "vitamine-k-antagonisten",
+    "groep": "Vitamine K-antagonisten",
+    "voorbeelden": [
+      "acenocoumarol",
+      "fenprocoumon"
+    ],
+    "aangrijpingspunt": "Het enzym vitamine K-epoxidereductase (VKOR) in de lever.",
+    "directEffect": "Inactief vitamine K wordt niet meer omgezet in de actieve vorm. Daardoor maakt de lever minder werkzame vitamine K-afhankelijke stollingsfactoren aan.",
+    "klinischEffect": "Een tragere bloedstolling, gemeten als een hogere INR. Het effect begint niet direct: bij acenocoumarol na ongeveer een dag, met een maximum na 1,5 tot 2 dagen.",
+    "afleidbareBijwerkingen": "Bloedingen, van blauwe plekken en bloedend tandvlees tot ernstige maag-darm- of hersenbloedingen, vooral bij een te hoge INR.",
+    "letOp": "Veel interacties verhogen of verlagen de INR. Co-trimoxazol en miconazol, ook als crème of vaginaal, versterken het effect sterk. Meld een nieuw middel dat de INR beïnvloedt aan de trombosedienst. Fenprocoumon werkt veel langer na dan acenocoumarol.",
+    "bron": {
+      "label": "KNMP Kennisbank, Informatorium Medicamentorum: antitrombotica",
+      "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G744.html"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "doacs",
+    "groep": "DOAC's",
+    "voorbeelden": [
+      "apixaban",
+      "dabigatran",
+      "edoxaban",
+      "rivaroxaban"
+    ],
+    "aangrijpingspunt": "Geactiveerde stollingsfactor Xa (apixaban, edoxaban, rivaroxaban) of trombine (dabigatran).",
+    "directEffect": "Directe remming van één stollingsfactor, zonder omweg via vitamine K.",
+    "klinischEffect": "Minder vorming van fibrine, dus minder kans op trombose en embolie. De halfwaardetijd is kort, ongeveer 7 tot 14 uur, en loopt op bij een slechte nierfunctie.",
+    "afleidbareBijwerkingen": "Bloedingen, met meer kans bij stapeling door een slechte nierfunctie of bij remmers van de afbraak of van P-glycoproteïne.",
+    "letOp": "Doseer op de nierfunctie; dabigatran leunt het meest op de nier. Rivaroxaban 15 en 20 mg innemen met eten. Bij dabigatran bestaat een specifiek antidotum, idarucizumab.",
+    "bron": {
+      "label": "KNMP Kennisbank, Informatorium Medicamentorum: antitrombotica",
+      "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G744.html"
+    },
+    "status": "concept"
+  },
+  {
+    "id": "opioiden",
+    "groep": "Opioïden",
+    "voorbeelden": [
+      "codeïne",
+      "fentanyl",
+      "morfine",
+      "oxycodon",
+      "tramadol"
+    ],
+    "aangrijpingspunt": "De µ-opioïdreceptor in het centrale zenuwstelsel en in de darmwand.",
+    "directEffect": "Remming van de pijnprikkel in ruggenmerg en hersenen. In de darm minder peristaltiek en minder vochtsecretie.",
+    "klinischEffect": "Pijnstilling. Tramadol remt daarnaast de heropname van serotonine en noradrenaline.",
+    "afleidbareBijwerkingen": "Obstipatie door de µ-receptoren in de darm. Sufheid, misselijkheid en bij hoge doseringen ademhalingsdepressie. Bij langdurig gebruik tolerantie en afhankelijkheid.",
+    "letOp": "Geef bij gebruik van een opioïd ook een laxans, behalve bij kort gebruik rond een operatie. Tramadol naast een SSRI kan serotonerge toxiciteit geven. Codeïne en tramadol worden via CYP2D6 omgezet.",
+    "bron": {
+      "label": "KNMP Kennisbank, Informatorium Medicamentorum: opioïden",
+      "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G806.html"
+    },
+    "status": "concept"
   }
 ]

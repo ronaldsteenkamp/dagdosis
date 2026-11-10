@@ -69,3 +69,21 @@ De Kennisbank vraagt om in te loggen. Toelichting bij de twijfelgevallen staat i
 | `mb-simvastatine-fluconazol-eenmalig` | medicatiebewaking | MB CYP3A4-remmers: [511-3](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/511-3.html) |
 | `mb-nitrofurantoine-klaring-23` | medicatiebewaking | IM nitrofurantoïne: [S455](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S455.html); MB nierfunctie: [5-8](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/5-8.html) |
 | `dpp4-naast-glp1` | casus | IM bloedglucoseverlagende middelen: [G490](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G490.html) |
+
+## Fase 7, batch 1
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-vka-cotrimoxazol` | medicatiebewaking (overleggen) | antistolling | MB VKA's + cotrimoxazol: [403-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/403-1.html) |
+| `vka-miconazol-vaginaal` | casus | antistolling, zelfzorg | MB VKA's + miconazol: [412-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/412-1.html) |
+| `acenocoumarol-fenprocoumon-halfwaardetijd` | vergelijk | farmacokinetiek, antistolling | IM fenprocoumon [S119](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S119.html), acenocoumarol [S115](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S115.html) |
+| `rivaroxaban-met-eten` | kinetiek | antistolling | IM rivaroxaban: [S3068](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3068.html) |
+| `dabigatran-trombineremmer` | mechanisme-middel | receptoren, antistolling | IM antitrombotica: [G744](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G744.html) |
+| `mb-tramadol-sertraline` | medicatiebewaking (afleveren met advies) | opioïden, serotonerg | MB SSRI's + tramadol: [624-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/624-1.html) |
+| `tramadol-serotonine` | mechanisme-middel | receptoren, serotonerg | IM tramadol: [S2475](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2475.html) |
+| `opioid-obstipatie-laxans` | mechanisme-bijwerking | mechanisme, opioïden | IM opioïden: [G806](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G806.html) |
+| `reken-oxycodon-morfine` | reken (60 mg) | opioïden | IM oxycodon: [S71](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S71.html) |
+| `citalopram-max-ouderen` | casus | QT, serotonerg | IM citalopram: [S2253](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2253.html) (QT-dosisafhankelijkheid: twijfel) |
+
+Nieuwe thema's: Antistolling, Opioïden en pijnstilling, QT-verlenging en serotonerge combinaties.
+Nieuwe kaarten: Vitamine K-antagonisten, DOAC's, Opioïden.
