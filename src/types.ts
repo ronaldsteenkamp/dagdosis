@@ -51,6 +51,12 @@ export interface Vraag {
   bron: Bron
   status: Status
   versie: number
+  /** Wie de vraag heeft gecontroleerd. Verplicht bij status "gecontroleerd". */
+  gecontroleerdDoor?: string
+  /** Datum van de controle, JJJJ-MM-DD. Verplicht bij status "gecontroleerd". */
+  gecontroleerdOp?: string
+  /** Vóór deze datum (JJJJ-MM-DD) opnieuw nakijken. */
+  herzienVoor?: string
 }
 
 export interface Instellingen {
@@ -105,4 +111,10 @@ export interface Melding {
   vraagId: string
   versie: number
   notitie: string
+}
+
+/** Losse gegevens over het gebruik van de app op dit toestel. */
+export interface Meta {
+  /** Datum waarop de uitleg bij de eerste start is weggeklikt. */
+  welkomGezienOp?: string
 }

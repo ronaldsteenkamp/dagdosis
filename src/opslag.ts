@@ -1,5 +1,5 @@
 import { openDB, type DBSchema } from 'idb'
-import type { Antwoord, Dosis, Instellingen, Melding, VraagVoortgang } from './types'
+import type { Antwoord, Dosis, Instellingen, Melding, Meta, VraagVoortgang } from './types'
 
 interface Schema extends DBSchema {
   voortgang: { key: string; value: VraagVoortgang }
@@ -7,29 +7,36 @@ interface Schema extends DBSchema {
   dosissen: { key: string; value: Dosis }
   meldingen: { key: string; value: Melding }
   instellingen: { key: string; value: Instellingen }
+  meta: { key: string; value: Meta }
 }
 
 const INSTELLINGEN_SLEUTEL = 'instellingen'
+const META_SLEUTEL = 'meta'
 
+// Versie 2 voegt "meta" toe. Bestaande gegevens blijven staan.
 const db = () =>
-  openDB<Schema>('dagdosis', 1, {
-    upgrade(d) {
-      d.createObjectStore('voortgang', { keyPath: 'vraagId' })
-      d.createObjectStore('antwoorden', { keyPath: 'id' })
-      d.createObjectStore('dosissen', { keyPath: 'datum' })
-      d.createObjectStore('meldingen', { keyPath: 'id' })
-      d.createObjectStore('instellingen')
+  openDB<Schema>('dagdosis', 2, {
+    upgrade(d, oudeVersie) {
+      if (oudeVersie < 1) {
+        d.createObjectStore('voortgang', { keyPath: 'vraagId' })
+        d.createObjectStore('antwoorden', { keyPath: 'id' })
+        d.createObjectStore('dosissen', { keyPath: 'datum' })
+        d.createObjectStore('meldingen', { keyPath: 'id' })
+        d.createObjectStore('instellingen')
+      }
+      if (oudeVersie < 2) d.createObjectStore('meta')
     },
   })
 
 export async function laadAlles() {
   const d = await db()
-  const [voortgang, antwoorden, dosissen, meldingen, instellingen] = await Promise.all([
+  const [voortgang, antwoorden, dosissen, meldingen, instellingen, meta] = await Promise.all([
     d.getAll('voortgang'),
     d.getAll('antwoorden'),
     d.getAll('dosissen'),
     d.getAll('meldingen'),
     d.get('instellingen', INSTELLINGEN_SLEUTEL),
+    d.get('meta', META_SLEUTEL),
   ])
   return {
     voortgang: Object.fromEntries(voortgang.map((v) => [v.vraagId, v])),
@@ -37,6 +44,7 @@ export async function laadAlles() {
     dosissen: Object.fromEntries(dosissen.map((x) => [x.datum, x])),
     meldingen,
     instellingen,
+    meta: meta ?? {},
   }
 }
 
@@ -62,4 +70,8 @@ export async function bewaarMelding(melding: Melding) {
 
 export async function bewaarInstellingen(instellingen: Instellingen) {
   await (await db()).put('instellingen', instellingen, INSTELLINGEN_SLEUTEL)
+}
+
+export async function bewaarMeta(meta: Meta) {
+  await (await db()).put('meta', meta, META_SLEUTEL)
 }

@@ -1,3 +1,4 @@
+import { Disclaimer } from '../components/Disclaimer'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
 import { kaarten, themas, vragen } from '../inhoud'
@@ -118,8 +119,23 @@ function Doskaart() {
   )
 }
 
+function Welkom() {
+  const { bevestigWelkom } = useAppState()
+  return (
+    <section className="kaart" aria-labelledby="welkom-kop">
+      <h2 id="welkom-kop" className="sectiekop">
+        Welkom
+      </h2>
+      <Disclaimer />
+      <button type="button" className="knop knop-licht" onClick={bevestigWelkom}>
+        Begrepen
+      </button>
+    </section>
+  )
+}
+
 export function Vandaag() {
-  const { dosissen, vandaag } = useAppState()
+  const { dosissen, meta, vandaag } = useAppState()
   const nu = new Date()
   const datum = new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' }).format(nu)
   const streak = berekenStreak(dosissen, vandaag)
@@ -136,6 +152,8 @@ export function Vandaag() {
           <Icon naam="instellingen" />
         </a>
       </header>
+
+      {!meta.welkomGezienOp && <Welkom />}
 
       <p className="pil pil-amber" style={{ alignSelf: 'flex-start' }}>
         <Icon naam="vlam" maat={18} />

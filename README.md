@@ -45,7 +45,8 @@ Voeg een blok toe aan de lijst in `vragen.json`:
   "onthoud": "Eén zin om te onthouden.",
   "bron": { "label": "Naam van de bron", "url": "https://..." },
   "status": "concept",
-  "versie": 1
+  "versie": 1,
+  "herzienVoor": "2027-11-10"
 }
 ```
 
@@ -58,13 +59,28 @@ Voeg een blok toe aan de lijst in `vragen.json`:
 | `opties` | Precies vier, met de id's A, B, C en D. Geen "alle bovenstaande" |
 | `status` | `concept` of `gecontroleerd` |
 | `versie` | Een heel getal vanaf 1 |
+| `gecontroleerdDoor` | Wie de vraag heeft nagekeken. Verplicht bij `gecontroleerd` |
+| `gecontroleerdOp` | Datum van die controle, `JJJJ-MM-DD`. Verplicht bij `gecontroleerd` |
+| `herzienVoor` | Datum, `JJJJ-MM-DD`, waarvoor de vraag opnieuw nagekeken moet zijn |
 
-`kaartId`, `casus`, `mechanismeRegel`, `onthoud` en `bron.url` mag je weglaten.
+`kaartId`, `casus`, `mechanismeRegel`, `onthoud`, `bron.url`, `gecontroleerdDoor`, `gecontroleerdOp`
+en `herzienVoor` mag je weglaten, behalve de eerste twee bij `gecontroleerd`.
 `mechanismeRegel` verschijnt alleen bij praktijkvragen, als "Uitleg altijd met mechanisme" aan staat.
 
 ### Een vraag goedkeuren
 
-Zet `status` op `gecontroleerd`. Het label "concept" en de knop "Meld fout" verdwijnen dan.
+Dit doet een apotheker, niet de maker van de vraag. Zet `status` op `gecontroleerd` en vul
+`gecontroleerdDoor` en `gecontroleerdOp` in. Zonder die twee geeft `npm run controleer` een fout.
+Het label "concept" en de knop "Meld fout" verdwijnen dan.
+
+```json
+"status": "gecontroleerd",
+"gecontroleerdDoor": "R. Steenkamp",
+"gecontroleerdOp": "2026-11-10",
+"herzienVoor": "2027-11-10"
+```
+
+Zet `herzienVoor` op een jaar na de controle, of eerder als het advies in beweging is.
 
 ### Een vraag inhoudelijk wijzigen
 
@@ -91,6 +107,19 @@ vragen.json › sglt2-genitale-schimmel › juist: "E" is geen optie; kies uit A
 ```
 
 `npm run build` doet deze controle ook, dus een foutief bestand wordt niet gepubliceerd.
+
+Daarnaast toont de controle waarschuwingen. Die houden de build niet tegen:
+
+- een `herzienVoor` die verstreken is;
+- het juiste antwoord is in meer dan 35% van de vragen het langste;
+- een letter is in minder dan 15% of meer dan 35% van de vragen het juiste antwoord.
+
+Tot slot meldt de controle altijd de verdeling, bijvoorbeeld:
+
+```text
+Juiste antwoord is het langste: 8 van 30 (27%).
+Juiste letter: A 7 (23%), B 8 (27%), C 8 (27%), D 7 (23%).
+```
 
 ### Regels voor de inhoud
 
@@ -140,7 +169,7 @@ De app staat dan op http://localhost:5173/dagdosis/.
 | --- | --- |
 | `content/` | Thema's, kaarten en vragen |
 | `src/logica/` | Herhaling, dagdosis, scores en export, zonder afhankelijkheid van de schermen |
-| `src/inhoud/` | Laden en valideren van `/content` |
+| `src/inhoud/` | Laden, valideren en rapporteren over `/content` |
 | `src/opslag.ts` | IndexedDB |
 | `src/state.tsx` | Gegevens en acties voor de schermen |
 | `src/screens/` | De schermen |
@@ -149,6 +178,9 @@ Voor een latere backend: antwoorden, meldingen en dosissen zijn losse records me
 Alleen `src/opslag.ts` hoeft dan te veranderen.
 
 ## Regels van de app
+
+**Geen naslagwerk.** Bij de eerste start en onder Instellingen staat een korte tekst: de app is een
+leermiddel, geen naslagwerk. Raadpleeg bij twijfel het Kompas of de KNMP Kennisbank.
 
 **Herhaling.** Intervallen per bakje: 1, 3, 7, 14, 30 en 60 dagen. Een nieuwe vraag begint in bakje 1.
 
