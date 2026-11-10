@@ -187,3 +187,18 @@ en werken.
 | `mb-tramadol-paroxetine` | medicatiebewaking (overleggen) | opioïden, serotonerg | MB SSRI's + tramadol: [624-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/624-1.html) |
 | `mb-pravastatine-claritromycine` | medicatiebewaking (afleveren) | interacties, antibiotica | IM pravastatine: [S2304](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2304.html) |
 | `mb-doxycycline-ijzer` | medicatiebewaking (afleveren met advies) | antibiotica, interacties | MB tetracyclines + ijzer: [464-5](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/464-5.html) |
+
+## Batch 8
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `reken-ibuprofen-kind` | reken (9 ml) | kinderen | IM ibuprofen: [S1281](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1281.html) |
+| `metformine-vitamine-b12` | casus | diabetes | IM metformine: [S924](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S924.html) |
+| `ppi-hypomagnesiemie` | casus | ouderen | IM omeprazol: [S2115](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2115.html) |
+| `montelukast-nachtmerries` | casus | astma en COPD, kinderen | IM montelukast: [S2695](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2695.html) |
+| `rivaroxaban-vergeten-dosis` | casus | antistolling | IM rivaroxaban: [S3068](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3068.html) |
+| `mb-naproxen-hartfalen-balie` | medicatiebewaking (niet afleveren) | zelfzorg, interacties | MB RAAS-remmers + NSAID's: [362-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/362-1.html) |
+| `mb-haloperidol-parkinson` | medicatiebewaking (overleggen) | psychofarmaca, ouderen | IM haloperidol: [S1070](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1070.html) |
+| `mb-clozapine-25-ciprofloxacine` | medicatiebewaking (afleveren) | psychofarmaca, antibiotica | MB clozapine + ciprofloxacine: [836-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/836-2.html) |
+| `lithium-thiazide-bewust` | casus | psychofarmaca | MB lithium + diuretica: [442-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/442-4.html) |
+| `codeine-cyp2d6-poor-metabolizer` | casus | enzymen | IM codeïne (farmacogenetica): [S743](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S743.html) |

@@ -234,6 +234,22 @@ verwisseling van dag- en weekdosering heb ik niet gevonden.
   staat niet expliciet in de KNMP; de vraag gaat alleen over de remming van de omzetting buiten de
   hersenen, en die staat er wel.
 
+## Batch 8
+
+### Mechanismen uit algemene kennis
+- `mb-haloperidol-parkinson`: de contra-indicatie staat in de KNMP; de D2-blokkade als verklaring is
+  algemene kennis.
+- `mb-naproxen-hartfalen-balie`: het advies (bij hartfalen het NSAID vervangen) staat in de KNMP; de
+  natrium- en vochtretentie in de `mechanismeRegel` is algemene kennis.
+- `montelukast-nachtmerries`: de bijwerkingen staan in de KNMP; dat montelukast in het centrale
+  zenuwstelsel werkt (`mechanismeRegel`), is een aanname die de bijwerkingen verklaart.
+- `ppi-hypomagnesiemie`: de KNMP noemt hypomagnesiëmie bij omeprazol zonder duur. Dat het vooral bij
+  langdurig gebruik speelt, en het advies om de indicatie opnieuw te bekijken, zijn algemene kennis.
+
+### `mb-clozapine-25-ciprofloxacine`
+Clozapine in een lage dosis bij psychose bij Parkinson is gangbaar, maar dat heb ik niet in de KNMP
+nagekeken; het antwoord hangt alleen af van de grens van 50 mg.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
