@@ -204,7 +204,9 @@ bevatten; die neemt de melder zelf over. Er is een GitHub-account voor nodig.
 **Geen naslagwerk.** Bij de eerste start en onder Instellingen staat een korte tekst: de app is een
 leermiddel, geen naslagwerk. Raadpleeg bij twijfel het Kompas of de KNMP Kennisbank.
 
-**Herhaling.** Intervallen per bakje: 1, 3, 7, 14, 30 en 60 dagen. Een nieuwe vraag begint in bakje 1.
+**Herhaling.** Intervallen per bakje: 1, 3, 7, 14, 30, 60, 120 en 180 dagen. Een nieuwe vraag begint
+in bakje 1. De bakjes van 120 en 180 dagen zijn later toegevoegd: een vraag die al in bakje 6 stond,
+houdt zijn geplande datum en gaat bij het volgende goede antwoord naar bakje 7.
 
 | Antwoord | Gevolg |
 | --- | --- |
@@ -212,6 +214,13 @@ leermiddel, geen naslagwerk. Raadpleeg bij twijfel het Kompas of de KNMP Kennisb
 | Goed | Een bakje hoger |
 
 Oudere antwoorden die als twijfel of gok zijn opgeslagen, tellen nog volgens de oude regels.
+
+**Weggezakt.** Voortgang toont de vragen die je fout had nadat je ze eerder goed had, binnen de
+huidige versie. Nog niet herstelde vragen staan bovenaan. "Herhaal deze vragen" start een test met
+die lijst. Zo'n test telt mee zoals "Test jezelf".
+
+**Team.** Het tabblad is verborgen tot er een teammodus is (`TEAM_ZICHTBAAR` in
+`src/components/BottomNav.tsx`). Het scherm staat nog in de code.
 
 **Dagdosis.** Eén keer per dag samengesteld, daarna vast.
 

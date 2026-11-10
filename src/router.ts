@@ -7,7 +7,7 @@ export type Route =
   | { naam: 'team' }
   | { naam: 'instellingen' }
   | { naam: 'kaart'; id: string }
-  | { naam: 'sessie'; kaartId?: string }
+  | { naam: 'sessie'; kaartId?: string; terugval?: boolean }
 
 export function leesRoute(hash: string): Route {
   const [eerste, tweede, derde] = hash.replace(/^#\/?/, '').split('/')
@@ -19,7 +19,9 @@ export function leesRoute(hash: string): Route {
     case 'kaart':
       return tweede ? { naam: 'kaart', id: tweede } : { naam: 'vandaag' }
     case 'sessie':
-      return tweede === 'kaart' && derde ? { naam: 'sessie', kaartId: derde } : { naam: 'sessie' }
+      if (tweede === 'kaart' && derde) return { naam: 'sessie', kaartId: derde }
+      if (tweede === 'terugval') return { naam: 'sessie', terugval: true }
+      return { naam: 'sessie' }
     default:
       return { naam: 'vandaag' }
   }

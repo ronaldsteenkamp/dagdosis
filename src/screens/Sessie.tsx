@@ -3,7 +3,7 @@ import { Bronregel } from '../components/Bronregel'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
 import { kaarten, vragen } from '../inhoud'
-import { geldigeVoortgang, gevolgTekst, planVolgende } from '../logica/herhaling'
+import { geldigeVoortgang, gevolgTekst, planVolgende, teruggevallen } from '../logica/herhaling'
 import { meldingUrl } from '../logica/melding'
 import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
@@ -275,8 +275,12 @@ function Samenvatting({
   )
 }
 
-export function Sessie({ kaartId }: { kaartId?: string }) {
-  const { beantwoord, dosis, dosissen, vandaag } = useAppState()
+/** Een sessie is de dagdosis, of een losse test: per kaart of met teruggevallen vragen. */
+export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boolean }) {
+  const { beantwoord, dosis, dosissen, vandaag, voortgang } = useAppState()
+  const isTest = !!kaartId || !!terugval
+  // De lijst ligt vast bij de start, anders verdwijnt een vraag zodra je hem weer goed hebt.
+  const [terugvalIds] = useState(() => (terugval ? teruggevallen(vragen, voortgang).map((t) => t.vraag.id) : []))
   const [testResultaten, zetTestResultaten] = useState<Resultaat[]>([])
   const [keuze, zetKeuze] = useState<string | null>(null)
   const [openKaart, zetOpenKaart] = useState<string | null>(null)
@@ -285,8 +289,8 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
 
   const lijst = kaartId
     ? vragen.filter((v) => v.kaartId === kaartId)
-    : dosis.vraagIds.flatMap((id) => vragen.filter((v) => v.id === id))
-  const resultaten = kaartId ? testResultaten : dosis.resultaten
+    : (terugval ? terugvalIds : dosis.vraagIds).flatMap((id) => vragen.filter((v) => v.id === id))
+  const resultaten = isTest ? testResultaten : dosis.resultaten
   const vraag = lijst.find((v) => !resultaten.some((r) => r.vraagId === v.id))
   const positie = lijst.length - lijst.filter((v) => !resultaten.some((r) => r.vraagId === v.id)).length + 1
 
@@ -313,7 +317,7 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
       <Samenvatting
         lijst={lijst}
         resultaten={resultaten}
-        streak={kaartId ? undefined : berekenStreak(dosissen, vandaag)}
+        streak={isTest ? undefined : berekenStreak(dosissen, vandaag)}
       />
     )
   }
@@ -350,9 +354,9 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
               keuze,
               zekerheid: 'zeker',
               duurMs: Date.now() - startTijd.current,
-              inDosis: !kaartId,
+              inDosis: !isTest,
             })
-            if (kaartId) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed: keuze === vraag.juist }])
+            if (isTest) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed: keuze === vraag.juist }])
             zetKeuze(null)
           }}
         />

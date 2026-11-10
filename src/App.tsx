@@ -30,7 +30,13 @@ export function App() {
       {route.naam === 'team' && <Team />}
       {route.naam === 'instellingen' && <Instellingen />}
       {route.naam === 'kaart' && <Mechanismekaart key={route.id} id={route.id} />}
-      {route.naam === 'sessie' && <Sessie key={route.kaartId ?? 'dagdosis'} kaartId={route.kaartId} />}
+      {route.naam === 'sessie' && (
+        <Sessie
+          key={route.kaartId ?? (route.terugval ? 'terugval' : 'dagdosis')}
+          kaartId={route.kaartId}
+          terugval={route.terugval}
+        />
+      )}
       {metBalk && <BottomNav actief={route.naam} />}
     </AppStateProvider>
   )

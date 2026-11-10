@@ -4,6 +4,7 @@ import { Titel } from '../components/Kop'
 import { downloadCsv } from '../download'
 import { themas, vragen } from '../inhoud'
 import { backupHerinnering } from '../logica/backup'
+import { teruggevallen } from '../logica/herhaling'
 import {
   leertijdDitJaarMs,
   maakLeerlogCsv,
@@ -26,6 +27,7 @@ export function Voortgang() {
   const herinnering = backupHerinnering(meta.laatsteBackupOp, vandaag, antwoorden.length > 0)
   const percentage = percentageGoed(antwoorden, vandaag)
   const aandacht = morgenAandacht(vragen, themas, voortgang, antwoorden, vandaag)
+  const terugval = teruggevallen(vragen, voortgang)
 
   return (
     <main className="scherm scherm-met-balk">
@@ -93,6 +95,37 @@ export function Voortgang() {
           <p>Morgen staat er niets extra's klaar.</p>
         )}
       </section>
+
+      {terugval.length > 0 && (
+        <section className="kaart" aria-labelledby="terugval-kop">
+          <h2 id="terugval-kop" className="sectiekop">
+            Weggezakt
+          </h2>
+          <p className="gedempt klein">
+            Vragen die je eerst goed had en later fout. Een vinkje betekent dat je ze inmiddels weer goed had.
+          </p>
+          <ul>
+            {terugval.map((t) => (
+              <li key={t.vraag.id} className="samenvatting-rij">
+                <span className={`status-rond ${t.hersteld ? 'status-goed' : 'status-fout'}`}>
+                  <Icon naam={t.hersteld ? 'check' : 'kruis'} maat={16} />
+                </span>
+                <span>
+                  <span className="sr-only">{t.hersteld ? 'Inmiddels weer goed: ' : 'Nog niet hersteld: '}</span>
+                  <span className="gedempt klein" style={{ display: 'block' }}>
+                    {themas.find((th) => th.id === t.vraag.themaIds[0])?.naam}
+                  </span>
+                  {t.vraag.vraag}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <a href="#/sessie/terugval" className="knop knop-licht">
+            <Icon naam="herhaal" maat={20} />
+            Herhaal deze {terugval.length === 1 ? 'vraag' : `${terugval.length} vragen`}
+          </a>
+        </section>
+      )}
 
       <button
         type="button"
