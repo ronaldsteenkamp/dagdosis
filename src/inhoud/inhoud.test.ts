@@ -20,12 +20,12 @@ describe('startinhoud', () => {
     for (const t of themas) {
       expect(vragen.filter((v) => v.themaIds.includes(t.id)).length, t.id).toBeGreaterThanOrEqual(3)
     }
-    expect(new Set(vragen.map((v) => v.type)).size).toBe(5)
+    expect(new Set(vragen.map((v) => v.type)).size).toBeGreaterThanOrEqual(5)
   })
 
   it('verspreidt de juiste antwoorden over A tot en met D', () => {
     for (const letter of ['A', 'B', 'C', 'D']) {
-      expect(vragen.filter((v) => v.juist === letter).length, letter).toBeGreaterThanOrEqual(6)
+      expect(vragen.filter((v) => 'opties' in v && v.juist === letter).length, letter).toBeGreaterThanOrEqual(6)
     }
   })
 

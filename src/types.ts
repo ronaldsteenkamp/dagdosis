@@ -1,7 +1,10 @@
 // Gelijk aan het inhoudsmodel uit de opdracht; fase 2 valideert deze vormen.
 export type Insteek = 'farmacologie' | 'praktijk'
 export type InsteekKeuze = Insteek | 'gemengd'
-export type VraagType = 'casus' | 'mechanisme-bijwerking' | 'mechanisme-middel' | 'vergelijk' | 'kinetiek'
+export type MeerkeuzeType = 'casus' | 'mechanisme-bijwerking' | 'mechanisme-middel' | 'vergelijk' | 'kinetiek'
+export type VraagType = MeerkeuzeType | 'reken' | 'medicatiebewaking'
+/** De vaste keuzes bij medicatiebewaking, in deze volgorde als A tot en met D. */
+export type Beslissing = 'afleveren' | 'afleveren-met-advies' | 'overleggen' | 'niet-afleveren'
 export type Status = 'concept' | 'gecontroleerd'
 export type Zekerheid = 'zeker' | 'twijfel' | 'gok'
 export type ThemaFrequentie = 'vaak' | 'normaal' | 'af-en-toe' | 'uit'
@@ -35,16 +38,13 @@ export interface Optie {
   tekst: string
 }
 
-export interface Vraag {
+interface BasisVraag {
   id: string
-  type: VraagType
   insteek: Insteek
   themaIds: string[]
   kaartId?: string
   casus?: string
   vraag: string
-  opties: Optie[]
-  juist: string
   waarom: string
   mechanismeRegel?: string
   onthoud?: string
@@ -58,6 +58,30 @@ export interface Vraag {
   /** Vóór deze datum (JJJJ-MM-DD) opnieuw nakijken. */
   herzienVoor?: string
 }
+
+/** Vier opties A–D, één juist. */
+export interface MeerkeuzeVraag extends BasisVraag {
+  type: MeerkeuzeType
+  opties: Optie[]
+  juist: string
+}
+
+/** Een getal invullen. Goed als het binnen antwoord ± marge valt. */
+export interface RekenVraag extends BasisVraag {
+  type: 'reken'
+  antwoord: number
+  eenheid: string
+  /** Toegestane afwijking, in dezelfde eenheid. 0 betekent precies. */
+  marge: number
+}
+
+/** Een recept of situatie, met de vaste keuzes van medicatiebewaking. */
+export interface MedicatiebewakingVraag extends BasisVraag {
+  type: 'medicatiebewaking'
+  juist: Beslissing
+}
+
+export type Vraag = MeerkeuzeVraag | RekenVraag | MedicatiebewakingVraag
 
 export interface Instellingen {
   insteek: InsteekKeuze

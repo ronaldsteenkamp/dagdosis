@@ -78,6 +78,53 @@ describe('valideerInhoud', () => {
     )
   })
 
+  describe('rekenvraag', () => {
+    const { opties: _o, juist: _j, ...zonderOpties } = vraag
+    const reken = { ...zonderOpties, type: 'reken', antwoord: 52, eenheid: 'ml/min', marge: 2 }
+    const fout = (wijziging: Record<string, unknown>) =>
+      valideerInhoud({ themas: [thema], kaarten: [kaart], vragen: [{ ...reken, ...wijziging }] }).join('\n')
+
+    it('keurt een geldige rekenvraag goed, ook met marge 0', () => {
+      expect(fout({})).toBe('')
+      expect(fout({ marge: 0 })).toBe('')
+    })
+
+    it.each([
+      ['antwoord als tekst', { antwoord: '52' }, 'antwoord'],
+      ['geen eenheid', { eenheid: '' }, 'eenheid'],
+      ['negatieve marge', { marge: -1 }, 'marge'],
+      ['ontbrekende marge', { marge: undefined }, 'marge'],
+    ])('vindt: %s', (_naam, wijziging, veld) => {
+      expect(fout(wijziging)).toContain(veld)
+    })
+
+    it('weigert opties bij een rekenvraag', () => {
+      expect(fout({ opties: vraag.opties })).toContain('opties: hoort niet bij type "reken"')
+    })
+  })
+
+  describe('medicatiebewaking', () => {
+    const { opties: _o, ...zonderOpties } = vraag
+    const bewaking = { ...zonderOpties, type: 'medicatiebewaking', juist: 'overleggen' }
+    const fout = (wijziging: Record<string, unknown>) =>
+      valideerInhoud({ themas: [thema], kaarten: [kaart], vragen: [{ ...bewaking, ...wijziging }] }).join('\n')
+
+    it('keurt de vier vaste beslissingen goed', () => {
+      for (const juist of ['afleveren', 'afleveren-met-advies', 'overleggen', 'niet-afleveren']) {
+        expect(fout({ juist })).toBe('')
+      }
+    })
+
+    it('weigert een letter of een eigen beslissing', () => {
+      expect(fout({ juist: 'C' })).toContain('juist')
+      expect(fout({ juist: 'doorverwijzen' })).toContain('juist')
+    })
+
+    it('weigert eigen opties, want die liggen vast', () => {
+      expect(fout({ opties: vraag.opties })).toContain('hoort niet bij type "medicatiebewaking"')
+    })
+  })
+
   it('weigert "alle bovenstaande" als optie', () => {
     const opties = vraag.opties.map((o) => (o.id === 'D' ? { ...o, tekst: 'Alle bovenstaande' } : o))
     expect(fouten({ opties }).join('\n')).toContain('alle bovenstaande')

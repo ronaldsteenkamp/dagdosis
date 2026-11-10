@@ -9,7 +9,9 @@ export interface RuweInhoud {
 
 const INSTEKEN = ['farmacologie', 'praktijk']
 const STATUSSEN = ['concept', 'gecontroleerd']
-const VRAAGTYPES = ['casus', 'mechanisme-bijwerking', 'mechanisme-middel', 'vergelijk', 'kinetiek']
+const MEERKEUZETYPES = ['casus', 'mechanisme-bijwerking', 'mechanisme-middel', 'vergelijk', 'kinetiek']
+const VRAAGTYPES = [...MEERKEUZETYPES, 'reken', 'medicatiebewaking']
+const BESLISSINGEN = ['afleveren', 'afleveren-met-advies', 'overleggen', 'niet-afleveren']
 const OPTIE_IDS = ['A', 'B', 'C', 'D']
 const VERBODEN_OPTIE = /(alle|geen van de) (bovenstaande|bovengenoemde|voorgaande)/i
 
@@ -18,11 +20,17 @@ const KAART_VELDEN = [
   'id', 'groep', 'voorbeelden', 'aangrijpingspunt', 'directEffect', 'klinischEffect',
   'afleidbareBijwerkingen', 'letOp', 'bron', 'status',
 ]
-const VRAAG_VELDEN = [
-  'id', 'type', 'insteek', 'themaIds', 'kaartId', 'casus', 'vraag', 'opties', 'juist',
+const BASIS_VELDEN = [
+  'id', 'type', 'insteek', 'themaIds', 'kaartId', 'casus', 'vraag',
   'waarom', 'mechanismeRegel', 'onthoud', 'bron', 'status', 'versie',
   'gecontroleerdDoor', 'gecontroleerdOp', 'herzienVoor',
 ]
+/** Velden die alleen bij een bepaald type horen. */
+const TYPE_VELDEN: Record<string, string[]> = {
+  ...Object.fromEntries(MEERKEUZETYPES.map((t) => [t, ['opties', 'juist']])),
+  reken: ['antwoord', 'eenheid', 'marge'],
+  medicatiebewaking: ['juist'],
+}
 const DATUM_VELDEN = ['gecontroleerdOp', 'herzienVoor']
 
 type Item = Record<string, unknown>
@@ -103,8 +111,13 @@ class Controle {
 }
 
 function controleerVraag(c: Controle, v: Item, plek: string, themas: Map<string, string>, kaartIds: Set<string>) {
-  c.bekendeVelden(v, VRAAG_VELDEN, plek)
   c.keuze(v, 'type', VRAAGTYPES, plek)
+  const typeVelden = TYPE_VELDEN[v.type as string] ?? []
+  for (const veld of Object.keys(v)) {
+    if (BASIS_VELDEN.includes(veld) || typeVelden.includes(veld)) continue
+    const elders = Object.values(TYPE_VELDEN).some((velden) => velden.includes(veld))
+    c.fout(`${plek} › ${veld}`, elders ? `hoort niet bij type "${String(v.type)}"` : 'onbekend veld (typefout?)')
+  }
   c.keuze(v, 'insteek', INSTEKEN, plek)
   c.keuze(v, 'status', STATUSSEN, plek)
   c.tekst(v, 'vraag', plek)
@@ -146,6 +159,10 @@ function controleerVraag(c: Controle, v: Item, plek: string, themas: Map<string,
     }
   }
 
+  if (v.type === 'reken') return controleerReken(c, v, plek)
+  if (v.type === 'medicatiebewaking') return c.keuze(v, 'juist', BESLISSINGEN, plek)
+  if (!MEERKEUZETYPES.includes(v.type as string)) return
+
   if (!Array.isArray(v.opties) || v.opties.length !== OPTIE_IDS.length) {
     c.fout(`${plek} › opties`, `moet precies ${OPTIE_IDS.length} opties hebben`)
     return
@@ -166,6 +183,13 @@ function controleerVraag(c: Controle, v: Item, plek: string, themas: Map<string,
   if (!OPTIE_IDS.includes(v.juist as string)) {
     c.fout(`${plek} › juist`, `"${String(v.juist)}" is geen optie; kies uit ${OPTIE_IDS.join(', ')}`)
   }
+}
+
+function controleerReken(c: Controle, v: Item, plek: string) {
+  const getal = (w: unknown) => typeof w === 'number' && Number.isFinite(w)
+  if (!getal(v.antwoord)) c.fout(`${plek} › antwoord`, 'moet een getal zijn, zonder aanhalingstekens')
+  if (!getal(v.marge) || (v.marge as number) < 0) c.fout(`${plek} › marge`, 'moet een getal van 0 of hoger zijn')
+  c.tekst(v, 'eenheid', plek)
 }
 
 export function valideerInhoud(ruw: RuweInhoud): string[] {

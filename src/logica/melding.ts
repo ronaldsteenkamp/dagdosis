@@ -1,4 +1,5 @@
 import type { Vraag } from '../types'
+import { juistTekst, keuzeTekst } from './vraag'
 
 export const ISSUE_URL = 'https://github.com/ronaldsteenkamp/dagdosis/issues/new'
 
@@ -7,14 +8,13 @@ export const ISSUE_URL = 'https://github.com/ronaldsteenkamp/dagdosis/issues/new
  * De eigen notitie gaat er bewust niet in, want die kan persoonsgegevens bevatten.
  */
 export function meldingUrl(vraag: Vraag, keuze?: string) {
-  const optie = vraag.opties.find((o) => o.id === keuze)
-  const gekozen = optie ? `${optie.id}. ${optie.tekst}` : 'nog niet beantwoord'
-  const titel = `Melding: ${vraag.id} (versie ${vraag.versie})${optie ? `, gekozen ${optie.id}` : ''}`
+  const gekozen = keuze ? keuzeTekst(vraag, keuze) : 'nog niet beantwoord'
+  const titel = `Melding: ${vraag.id} (versie ${vraag.versie})${keuze ? `, gekozen ${keuze}` : ''}`
   const tekst = [
     `Vraag: ${vraag.id}`,
     `Versie: ${vraag.versie}`,
     `Gekozen optie: ${gekozen}`,
-    `Juiste antwoord volgens de app: ${vraag.juist}`,
+    `Juiste antwoord volgens de app: ${juistTekst(vraag)}`,
     '',
     '## Wat klopt er niet?',
     '',

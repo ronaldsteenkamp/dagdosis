@@ -3,6 +3,7 @@ import { themas, vragen } from './inhoud'
 import { stelDosisSamen } from './logica/dagdosis'
 import { datumVan } from './logica/datum'
 import { verwerkAntwoord } from './logica/herhaling'
+import { isGoed } from './logica/vraag'
 import { begrensDuur } from './logica/voortgang'
 import { maakBackup, type Backup } from './logica/backup'
 import {
@@ -115,7 +116,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
     beantwoord({ vraag, keuze, zekerheid, duurMs, inDosis }) {
       const datum = datumVan()
-      const goed = keuze === vraag.juist
+      const goed = isGoed(vraag, keuze)
       const punt = { datum, keuze, goed, zekerheid }
       const voortgang = verwerkAntwoord(vraag, gegevens.voortgang[vraag.id], punt)
       const antwoord: Antwoord = {

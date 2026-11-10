@@ -1,6 +1,6 @@
-import type { Antwoord, Instellingen, Vraag, VraagVoortgang, Zekerheid } from '../types'
+import type { Antwoord, Instellingen, MeerkeuzeVraag, VraagVoortgang, Zekerheid } from '../types'
 
-export function maakVraag(id: string, extra: Partial<Vraag> = {}): Vraag {
+export function maakVraag(id: string, extra: Partial<MeerkeuzeVraag> = {}): MeerkeuzeVraag {
   return {
     id,
     type: 'casus',

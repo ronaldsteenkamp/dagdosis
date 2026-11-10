@@ -53,7 +53,7 @@ Voeg een blok toe aan de lijst in `vragen.json`:
 | Veld | Regels |
 | --- | --- |
 | `id` | Uniek en daarna niet meer wijzigen, want de voortgang hangt eraan |
-| `type` | `casus`, `mechanisme-bijwerking`, `mechanisme-middel`, `vergelijk` of `kinetiek` |
+| `type` | `casus`, `mechanisme-bijwerking`, `mechanisme-middel`, `vergelijk` of `kinetiek` (meerkeuze), `reken` of `medicatiebewaking` (zie hieronder) |
 | `insteek` | `farmacologie` of `praktijk` |
 | `themaIds` | Minstens één id uit `themas.json`, waarvan één bij de insteek hoort |
 | `opties` | Precies vier, met de id's A, B, C en D. Geen "alle bovenstaande" |
@@ -66,6 +66,41 @@ Voeg een blok toe aan de lijst in `vragen.json`:
 `kaartId`, `casus`, `mechanismeRegel`, `onthoud`, `bron.url`, `gecontroleerdDoor`, `gecontroleerdOp`
 en `herzienVoor` mag je weglaten, behalve de eerste twee bij `gecontroleerd`.
 `mechanismeRegel` verschijnt alleen bij praktijkvragen, als "Uitleg altijd met mechanisme" aan staat.
+
+### Een rekenvraag
+
+Bij `"type": "reken"` vul je een getal in. Er zijn geen `opties` en geen `juist`, maar wel:
+
+```json
+"antwoord": 52,
+"eenheid": "ml/min",
+"marge": 2
+```
+
+| Veld | Regels |
+| --- | --- |
+| `antwoord` | Een getal, zonder aanhalingstekens. Decimalen met een punt: `0.5` |
+| `eenheid` | Tekst achter het invoerveld, bijvoorbeeld `ml/min` of `mg/kg` |
+| `marge` | Toegestane afwijking in dezelfde eenheid; goed is `antwoord ± marge`, grenzen inbegrepen. `0` is precies |
+
+De gebruiker typt met een numeriek toetsenbord en mag een komma gebruiken. Zet in `waarom` de
+berekening stap voor stap, en kies de marge zo dat afronden onderweg geen fout oplevert.
+
+### Een medicatiebewakingsvraag
+
+Bij `"type": "medicatiebewaking"` beschrijf je het recept of de situatie in `casus`. De opties liggen
+vast en staan altijd in deze volgorde:
+
+| Letter | `juist` | Tekst in de app |
+| --- | --- | --- |
+| A | `afleveren` | Afleveren |
+| B | `afleveren-met-advies` | Afleveren met advies |
+| C | `overleggen` | Overleggen met voorschrijver |
+| D | `niet-afleveren` | Niet afleveren |
+
+Er is dus geen `opties`. `juist` is een van de vier woorden uit de tweede kolom. Leg in `waarom` uit
+waarom die beslissing past, en wat het advies of de vraag aan de voorschrijver is. Kies alleen
+situaties waarin één beslissing eenduidig de beste is.
 
 ### Een vraag goedkeuren
 
@@ -113,6 +148,9 @@ Daarnaast toont de controle waarschuwingen. Die houden de build niet tegen:
 - een `herzienVoor` die verstreken is;
 - het juiste antwoord is in meer dan 35% van de vragen het langste;
 - een letter is in minder dan 15% of meer dan 35% van de vragen het juiste antwoord.
+
+Reken- en medicatiebewakingsvragen tellen niet mee voor "langste" en de letters. Voor
+medicatiebewaking toont de controle apart hoe vaak elke beslissing juist is.
 
 Tot slot meldt de controle altijd de verdeling, bijvoorbeeld:
 
