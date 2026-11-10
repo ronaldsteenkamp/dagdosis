@@ -9,7 +9,6 @@
     "dev": "vite",
     "build": "node scripts/controleer-inhoud.ts && tsc --noEmit && vite build",
     "preview": "vite preview",
-    "deploy": "node scripts/deploy.mjs",
     "controleer": "node scripts/controleer-inhoud.ts",
     "test": "vitest run",
     "iconen": "pwa-assets-generator"

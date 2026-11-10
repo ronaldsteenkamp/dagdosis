@@ -3,7 +3,7 @@
 Elke dag 5 vragen (± 3 minuten) om je kennis als apotheker op peil te houden, met herhaling
 op basis van hoe zeker je was. Installeerbare webapp die offline werkt. Gemaakt door Ronald.
 
-Live: https://ronaldsteenkamp.github.io/dagdosis-site/
+Live: https://ronaldsteenkamp.github.io/dagdosis/
 
 Alle voortgang staat alleen op het toestel, in IndexedDB. Er is geen backend en geen login.
 Wis je de sitegegevens of wissel je van toestel, dan begin je opnieuw. Exporteer je leerlog
@@ -101,30 +101,17 @@ vragen.json › sglt2-genitale-schimmel › juist: "E" is geen optie; kies uit A
 
 ## Deployen
 
-Eenmalig:
+Push naar `main`. GitHub controleert dan de inhoud, draait de tests, bouwt de app en zet hem op
+GitHub Pages. De wijziging staat een paar minuten later online. Geïnstalleerde apps werken
+zichzelf bij zodra ze online worden geopend.
 
-```bash
-npm install
-```
+Of het gelukt is zie je onder Actions, bij de workflow "Publiceer". Daar kun je hem ook met de
+hand starten. Een fout in `/content` of een falende test houdt de publicatie tegen; de oude
+versie blijft dan online.
 
-Daarna, na elke wijziging:
+Eenmalig in te stellen: Settings → Pages → Source: "GitHub Actions".
 
-```bash
-npm run deploy
-```
-
-Dit controleert de inhoud, bouwt de app en zet `dist/` op de openbare repo
-`ronaldsteenkamp/dagdosis-site`. De wijziging staat een minuut later online. Geïnstalleerde apps
-werken zichzelf bij zodra ze online worden geopend. Commit en push je broncode daarnaast zelf.
-
-Blijft de site na 10 minuten op de oude versie staan, kijk dan in de Actions van `dagdosis-site`.
-GitHub Pages loopt soms vast op een time-out. Wacht dan tot de run klaar is en nog een paar minuten,
-en doe daarna één keer `npm run deploy`. Meerdere keren achter elkaar proberen kan de repo blokkeren
-met de fout "in progress deployment". Zet Pages dan niet uit, want dan gaat de site offline.
-
-GitHub Pages werkt op een gratis plan niet vanuit een privé-repo. Daarom staat alleen de gebouwde
-site in een aparte openbare repo. De site zelf is openbaar: iedereen met het adres kan de vragen
-lezen.
+Deze repo en de site zijn openbaar: iedereen kan de code en de vragen lezen.
 
 Op een andere host, zoals een Render Static Site, gebruik je als buildcommando
 `BASE_PATH=/ npm run build` en als publicatiemap `dist`.
@@ -140,7 +127,7 @@ Op een andere host, zoals een Render Static Site, gebruik je als buildcommando
 npm run dev
 ```
 
-De app staat dan op http://localhost:5173/dagdosis-site/.
+De app staat dan op http://localhost:5173/dagdosis/.
 
 | Commando | Doel |
 | --- | --- |
