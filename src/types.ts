@@ -111,10 +111,26 @@ export interface Melding {
   vraagId: string
   versie: number
   notitie: string
+  /** De gekozen optie, als de vraag al beantwoord was. */
+  keuze?: string
 }
 
 /** Losse gegevens over het gebruik van de app op dit toestel. */
 export interface Meta {
   /** Datum waarop de uitleg bij de eerste start is weggeklikt. */
   welkomGezienOp?: string
+  /** Datum waarop de browser om vaste opslag is gevraagd. */
+  opslagGevraagdOp?: string
+  /** Datum van de laatste volledige back-up. */
+  laatsteBackupOp?: string
+}
+
+/** Alles wat de app op het toestel bewaart. */
+export interface Gegevens {
+  voortgang: Record<string, VraagVoortgang>
+  antwoorden: Antwoord[]
+  dosissen: Record<string, Dosis>
+  meldingen: Melding[]
+  instellingen: Instellingen
+  meta: Meta
 }

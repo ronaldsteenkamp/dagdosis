@@ -182,6 +182,12 @@ describe('leerlog', () => {
     const csv = maakMeldingenCsv([
       { id: 'm', datum: VANDAAG, vraagId: 'v', versie: 1, notitie: 'Klopt "niet"; zie\nregel 2' },
     ])
-    expect(csv).toContain('2026-11-05;v;1;"Klopt ""niet""; zie\nregel 2"')
+    expect(csv).toContain('2026-11-05;v;1;;"Klopt ""niet""; zie\nregel 2"')
+  })
+
+  it('zet de gekozen optie bij een melding', () => {
+    const csv = maakMeldingenCsv([{ id: 'm', datum: VANDAAG, vraagId: 'v', versie: 2, keuze: 'C', notitie: 'x' }])
+    expect(csv).toContain('Datum;Vraag;Versie;Gekozen;Notitie')
+    expect(csv).toContain('2026-11-05;v;2;C;x')
   })
 })

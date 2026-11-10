@@ -4,6 +4,7 @@ import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
 import { kaarten, vragen } from '../inhoud'
 import { geldigeVoortgang, gevolgTekst, planVolgende } from '../logica/herhaling'
+import { meldingUrl } from '../logica/melding'
 import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
 import { useAppState } from '../state'
@@ -43,7 +44,7 @@ function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
   )
 }
 
-function MeldFout({ vraag }: { vraag: Vraag }) {
+function MeldFout({ vraag, keuze }: { vraag: Vraag; keuze?: string }) {
   const { meldingen, voegMeldingToe } = useAppState()
   const dialoog = useRef<HTMLDialogElement>(null)
   const [notitie, zetNotitie] = useState('')
@@ -58,22 +59,32 @@ function MeldFout({ vraag }: { vraag: Vraag }) {
       <dialog ref={dialoog} className="dialoog" aria-label="Fout melden">
         <form
           method="dialog"
-          onSubmit={() => {
-            voegMeldingToe(vraag, notitie)
+          onSubmit={(e) => {
+            const opGithub = (e.nativeEvent as SubmitEvent).submitter?.getAttribute('value') === 'github'
+            voegMeldingToe(vraag, notitie, keuze)
+            if (opGithub) window.open(meldingUrl(vraag, keuze), '_blank', 'noopener')
             zetNotitie('')
           }}
         >
           <h2 className="sectiekop">Fout melden</h2>
           <label className="klein gedempt">
-            Wat klopt er niet? De notitie blijft op dit toestel.
+            Wat klopt er niet? Je notitie blijft op dit toestel.
             <textarea value={notitie} required onChange={(e) => zetNotitie(e.target.value)} />
           </label>
+          <p className="klein gedempt">
+            Via GitHub zie de maker je melding. Daar staan de vraag, de versie en je keuze al ingevuld; je
+            notitie neem je zelf over. Je hebt er een GitHub-account voor nodig. Vermeld geen patiënt- of
+            persoonsgegevens.
+          </p>
+          <button type="submit" value="github" className="knop knop-primair" formNoValidate>
+            Opslaan en melden op GitHub
+          </button>
           <div className="knoprij">
             <button type="button" className="knop knop-licht" onClick={() => dialoog.current?.close()}>
               Annuleren
             </button>
-            <button type="submit" className="knop knop-primair">
-              Opslaan
+            <button type="submit" value="lokaal" className="knop knop-licht">
+              Alleen opslaan
             </button>
           </div>
         </form>
@@ -187,7 +198,7 @@ function Uitlegscherm({
 
       <div className="uitleg-voet">
         <Bronregel bron={vraag.bron} />
-        {vraag.status === 'concept' && <MeldFout vraag={vraag} />}
+        {vraag.status === 'concept' && <MeldFout vraag={vraag} keuze={keuze} />}
       </div>
       {kaart && (
         <button type="button" className="linkrij" onClick={() => onOpenKaart(kaart.id)}>

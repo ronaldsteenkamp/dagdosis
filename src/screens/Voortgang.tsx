@@ -1,7 +1,9 @@
+import { BackupKnop } from '../components/Backup'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
 import { downloadCsv } from '../download'
 import { themas, vragen } from '../inhoud'
+import { backupHerinnering } from '../logica/backup'
 import {
   leertijdDitJaarMs,
   maakLeerlogCsv,
@@ -20,13 +22,25 @@ function leertijd(ms: number) {
 }
 
 export function Voortgang() {
-  const { antwoorden, meldingen, voortgang, vandaag } = useAppState()
+  const { antwoorden, meldingen, meta, voortgang, vandaag } = useAppState()
+  const herinnering = backupHerinnering(meta.laatsteBackupOp, vandaag, antwoorden.length > 0)
   const percentage = percentageGoed(antwoorden, vandaag)
   const aandacht = morgenAandacht(vragen, themas, voortgang, antwoorden, vandaag)
 
   return (
     <main className="scherm scherm-met-balk">
       <Titel className="titel-groot">Voortgang</Titel>
+
+      {herinnering && (
+        <section className="kaart aandachtkaart" aria-labelledby="backup-herinnering-kop">
+          <h2 id="backup-herinnering-kop" className="sectiekop">
+            <Icon naam="waarschuwing" maat={20} />
+            Maak een back-up
+          </h2>
+          <p>{herinnering} Je voortgang staat alleen op dit toestel.</p>
+          <BackupKnop licht={false} />
+        </section>
+      )}
 
       <div className="stats">
         <section className="kaart">

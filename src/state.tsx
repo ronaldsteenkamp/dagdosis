@@ -4,8 +4,17 @@ import { stelDosisSamen } from './logica/dagdosis'
 import { datumVan } from './logica/datum'
 import { verwerkAntwoord } from './logica/herhaling'
 import { begrensDuur } from './logica/voortgang'
-import { bewaarAntwoord, bewaarDosis, bewaarInstellingen, bewaarMelding, bewaarMeta, laadAlles } from './opslag'
-import type { Antwoord, Dosis, Instellingen, Melding, Meta, Vraag, VraagVoortgang, Zekerheid } from './types'
+import { maakBackup, type Backup } from './logica/backup'
+import {
+  bewaarAntwoord,
+  bewaarDosis,
+  bewaarInstellingen,
+  bewaarMelding,
+  bewaarMeta,
+  laadAlles,
+  vervangAlles,
+} from './opslag'
+import type { Antwoord, Dosis, Gegevens, Instellingen, Melding, Meta, Vraag, Zekerheid } from './types'
 
 const startInstellingen: Instellingen = {
   insteek: 'gemengd',
@@ -13,15 +22,6 @@ const startInstellingen: Instellingen = {
   uitlegMetMechanisme: true,
   bijsturen: true,
   themaFrequentie: Object.fromEntries(themas.map((t) => [t.id, 'normaal'])),
-}
-
-interface Gegevens {
-  voortgang: Record<string, VraagVoortgang>
-  antwoorden: Antwoord[]
-  dosissen: Record<string, Dosis>
-  meldingen: Melding[]
-  instellingen: Instellingen
-  meta: Meta
 }
 
 interface AppState extends Gegevens {
@@ -35,8 +35,12 @@ interface AppState extends Gegevens {
     duurMs: number
     inDosis: boolean
   }) => void
-  voegMeldingToe: (vraag: Vraag, notitie: string) => void
+  voegMeldingToe: (vraag: Vraag, notitie: string, keuze?: string) => void
   bevestigWelkom: () => void
+  /** Maakt de back-up en onthoudt de datum. */
+  maakBackup: () => Backup
+  /** Overschrijft alle gegevens met die uit de back-up. */
+  zetBackupTerug: (backup: Backup) => Promise<void>
 }
 
 const Context = createContext<AppState | null>(null)
@@ -50,10 +54,18 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     laadAlles()
-      .then((g) => zetGegevens({ ...g, instellingen: g.instellingen ?? startInstellingen }))
+      .then((g) => {
+        let meta: Meta = g.meta
+        // Eén keer, bij de eerste start: vraag de browser de gegevens niet zomaar op te ruimen.
+        // Sommige browsers stellen de gebruiker daarover een vraag, dus niet bij elke start.
+        if (!meta.opslagGevraagdOp) {
+          navigator.storage?.persist?.().catch(() => {})
+          meta = { ...meta, opslagGevraagdOp: datumVan() }
+          bewaarMeta(meta).catch(meldFout)
+        }
+        zetGegevens({ ...g, meta, instellingen: g.instellingen ?? startInstellingen })
+      })
       .catch(meldFout)
-    // Vraagt de browser de gegevens niet zomaar op te ruimen.
-    navigator.storage?.persist?.()
   }, [])
 
   // Een app die 's nachts open blijft staan, moet de volgende dag een nieuwe dosis krijgen.
@@ -124,13 +136,14 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       bewaarAntwoord(voortgang, antwoord, nieuweDosis).catch(meldFout)
     },
 
-    voegMeldingToe(vraag, notitie) {
+    voegMeldingToe(vraag, notitie, keuze) {
       const melding: Melding = {
         id: crypto.randomUUID(),
         datum: datumVan(),
         vraagId: vraag.id,
         versie: vraag.versie,
         notitie,
+        ...(keuze ? { keuze } : {}),
       }
       zetGegevens({ ...gegevens, meldingen: [...gegevens.meldingen, melding] })
       bewaarMelding(melding).catch(meldFout)
@@ -140,6 +153,21 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       const meta = { ...gegevens.meta, welkomGezienOp: datumVan() }
       zetGegevens({ ...gegevens, meta })
       bewaarMeta(meta).catch(meldFout)
+    },
+
+    maakBackup() {
+      const meta = { ...gegevens.meta, laatsteBackupOp: datumVan() }
+      const nieuw = { ...gegevens, meta }
+      zetGegevens(nieuw)
+      bewaarMeta(meta).catch(meldFout)
+      return maakBackup(nieuw)
+    },
+
+    async zetBackupTerug(backup) {
+      // Een back-up van vóór de eerste start heeft deze datum nog niet; vraag dan niet opnieuw.
+      const g = { ...backup.gegevens, meta: { ...backup.gegevens.meta, opslagGevraagdOp: gegevens.meta.opslagGevraagdOp } }
+      await vervangAlles(g)
+      zetGegevens(g)
     },
   }
 

@@ -6,8 +6,8 @@ op basis van je antwoorden. Installeerbare webapp die offline werkt. Gemaakt doo
 Live: https://ronaldsteenkamp.github.io/dagdosis/
 
 Alle voortgang staat alleen op het toestel, in IndexedDB. Er is geen backend en geen login.
-Wis je de sitegegevens of wissel je van toestel, dan begin je opnieuw. Exporteer je leerlog
-dus regelmatig als je die voor je portfolio bewaart.
+Wis je de sitegegevens of wissel je van toestel, dan begin je opnieuw, tenzij je een back-up
+hebt. Maak die onder Instellingen → Back-up.
 
 ## Vragen toevoegen of wijzigen
 
@@ -176,6 +176,28 @@ De app staat dan op http://localhost:5173/dagdosis/.
 
 Voor een latere backend: antwoorden, meldingen en dosissen zijn losse records met een eigen sleutel.
 Alleen `src/opslag.ts` hoeft dan te veranderen.
+
+## Back-up en meldingen
+
+**Back-up.** Onder Instellingen staat "Back-up maken": één JSON-bestand met voortgang, antwoorden,
+dosissen, meldingen, instellingen en meta. Het bestand heeft een `formaat`-nummer (nu 1). Bij
+"Back-up terugzetten" controleert de app het bestand eerst. Is het in orde, dan toont de app wat
+erin staat en vraagt bevestiging. Pas na "Overschrijven" worden de gegevens op het toestel
+vervangen, in één keer. Een back-up uit een nieuwere versie van de app wordt geweigerd.
+
+Verandert de opbouw van de gegevens, verhoog dan `BACKUP_FORMAAT` in `src/logica/backup.ts` en zet
+oudere formaten om in `zetOm`.
+
+Voortgang toont een herinnering als er nog nooit, of langer dan 30 dagen geleden, een back-up is
+gemaakt.
+
+**Vaste opslag.** Bij de eerste start vraagt de app de browser om de gegevens niet zelf op te ruimen
+(`navigator.storage.persist()`). Dat gebeurt één keer, omdat sommige browsers het de gebruiker vragen.
+
+**Meld fout.** De melding blijft op het toestel, met de gekozen optie, en is te exporteren als CSV.
+Met "Opslaan en melden op GitHub" opent ook een nieuwe issue in deze repo, met vraag-id, versie en
+gekozen optie al ingevuld. De eigen notitie gaat niet mee in de link, omdat die persoonsgegevens kan
+bevatten; die neemt de melder zelf over. Er is een GitHub-account voor nodig.
 
 ## Regels van de app
 

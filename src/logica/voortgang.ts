@@ -121,6 +121,6 @@ export function maakLeerlogCsv(antwoorden: Antwoord[], themas: Thema[]) {
 }
 
 export function maakMeldingenCsv(meldingen: Melding[]) {
-  const rijen = meldingen.map((m) => [m.datum, m.vraagId, m.versie, m.notitie])
-  return csv([['Datum', 'Vraag', 'Versie', 'Notitie'], ...rijen])
+  const rijen = meldingen.map((m) => [m.datum, m.vraagId, m.versie, m.keuze ?? '', m.notitie])
+  return csv([['Datum', 'Vraag', 'Versie', 'Gekozen', 'Notitie'], ...rijen])
 }

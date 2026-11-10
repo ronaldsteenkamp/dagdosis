@@ -1,3 +1,4 @@
+import { BackupKaart } from '../components/Backup'
 import { Disclaimer } from '../components/Disclaimer'
 import { Icon } from '../components/Icon'
 import { Schakelaar, Segment } from '../components/Keuzes'
@@ -96,6 +97,8 @@ export function Instellingen() {
         <Icon naam="herhaal" maat={20} />
         Herhalingen van eerder fout of gegokt gaan altijd voor.
       </p>
+
+      <BackupKaart />
 
       <section className="kaart" aria-labelledby="over-kop">
         <h2 id="over-kop" className="sectiekop">
