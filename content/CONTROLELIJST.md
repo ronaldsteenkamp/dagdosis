@@ -137,3 +137,20 @@ Middelen met anticholinerge werking.
 | `nsaid-maagbescherming-ppi` | casus | interacties, ouderen | MB maagbescherming: [7853-9](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/7853-9.html) |
 | `mb-dabigatran-klaring-25` | medicatiebewaking (overleggen) | antistolling, nierfunctie | IM dabigatran: [S3054](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3054.html) |
 | `domperidon-bloed-hersenbarriere` | mechanisme-bijwerking | mechanisme | IM domperidon: [S1770](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1770.html) |
+
+## Batch 5 (na fase 7)
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `sglt2-intermitterend-vasten` | casus | diabetes | IM empagliflozine: [S5182](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5182.html) |
+| `lithium-sglt2-remmer` | casus | diabetes, psychofarmaca | MB lithium + SGLT-2-remmers: [8241-3](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8241-3.html) |
+| `metformine-contrast-ct` | casus | diabetes, nierfunctie | IM metformine: [S924](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S924.html) |
+| `betablokker-hypo-maskering` | mechanisme-bijwerking | mechanisme, diabetes | IM bètablokkers: [G655](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G655.html) |
+| `mb-propranolol-astma` | medicatiebewaking (overleggen) | astma en COPD | MB astma/COPD: bètablokkers, niet-selectief: [1834-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/1834-1.html) |
+| `timolol-oogdruppels-astma` | casus | astma en COPD | MB astma/COPD: bètablokkers, oculair: [2207-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/2207-1.html) |
+| `inhalatiecorticosteroid-mond-spoelen` | casus | astma en COPD | IM corticosteroïden: [G151](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G151.html); IM beclometason: [S1644](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1644.html) |
+| `noodanticonceptie-na-4-dagen` | casus | anticonceptie, zelfzorg | Zelfzorgstandaard Noodanticonceptie: [link](https://kennisbank.knmp.nl/article/zelfzorgstandaarden/noodanticonceptie.html); IM ulipristal: [S5021](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5021.html) |
+| `noodanticonceptie-carbamazepine` | casus | anticonceptie, interacties | Zelfzorgstandaard Noodanticonceptie: [link](https://kennisbank.knmp.nl/article/zelfzorgstandaarden/noodanticonceptie.html); IM levonorgestrel: [S2201](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2201.html) |
+| `noodanticonceptie-borstvoeding` | casus | anticonceptie, zwangerschap | Zelfzorgstandaard Noodanticonceptie: [link](https://kennisbank.knmp.nl/article/zelfzorgstandaarden/noodanticonceptie.html) |
+
+Nieuwe thema's: Diabetes, Astma en COPD, Anticonceptie. Nieuwe kaart: Bètablokkers.

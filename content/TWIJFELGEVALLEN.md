@@ -181,6 +181,27 @@ bloeding voorkomt, leid ik daaruit af. Het risicoprofiel staat in de casus.
 ### `mb-xylometazoline-kind-1-jaar`
 Het advies om zoutdruppels te geven is algemene kennis en staat niet op de KNMP-pagina.
 
+## Batch 5 (diabetes, astma en COPD, anticonceptie)
+
+### `betablokker-hypo-maskering` en kaart Bètablokkers
+Dat bètablokkers hypoverschijnselen maskeren en het herstel vertragen, staat in de KNMP. Welke signalen
+het zijn (hartkloppingen, trillen), en dat die via adrenaline en bèta-receptoren lopen, is algemene
+kennis. Hetzelfde geldt voor de klinische effecten op de kaart.
+
+### `timolol-oogdruppels-astma`
+De weg via de traanbuis naar het neusslijmvlies in de `mechanismeRegel` is algemene kennis. Het advies
+om de traanbuis dicht te drukken staat in de KNMP.
+
+### `metformine-contrast-ct`
+De KNMP verwijst naar een richtlijn over veilig gebruik van contrastmiddelen. De afkorting van de
+beroepsvereniging is daar uitgeschreven als Reumatologie, wat waarschijnlijk Radiologie moet zijn. Daarom
+noemt de vraag de vereniging niet.
+
+### `sglt2-intermitterend-vasten`
+De contra-indicatie "intermitterend vasten" staat op de KNMP-pagina van empagliflozine, als advies uit
+de NHG-Standaarden. Of dat voor alle SGLT2-remmers zo staat, heb ik niet per middel nagekeken; daarom
+gaat de casus over empagliflozine.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

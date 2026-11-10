@@ -224,5 +224,25 @@
       "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G2013.html"
     },
     "status": "concept"
+  },
+  {
+    "id": "betablokkers",
+    "groep": "Bètablokkers",
+    "voorbeelden": [
+      "bisoprolol",
+      "metoprolol",
+      "propranolol",
+      "timolol (ook als oogdruppel)"
+    ],
+    "aangrijpingspunt": "Bèta-adrenerge receptoren: β1 in het hart, en bij de niet-selectieve middelen ook β2 in onder meer de luchtwegen.",
+    "directEffect": "Adrenaline en noradrenaline kunnen deze receptoren minder prikkelen. Het hart klopt trager en met minder kracht.",
+    "klinischEffect": "Een lagere bloeddruk en hartfrequentie, en minder zuurstofverbruik van het hart. Propranolol wordt ook gebruikt bij migraineprofylaxe, en timolol als oogdruppel bij glaucoom.",
+    "afleidbareBijwerkingen": "Bradycardie en vermoeidheid door de β1-blokkade. Bronchoconstrictie door β2-blokkade, vooral bij niet-selectieve middelen. Een hypo wordt minder goed gevoeld, en het herstel duurt langer.",
+    "letOp": "Bij astma of COPD: niet-selectieve bètablokkers vermijden, en selectieve in hogere dosering kunnen ook bronchoconstrictie geven. Ook oogdruppels werken systemisch. Bij insuline of een sulfonylureumderivaat kunnen hypoverschijnselen worden gemaskeerd.",
+    "bron": {
+      "label": "KNMP Kennisbank, Informatorium Medicamentorum: bètablokkers",
+      "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G655.html"
+    },
+    "status": "concept"
   }
 ]

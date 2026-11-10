@@ -15,5 +15,8 @@
   { "id": "antibiotica", "naam": "Antibiotica", "insteek": "praktijk" },
   { "id": "psychofarmaca", "naam": "Psychofarmaca en lithium", "insteek": "praktijk" },
   { "id": "ouderen", "naam": "Ouderen: vallen en anticholinerge last", "insteek": "praktijk" },
-  { "id": "kinderen", "naam": "Dosering bij kinderen", "insteek": "praktijk" }
+  { "id": "kinderen", "naam": "Dosering bij kinderen", "insteek": "praktijk" },
+  { "id": "diabetes", "naam": "Diabetes", "insteek": "praktijk" },
+  { "id": "luchtwegen", "naam": "Astma en COPD", "insteek": "praktijk" },
+  { "id": "anticonceptie", "naam": "Anticonceptie", "insteek": "praktijk" }
 ]
