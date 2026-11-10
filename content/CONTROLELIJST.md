@@ -122,3 +122,18 @@ Nieuwe thema's: Antibiotica, Psychofarmaca en lithium. Nieuwe kaart: Lithium.
 
 Nieuwe thema's: Ouderen: vallen en anticholinerge last, Dosering bij kinderen. Nieuwe kaart:
 Middelen met anticholinerge werking.
+
+## Fase 7, batch 4
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-xylometazoline-kind-1-jaar` | medicatiebewaking (niet afleveren) | kinderen, zelfzorg | IM xylometazoline: [S1234](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1234.html) |
+| `mb-simvastatine-azitromycine` | medicatiebewaking (afleveren) | interacties, antibiotica | MB statines + azitromycine: [1075-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/1075-1.html) |
+| `mb-vka-amoxicilline` | medicatiebewaking (afleveren met advies) | antistolling, antibiotica | MB VKA's + antibiotica: [400-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/400-4.html) |
+| `apixaban-dosis-atriumfibrilleren` | casus | antistolling, ouderen | IM apixaban: [S5076](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5076.html) |
+| `reken-morfine-oraal-subcutaan` | reken (20 mg) | opioïden | IM oxycodon (omrekening): [S71](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S71.html) |
+| `reken-azitromycine-kind` | reken (5,5 ml) | kinderen, antibiotica | IM azitromycine: [S2424](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2424.html) |
+| `domperidon-maximum` | casus | QT | IM domperidon: [S1770](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1770.html) |
+| `nsaid-maagbescherming-ppi` | casus | interacties, ouderen | MB maagbescherming: [7853-9](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/7853-9.html) |
+| `mb-dabigatran-klaring-25` | medicatiebewaking (overleggen) | antistolling, nierfunctie | IM dabigatran: [S3054](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3054.html) |
+| `domperidon-bloed-hersenbarriere` | mechanisme-bijwerking | mechanisme | IM domperidon: [S1770](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1770.html) |

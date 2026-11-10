@@ -160,6 +160,27 @@ staan.
 De bijwerkingen komen uit de KNMP-tekst bij oxybutynine. De ligging van de muscarinereceptoren (blaas,
 darm, klieren, oog, hersenen) is algemene kennis. Hoe mirabegron werkt, heb ik bewust weggelaten.
 
+## Fase 7, batch 4 (aanvulling over alle onderwerpen)
+
+### `apixaban-dosis-atriumfibrilleren`
+De vraag volgt de KNMP-lijst van risicofactoren: 80 jaar of ouder, 60 kg of lichter, en een
+creatinineklaring onder 30 ml/min. De SmPC noemt voor de nierfunctie, voor zover ik weet, een
+serumcreatinine van 133 µmol/l of hoger. In de casus voldoet ze aan geen van beide nierfunctiecriteria,
+dus het antwoord hangt daar niet van af.
+
+### `domperidon-bloed-hersenbarriere`
+Dat domperidon de bloed-hersenbarrière slecht passeert, en het hogere risico bij jonge kinderen, staan
+in de KNMP. Dat domperidon een dopamineantagonist is en extrapiramidale bijwerkingen via de hersenen
+lopen, is algemene kennis.
+
+### `nsaid-maagbescherming-ppi`
+De KNMP zegt dat (es)omeprazol 10 mg onvoldoende is, en dat een H2-antagonist of misoprostol moet worden
+vervangen door een protonpompremmer. Dat omeprazol 20 mg wel voldoet, en dat een antacidum geen
+bloeding voorkomt, leid ik daaruit af. Het risicoprofiel staat in de casus.
+
+### `mb-xylometazoline-kind-1-jaar`
+Het advies om zoutdruppels te geven is algemene kennis en staat niet op de KNMP-pagina.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
