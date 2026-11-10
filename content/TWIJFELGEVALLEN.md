@@ -221,6 +221,19 @@ De weekdosering bij reumatoïde artritis staat in de KNMP. Dat 52,5 mg per week 
 beenmerg, volgt uit de bekende toxiciteit van methotrexaat; een aparte KNMP-waarschuwing over
 verwisseling van dag- en weekdosering heb ik niet gevonden.
 
+## Batch 7 (farmacologie en kinetiek)
+
+### Mechanismen uit algemene kennis
+- `fentanylpleister-warmte`: dat warmte en koorts de opname verhogen staat in de KNMP; dat dit via een
+  betere doorbloeding van de huid loopt (`mechanismeRegel`), is algemene kennis.
+- `tamsulosine-staaroperatie`: IFIS en de voorzichtigheid bij cataractchirurgie staan in de KNMP; de
+  α1-blokkade in de irisspier (`mechanismeRegel`) is algemene kennis.
+- `ssri-bloedingsrisico`: dat trombocyten zelf geen serotonine maken maar het opnemen, is algemene
+  kennis. De rest staat in de KNMP-groepstekst.
+- `levodopa-decarboxylaseremmer`: dat carbidopa en benserazide zelf de hersenen nauwelijks bereiken,
+  staat niet expliciet in de KNMP; de vraag gaat alleen over de remming van de omzetting buiten de
+  hersenen, en die staat er wel.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

@@ -172,3 +172,18 @@ Nieuwe thema's: Diabetes, Astma en COPD, Anticonceptie. Nieuwe kaart: Bètablokk
 
 Nieuw thema: Reuma en jicht. Alle KNMP-links in vragen en kaarten zijn op 10 november 2026 nagelopen
 en werken.
+
+## Batch 7
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `levodopa-decarboxylaseremmer` | mechanisme-middel | receptoren | IM parkinsonmiddelen: [G566](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G566.html) |
+| `ssri-bloedingsrisico` | mechanisme-bijwerking | mechanisme | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `carbamazepine-auto-inductie` | kinetiek | farmacokinetiek, enzymen | IM carbamazepine: [S166](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S166.html) |
+| `amiodaron-halfwaardetijd` | kinetiek | farmacokinetiek, enzymen | IM amiodaron: [S1164](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1164.html) |
+| `fentanylpleister-warmte` | kinetiek | opioïden | IM fentanyl: [S1374](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1374.html) |
+| `tamsulosine-staaroperatie` | casus | ouderen | IM tamsulosine: [S2539](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2539.html) |
+| `pil-carbamazepine` | casus | anticonceptie, interacties | MB anticonceptiepil + anti-epileptica: [371-5](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/371-5.html); MB progestageen + inductoren: [568-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/568-4.html) |
+| `mb-tramadol-paroxetine` | medicatiebewaking (overleggen) | opioïden, serotonerg | MB SSRI's + tramadol: [624-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/624-1.html) |
+| `mb-pravastatine-claritromycine` | medicatiebewaking (afleveren) | interacties, antibiotica | IM pravastatine: [S2304](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2304.html) |
+| `mb-doxycycline-ijzer` | medicatiebewaking (afleveren met advies) | antibiotica, interacties | MB tetracyclines + ijzer: [464-5](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/464-5.html) |
