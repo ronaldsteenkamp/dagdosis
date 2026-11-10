@@ -1,106 +1,103 @@
 # Twijfelgevallen
 
 Feiten waarover ik twijfelde. Deze zijn geen vraag geworden, of alleen in een vorm die er
-niet van afhangt. Gecontroleerd op 5 november 2026 tegen de openbare pagina's van het
-Farmacotherapeutisch Kompas, tenzij anders vermeld.
+niet van afhangt. Eerst gecontroleerd op 5 november 2026 tegen de openbare pagina's van het
+Farmacotherapeutisch Kompas. Op 10 november 2026 nagekeken in de KNMP Kennisbank
+(Informatorium Medicamentorum en Medicatiebewaking). De uitkomst per vraag staat in
+`CONTROLELIJST.md`.
 
-## Niet opgenomen als vraag
+## Afgehandeld met de KNMP Kennisbank (10 november 2026)
 
 ### Metformine bij een klaring van 15–30 ml/min
-Mijn eerste versie stelde dat metformine onder een eGFR van 30 gecontra-indiceerd is. Zo ken
-ik het uit de SmPC. Het Kompas geeft bij een klaring van 15–30 ml/min echter een KNMP-advies
-van 500 mg per dag, en pas bij 15 ml/min of lager "gebruik vermijden". Op de Kompas-pagina
-vond ik onder de contra-indicaties geen eGFR-grens.
+De KNMP is eenduidig: bij een klaring van 15–30 ml/min hooguit 500 mg per dag, onder 15 ml/min
+vermijden. De EMA noemt onder 30 ml/min een contra-indicatie. Beide bronnen komen uit op
+"niet zonder overleg afleveren" bij een hogere dosering.
+([KNMP Kennisbank, metformine](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S924.html))
 
-De EMA bevestigt de contra-indicatie bij een GFR onder 30 ml/min
-([referral 2016](https://www.ema.europa.eu/en/medicines/human/referrals/metformin-metformin-containing-medicines)).
-De actuele NHG-tekst kon ik niet openen.
-
-**Gedaan:** de vraag `metformine-ernstige-nierfunctiestoornis` gebruikt een klaring van
-12 ml/min, zodat het antwoord in beide bronnen klopt. De uitleg noemt sinds 6 november 2026
-beide grenzen, zodat niemand concludeert dat 15–30 ml/min zonder meer veilig is. De bronlink
-van de vraag blijft het Kompas.
-**Aan jou:** wil je het gebied 15–30 ml/min als aparte vraag, en welke bron is dan leidend?
+**Gedaan:** nieuwe vraag `mb-metformine-klaring-24` (medicatiebewaking, juist: overleggen). De uitleg
+noemt beide bronnen. `metformine-ernstige-nierfunctiestoornis` bleef ongewijzigd.
+**Aan jou:** of de KNMP of de EMA leidend is, blijft jouw keuze. De vraag hangt daar niet van af.
 
 ### Nitrofurantoïne en de nierfunctiegrens
-Ik ken uiteenlopende grenzen uit verschillende bronnen en heb ze niet kunnen vaststellen.
-Daarom geen vraag.
+De KNMP is eenduidig: bij volwassenen vermijden bij een klaring onder 30 ml/min. Er komt dan geen
+bacteriedodende concentratie in de urine, terwijl het middel wel stapelt.
+([KNMP Kennisbank, nitrofurantoïne](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S455.html),
+[Medicatiebewaking: nierfunctie nitrofurantoïne](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/5-8.html))
+
+**Gedaan:** nieuwe vraag `mb-nitrofurantoine-klaring-23` (medicatiebewaking, juist: overleggen).
+Andere grenzen uit oudere bronnen heb ik niet gebruikt.
 
 ### DPP-4-remmer naast een GLP-1-agonist
-Ik ken het advies om deze combinatie te vermijden, omdat ze via dezelfde route werken. Ik vond
-het niet terug in de Kompas-teksten, en de internationale richtlijn kon ik niet openen.
-Daarom geen vraag.
+De inleidende tekst bij de bloedglucoseverlagende middelen noemt de combinatie niet rationeel en
+ontraadt haar.
+([KNMP Kennisbank, bloedglucoseverlagende middelen](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G490.html))
+
+**Gedaan:** nieuwe vraag `dpp4-naast-glp1` (casus, juist: A).
+
+## Nog open
 
 ### Statines tijdens de zwangerschap
-De adviezen zijn de laatste jaren genuanceerder geworden. Ik weet niet zeker wat in Nederland
-nu de lijn is. Daarom geen vraag.
+De KNMP-medicatiebewaking adviseert het gebruik af te wegen. De risico's zijn onvoldoende bekend,
+cholesterol is belangrijk voor de ontwikkeling, en tijdelijk stoppen rond de zwangerschap lijkt de
+moeder niet te schaden.
+([Medicatiebewaking: zwangerschap simvastatine](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/2980-2.html))
+Dat is een afweging en geen eenduidige actie. Daarom heb ik er geen vraag van gemaakt.
+**Aan jou:** wil je een vraag over de strekking ("afwegen, niet automatisch een contra-indicatie")?
+
+### `codeine-borstvoeding`
+Aangepast (versie 2). De KNMP adviseert afwegen: zo nodig hooguit 2–3 dagen in de laagste dosering,
+of tijdelijk kunstvoeding. De EMA noemt borstvoeding sinds 2013 een contra-indicatie. Dat laatste
+heb ik niet in de Kennisbank teruggevonden; het komt uit mijn eigen kennis van het EMA-besluit.
+Het juiste antwoord (ultrasnelle omzetters) hangt hier niet van af.
+
+### `nsaid-derde-trimester`
+Aangepast (versie 3). De KNMP zegt: vermijden vanaf 20 weken, en in de eerste helft incidenteel,
+maar met paracetamol als voorkeur. Het Kompas noemde eerder een contra-indicatie in het derde
+trimester en in de eerste helft hooguit 1 week op strikte indicatie. De uitleg volgt nu de KNMP. Het
+id noemt nog "derde trimester"; dat blijft zo, omdat de voortgang aan het id hangt. De casus (32
+weken) klopt in beide bronnen.
 
 ## Wel opgenomen, maar controleer extra goed
 
-### `digoxine-claritromycine-pgp`
-Het Kompas noemt de interactie, maar niet het mechanisme via P-glycoproteïne. Dat mechanisme
-komt uit mijn eigen kennis.
+### `sacubitril-ace-36-uur`
+De 36 uur en het hogere risico op angio-oedeem staan in de KNMP Kennisbank. Dat bradykinine de
+verklaring is, staat daar alleen bij de ACE-remmers en komt voor neprilysine uit mijn eigen kennis.
 
-### `nsaid-derde-trimester`
-De vraag gebruikt 32 weken, omdat het derde trimester eenduidig is. Bij ibuprofen beschrijft
-het Kompas effecten vanaf week 20 en een contra-indicatie in het derde trimester. De uitleg en
-de onthoudzin noemen sinds 6 november 2026 ook de eerste helft van de zwangerschap. Over het
-gebruik tussen week 20 en het derde trimester geeft de vraag bewust geen eigen advies.
+### `dpp4-gewicht`
+Het effect op het gewicht vond ik niet in de KNMP-groepstekst, en eerder ook niet in het Kompas.
+De uitleg over fysiologische spiegels komt uit mijn eigen kennis.
 
-### `statine-cyp-afhankelijkheid`
-De uitleg noemt ciclosporine en claritromycine bij pravastatine, uit de Kompas-tekst van
-pravastatine. Dat pravastatine vaak gekozen wordt naast een CYP3A4-remmer staat er niet meer in,
-omdat de tekst dat niet zo zegt.
+### `adalimumab-tuberculose`
+De KNMP noemt actieve tuberculose als contra-indicatie en waarschuwt dat latente tuberculose weer
+actief kan worden. De uitleg over granulomen komt uit mijn eigen kennis.
 
 ### `linagliptine-sitagliptine-nier`
-Het Kompas noemt ongeveer 95% via de feces, de SmPC van Trajenta 80% feces en 5% urine, van
-circa 85% teruggevonden radioactiviteit. De uitleg volgt de SmPC, terwijl de bronlink het Kompas
-blijft. Het Kompas noemt geen aanpassing boven 10 ml/min en geen algemeen advies daaronder. De
-vraag gaat over 25 ml/min, dus de uitleg laat die grens weg.
+De KNMP bevestigt sitagliptine 25 mg bij 15–30 ml/min en geen aanpassing bij linagliptine. De
+percentages feces en urine komen uit de SmPC van Trajenta. De bronlink blijft het Kompas.
 
 ### `doac-renale-klaring`
-De cijfers voor edoxaban (35% van de dosis, 50% van de totale klaring) komen uit rubriek 5.2 van
-de SmPC van Lixiana. De bronlink blijft het Kompas.
+De KNMP bevestigt dat dabigatran vooral via de urine gaat. Bij edoxaban noemt de KNMP 35% onveranderd
+in de urine. Dat de nier de helft van de totale klaring van edoxaban voor zijn rekening neemt, komt uit
+rubriek 5.2 van de SmPC van Lixiana.
 
 ### `rode-gist-rijst-statine`
-Het maximum komt uit [Verordening (EU) 2022/860](https://eur-lex.europa.eu/eli/reg/2022/860) en
+De Kennisbank heeft geen monografie over rode gist rijst. Het maximum komt uit
+[Verordening (EU) 2022/860](https://eur-lex.europa.eu/eli/reg/2022/860) en
 [Lareb](https://lareb.nl/news/maximum-voor-monacolinen-in-rode-gist-rijst). De bronlink blijft
 EFSA. Een zoekresultaat noemde een voorstel uit 2026 voor een verbod; dat kon ik niet bevestigen.
 
-### `losartan-kinderwens`
-Het Kompas zegt dat er bij kinderwens op een alternatief moet worden ingesteld. Labetalol als
-voorbeeld komt uit mijn eigen kennis.
-
-### `kinetiek-steady-state` en `kinetiek-oplaaddosis`
+### `kinetiek-steady-state`, `kinetiek-oplaaddosis` en `reken-halfwaardetijd-uitwas`
 Dit is leerboekkennis, zonder bronlink. Vul een bron in als je die wilt.
 
-### `arb-angiotensine-spiegel`
-Dat renine en angiotensine II stijgen bij een ARB, staat niet in de Kompas-teksten die ik las.
-Dit komt uit mijn eigen kennis, en staat ook op de kaart ARB's.
-
-### `codeine-paroxetine-cyp2d6`
-Dat codeïne via CYP2D6 wordt omgezet, staat in het Kompas. Dat paroxetine een sterke CYP2D6-remmer
-is, vond ik daar niet zo beschreven.
-
-### `sacubitril-ace-36-uur`
-De 36 uur en het angio-oedeem staan in het Kompas. Dat bradykinine de verklaring is, komt uit mijn
-eigen kennis.
-
-### `dpp4-gewicht`
-De Kompas-groepstekst noemt het effect op het gewicht niet. Ook de uitleg over fysiologische
-spiegels komt uit mijn eigen kennis.
-
-### `adalimumab-tuberculose`
-De contra-indicatie staat in het Kompas. De uitleg over granulomen komt uit mijn eigen kennis.
+### `reken-cockcroft-gault`
+De KNMP-pagina over verminderde nierfunctie noemt de formule, maar geeft haar alleen in een
+rekenmodule. De formule met de factoren 1,23 en 1,04 (creatinine in µmol/l) komt uit mijn eigen
+kennis.
 
 ### Middelen op de kaarten
 De lijsten komen uit de groepsteksten en de alfabetische lijst van het Kompas, gecontroleerd op
 5 november 2026. Quinapril, trandolapril en lixisenatide staan daar alleen in combinatiepreparaten.
 Tirzepatide heeft een eigen groep, maar staat op de GLP-1-kaart omdat de vraag erover daarbij hoort.
-
-### Kaart ACE-remmers
-De waarschuwing over de combinatie met een NSAID en een diureticum staat niet in de groepstekst
-die als bron op de kaart staat, maar wel bij lisinopril.
 
 ### Kaart Statines
 De spierklachten staan onder "bijwerkingen die je kunt afleiden", maar het mechanisme is minder
@@ -112,3 +109,17 @@ als typerende bijwerking, maar het verband met het mechanisme is minder direct. 
 hartfalen staan onder "let op". Ze staan niet in de groepstekst die als bron op de kaart staat,
 maar wel in de preparaatteksten: het advies om te staken bij sitagliptine, saxagliptine en
 linagliptine, de bijwerking pancreatitis ook bij vildagliptine, en hartfalen bij saxagliptine.
+
+## Opgelost met de KNMP Kennisbank
+
+Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
+
+- `digoxine-claritromycine-pgp`: de Medicatiebewaking heeft een eigen beslisregel "digoxine +
+  P-gp-remmers", met claritromycine erin.
+- `codeine-paroxetine-cyp2d6`: de KNMP noemt paroxetine een krachtige CYP2D6-remmer.
+- `arb-angiotensine-spiegel`: de RAAS-groepstekst zegt dat angiotensine II stijgt bij een ARB.
+- `losartan-kinderwens`: de RAAS-groepstekst noemt methyldopa, labetalol of nifedipine als alternatief.
+- `statine-cyp-afhankelijkheid`: aangepast (versie 3). De KNMP vindt de stijging van pravastatine
+  door ciclosporine en claritromycine niet relevant genoeg voor een actie.
+- Kaart ACE-remmers: de beslisregel "RAAS-remmers + NSAID's" noemt het kleine risico op acute
+  nierinsufficiëntie bij de combinatie met een diureticum.

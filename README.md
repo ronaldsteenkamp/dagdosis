@@ -19,6 +19,7 @@ De inhoud staat in `/content`. Daarvoor hoef je geen code aan te passen.
 | `kaarten.json` | De mechanismekaarten |
 | `vragen.json` | De vragen |
 | `TWIJFELGEVALLEN.md` | Feiten die nog nagekeken moeten worden |
+| `CONTROLELIJST.md` | Per vraag: klopt, aangepast of twijfel, met de gebruikte bron |
 
 ### Een vraag toevoegen
 

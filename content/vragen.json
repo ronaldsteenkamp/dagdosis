@@ -135,11 +135,11 @@
       { "id": "D", "tekst": "Fluvastatine" }
     ],
     "juist": "C",
-    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, en fluvastatine gaat via meerdere CYP450-routes. Pravastatine wordt niet via CYP450 omgezet, maar is niet vrij van interacties. Ciclosporine verhoogt de pravastatinespiegel met een factor vier, en naast claritromycine blijft de kans op myopathie verhoogd. Controleer de combinatie dus per middel.",
-    "onthoud": "Pravastatine ontloopt CYP450, maar niet elke interactie.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, pravastatine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/p/pravastatine" },
+    "waarom": "Simvastatine en atorvastatine worden via CYP3A4 afgebroken, en fluvastatine gaat via meerdere CYP450-routes. Pravastatine wordt niet of nauwelijks via CYP450 omgezet. Daarom noemt de KNMP pravastatine als mogelijk alternatief als een CYP3A4-interactie de simvastatine in de weg zit. Ciclosporine en claritromycine kunnen de pravastatinespiegel wel verhogen, maar de KNMP vindt dat niet relevant genoeg voor een actie.",
+    "onthoud": "Pravastatine ontloopt CYP450 en is daarom een uitwijkmogelijkheid.",
+    "bron": { "label": "KNMP Kennisbank, Informatorium Medicamentorum: pravastatine", "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2304.html" },
     "status": "concept",
-    "versie": 2
+    "versie": 3
   },
   {
     "id": "digoxine-claritromycine-pgp",
@@ -373,12 +373,12 @@
       { "id": "D", "tekst": "De dosering simvastatine tijdens de kuur halveren en verder doorgaan" }
     ],
     "juist": "C",
-    "waarom": "Claritromycine remt CYP3A4 sterk, waardoor de simvastatinespiegel flink stijgt en de kans op myopathie toeneemt. Deze combinatie is gecontra-indiceerd. Spreiden van de inname helpt niet, want het gaat om enzymremming en niet om absorptie. Azitromycine remt CYP3A4 nauwelijks.",
+    "waarom": "Claritromycine remt CYP3A4 sterk, waardoor de simvastatinespiegel flink stijgt en de kans op myopathie en zelfs rabdomyolyse toeneemt. Volgens de fabrikant is de combinatie gecontra-indiceerd. De KNMP adviseert de statine tijdens de kuur tijdelijk te stoppen; kan dat niet, waarschuw dan voor spierpijn en spierzwakte. Spreiden van de inname helpt niet, want het gaat om enzymremming en niet om absorptie. Azitromycine remt CYP3A4 nauwelijks.",
     "mechanismeRegel": "sterke CYP3A4-remming → hogere simvastatinespiegel → risico op myopathie",
     "onthoud": "Bij enzymremming helpt spreiden van de inname niet.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, simvastatine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/s/simvastatine" },
+    "bron": { "label": "KNMP Kennisbank, Medicatiebewaking: simvastatine/atorvastatine + CYP3A4-remmers", "url": "https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/511-3.html" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "ace-diureticum-nsaid",
@@ -522,12 +522,12 @@
       { "id": "D", "tekst": "Geen ibuprofen, maar wel naproxen, omdat dat de placenta niet passeert" }
     ],
     "juist": "B",
-    "waarom": "NSAID's remmen de prostaglandinesynthese. Bij de foetus kan dat leiden tot vernauwing of sluiting van de ductus arteriosus en tot een gestoorde nierfunctie met oligohydramnie. Gebruik in het derde trimester is gecontra-indiceerd, en dat geldt voor de hele groep. Ook eerder gelden beperkingen: de ductus kan al vanaf het tweede trimester vernauwen en oligohydramnie kan vanaf week 20 optreden. In de eerste helft van de zwangerschap alleen op strikte indicatie, zo laag en zo kort mogelijk (max. 1 week).",
+    "waarom": "NSAID's remmen de prostaglandinesynthese. Bij het ongeboren kind kan dat leiden tot vernauwing of vroegtijdige sluiting van de ductus arteriosus en tot nierschade met te weinig vruchtwater. Volgens de KNMP moet je ibuprofen daarom vanaf 20 weken vermijden, dus de hele tweede helft van de zwangerschap en niet pas in het derde trimester. In de eerste helft kan ibuprofen incidenteel, maar ook dan heeft paracetamol de voorkeur.",
     "mechanismeRegel": "COX-remming → minder prostaglandinen → vernauwing van de ductus arteriosus",
-    "onthoud": "Derde trimester: geen NSAID's. Eerste helft: alleen op strikte indicatie.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, ibuprofen", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/i/ibuprofen__systemisch_" },
+    "onthoud": "Vanaf 20 weken geen NSAID's; daarvoor heeft paracetamol de voorkeur.",
+    "bron": { "label": "KNMP Kennisbank, Informatorium Medicamentorum: ibuprofen", "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1281.html" },
     "status": "concept",
-    "versie": 2
+    "versie": 3
   },
   {
     "id": "codeine-borstvoeding",
@@ -543,12 +543,12 @@
       { "id": "D", "tekst": "Bij een ultrasnelle CYP2D6-omzetter kan veel morfine in de melk komen" }
     ],
     "juist": "D",
-    "waarom": "Codeïne en de metaboliet morfine gaan over in de moedermelk. Bij een moeder die codeïne ultrasnel omzet, kan de morfinespiegel zo hoog worden dat de zuigeling ademhalingsdepressie krijgt. Je weet dit meestal niet van tevoren, daarom is de combinatie gecontra-indiceerd.",
+    "waarom": "Codeïne en de metaboliet morfine gaan over in de moedermelk en kunnen stapelen bij de zuigeling. Bij een moeder die codeïne ultrasnel omzet, kan de morfinespiegel zo hoog worden dat de zuigeling suf wordt, slecht drinkt of ademhalingsdepressie krijgt. Je weet dit meestal niet van tevoren. Volgens de EMA (2013) is codeïne bij borstvoeding gecontra-indiceerd. De KNMP adviseert het gebruik af te wegen: zo nodig hooguit 2 à 3 dagen in de laagste werkzame dosering, of tijdelijk kunstvoeding.",
     "mechanismeRegel": "ultrasnel CYP2D6 → veel morfine in de melk → ademhalingsdepressie bij de zuigeling",
-    "onthoud": "Codeïne en borstvoeding gaan niet samen.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, codeïne", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/c/codeine" },
+    "onthoud": "Codeïne bij borstvoeding liever niet, en anders kort en laag.",
+    "bron": { "label": "KNMP Kennisbank, Informatorium Medicamentorum: codeïne", "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S743.html" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "rode-gist-rijst-statine",
@@ -603,16 +603,16 @@
     "opties": [
       { "id": "A", "tekst": "Tegelijk innemen, dan beschermt het antacidum de maag tegen de kuur" },
       { "id": "B", "tekst": "Niet combineren, want het antacidum remt de omzetting van ciprofloxacine in de lever" },
-      { "id": "C", "tekst": "Ciprofloxacine ten minste 1 tot 2 uur vóór of 4 uur na het antacidum innemen" },
+      { "id": "C", "tekst": "Ciprofloxacine ten minste 2 uur vóór of 4 uur na het antacidum innemen" },
       { "id": "D", "tekst": "De kuur stoppen en overleggen over een ander antibioticum" }
     ],
     "juist": "C",
-    "waarom": "Magnesium en aluminium vormen in de darm een complex met ciprofloxacine, waardoor er minder wordt opgenomen. De kuur kan daardoor minder goed werken. Omdat het om de opname gaat, helpt spreiden hier wel.",
+    "waarom": "Magnesium en aluminium vormen in de darm een complex met ciprofloxacine, waardoor er veel minder wordt opgenomen. De kuur kan daardoor minder goed werken. Omdat het om de opname gaat, helpt spreiden hier wel. Andere opties volgens de KNMP: het antacidum tijdens de kuur weglaten, of vervangen door een H2-antagonist of protonpompremmer. Stoppen met de kuur is niet nodig.",
     "mechanismeRegel": "meerwaardige kationen → chelaatvorming in de darm → minder opname → minder effect",
     "onthoud": "Bij een absorptie-interactie helpt spreiden wel, bij enzymremming niet.",
-    "bron": { "label": "Farmacotherapeutisch Kompas, ciprofloxacine", "url": "https://www.farmacotherapeutischkompas.nl/bladeren/preparaatteksten/c/ciprofloxacine" },
+    "bron": { "label": "KNMP Kennisbank, Medicatiebewaking: chinolonen + antacida", "url": "https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/427-3.html" },
     "status": "concept",
-    "versie": 1
+    "versie": 2
   },
   {
     "id": "reken-cockcroft-gault",
@@ -678,6 +678,45 @@
     "mechanismeRegel": "CYP3A4-remming → hogere simvastatinespiegel → bij korte blootstelling geen relevant risico op myopathie",
     "onthoud": "Een eenmalige fluconazol 150 mg naast simvastatine geeft geen actie.",
     "bron": { "label": "KNMP Kennisbank, Medicatiebewaking: simvastatine/atorvastatine + CYP3A4-remmers", "url": "https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/511-3.html" },
+    "status": "concept",
+    "versie": 1,
+    "herzienVoor": "2027-11-10"
+  },
+  {
+    "id": "mb-nitrofurantoine-klaring-23",
+    "type": "medicatiebewaking",
+    "insteek": "praktijk",
+    "themaIds": ["nierfunctie"],
+    "casus": "Een vrouw van 84 krijgt voor een blaasontsteking nitrofurantoïne 100 mg 2 keer per dag, 5 dagen. In het dossier staat een creatinineklaring van 23 ml/min.",
+    "vraag": "Wat doe je met dit recept?",
+    "juist": "overleggen",
+    "waarom": "Bij een klaring onder 30 ml/min moet je nitrofurantoïne volgens de KNMP vermijden. Het middel werkt doordat het zich in de urine ophoopt. Bij een slechte nierfunctie wordt daar geen bacteriedodende concentratie bereikt, terwijl het wel stapelt in bloed en weefsel, met meer kans op bijwerkingen. Overleg met de voorschrijver over een ander antibioticum.",
+    "mechanismeRegel": "lage klaring → te weinig nitrofurantoïne in de urine en stapeling in het bloed → geen effect en meer bijwerkingen",
+    "onthoud": "Nitrofurantoïne onder 30 ml/min: niet werkzaam, wel schadelijk.",
+    "bron": { "label": "KNMP Kennisbank, Informatorium Medicamentorum: nitrofurantoïne", "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S455.html" },
+    "status": "concept",
+    "versie": 1,
+    "herzienVoor": "2027-11-10"
+  },
+  {
+    "id": "dpp4-naast-glp1",
+    "type": "casus",
+    "insteek": "praktijk",
+    "themaIds": ["interacties"],
+    "kaartId": "dpp4-remmers",
+    "casus": "Iemand met metformine en sitagliptine krijgt semaglutide erbij voorgeschreven. Sitagliptine staat nog gewoon op het herhaalschema.",
+    "vraag": "Wat is het beste advies?",
+    "opties": [
+      { "id": "A", "tekst": "Overleggen om sitagliptine te stoppen, omdat het naast semaglutide weinig toevoegt" },
+      { "id": "B", "tekst": "Beide doorgebruiken, omdat de combinatie de glucose extra verlaagt" },
+      { "id": "C", "tekst": "Sitagliptine eerst 2 weken afbouwen voordat semaglutide mag starten" },
+      { "id": "D", "tekst": "Sitagliptine doorgebruiken, maar 4 uur na de injectie innemen" }
+    ],
+    "juist": "A",
+    "waarom": "Een DPP-4-remmer verhoogt de spiegel van het eigen GLP-1. Een GLP-1-agonist activeert dezelfde receptor al veel sterker. De DPP-4-remmer voegt daarom weinig toe. Volgens de KNMP is de combinatie niet rationeel en wordt ze ontraden. Afbouwen is niet nodig, en spreiden heeft geen zin, want het gaat niet om opname.",
+    "mechanismeRegel": "zelfde route (GLP-1-receptor) → agonist activeert de receptor al sterk → DPP-4-remming voegt weinig toe",
+    "onthoud": "Een DPP-4-remmer en een GLP-1-agonist werken via dezelfde route: kies er één.",
+    "bron": { "label": "KNMP Kennisbank, Informatorium Medicamentorum: bloedglucoseverlagende middelen", "url": "https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G490.html" },
     "status": "concept",
     "versie": 1,
     "herzienVoor": "2027-11-10"
