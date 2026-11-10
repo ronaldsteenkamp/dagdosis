@@ -154,3 +154,21 @@ Middelen met anticholinerge werking.
 | `noodanticonceptie-borstvoeding` | casus | anticonceptie, zwangerschap | Zelfzorgstandaard Noodanticonceptie: [link](https://kennisbank.knmp.nl/article/zelfzorgstandaarden/noodanticonceptie.html) |
 
 Nieuwe thema's: Diabetes, Astma en COPD, Anticonceptie. Nieuwe kaart: Bètablokkers.
+
+## Batch 6
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-levothyroxine-calcium` | medicatiebewaking (afleveren met advies) | interacties, ouderen | MB thyreomimetica + antacida/calcium/magnesium: [569-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/569-4.html) |
+| `mb-clopidogrel-pantoprazol` | medicatiebewaking (afleveren) | antistolling, interacties | IM clopidogrel: [S2667](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2667.html); MB clopidogrel + omeprazol/esomeprazol: [917-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/917-1.html) |
+| `mb-methotrexaat-dagelijks` | medicatiebewaking (overleggen) | reuma en jicht | IM methotrexaat: [S570](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S570.html) |
+| `mb-ibuprofen-zwanger-24-weken` | medicatiebewaking (niet afleveren) | zwangerschap, zelfzorg | IM ibuprofen: [S1281](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1281.html) |
+| `colchicine-claritromycine` | casus | reuma en jicht, interacties | MB colchicine + CYP3A4-remmers: [712-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/712-1.html) |
+| `azathioprine-allopurinol` | casus | reuma en jicht, interacties | IM azathioprine: [S571](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S571.html) |
+| `alendroninezuur-inname` | kinetiek | ouderen | IM alendroninezuur: [S2532](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2532.html) |
+| `pil-vergeten-week-3` | casus | anticonceptie, zelfzorg | Anticonceptie vraag en antwoord: [gebruik](https://kennisbank.knmp.nl/article/anticonceptie_vraag_en_antwoord/gebruik.html) |
+| `foliumzuur-verhoogd-risico` | casus | zwangerschap | IM foliumzuur: [S729](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S729.html) |
+| `reken-cockcroft-gault-vrouw` | reken (45 ml/min) | nierfunctie, ouderen | MB verminderde nierfunctie: [intro](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/verminderde_nierfunctie/intro.html) (formule: twijfel) |
+
+Nieuw thema: Reuma en jicht. Alle KNMP-links in vragen en kaarten zijn op 10 november 2026 nagelopen
+en werken.

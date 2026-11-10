@@ -202,6 +202,25 @@ De contra-indicatie "intermitterend vasten" staat op de KNMP-pagina van empaglif
 de NHG-Standaarden. Of dat voor alle SGLT2-remmers zo staat, heb ik niet per middel nagekeken; daarom
 gaat de casus over empagliflozine.
 
+## Batch 6 (reuma en jicht, schildklier, osteoporose, anticonceptie, zwangerschap)
+
+### `azathioprine-allopurinol`
+De dosisverlaging (een kwart tot een derde, bij febuxostat 20% of minder) staat in de KNMP. Het
+mechanisme via xanthine-oxidase in de `mechanismeRegel` is algemene kennis.
+
+### `foliumzuur-verhoogd-risico`
+De KNMP noemt 5 mg per dag. Andere bronnen noemen soms 4 mg. De vraag volgt de KNMP, en de afleiders
+liggen zo ver van 4 à 5 mg af dat het antwoord eenduidig blijft.
+
+### `mb-clopidogrel-pantoprazol`
+Dat omeprazol de activering van clopidogrel remt via CYP2C19, staat niet op de KNMP-pagina. De uitleg
+zegt daarom alleen dat de vorming van de actieve metaboliet daalt.
+
+### `mb-methotrexaat-dagelijks`
+De weekdosering bij reumatoïde artritis staat in de KNMP. Dat 52,5 mg per week toxisch is voor het
+beenmerg, volgt uit de bekende toxiciteit van methotrexaat; een aparte KNMP-waarschuwing over
+verwisseling van dag- en weekdosering heb ik niet gevonden.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

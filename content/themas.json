@@ -18,5 +18,6 @@
   { "id": "kinderen", "naam": "Dosering bij kinderen", "insteek": "praktijk" },
   { "id": "diabetes", "naam": "Diabetes", "insteek": "praktijk" },
   { "id": "luchtwegen", "naam": "Astma en COPD", "insteek": "praktijk" },
-  { "id": "anticonceptie", "naam": "Anticonceptie", "insteek": "praktijk" }
+  { "id": "anticonceptie", "naam": "Anticonceptie", "insteek": "praktijk" },
+  { "id": "reuma-jicht", "naam": "Reuma en jicht", "insteek": "praktijk" }
 ]
