@@ -264,6 +264,21 @@ nagekeken; het antwoord hangt alleen af van de grens van 50 mg.
 - `mb-loperamide-bloed-koorts`: de contra-indicatie staat in de KNMP; de verklaring (de verwekker blijft
   langer in de darm) is algemene kennis.
 
+## Batch 10
+
+### Mechanismen en adviezen uit algemene kennis
+- `mb-acetylsalicylzuur-ibuprofen-balie`: dat ibuprofen de werking van acetylsalicylzuur remt, staat in
+  de KNMP; dat dit komt doordat ibuprofen COX-1 bezet (`mechanismeRegel`), is algemene kennis. Het
+  advies paracetamol is een gangbaar balieadvies; de KNMP noemt geen vast alternatief.
+- `acetylsalicylzuur-irreversibel`: de onomkeerbare acetylering van COX-1 staat in de KNMP; dat een
+  trombocyt geen nieuw enzym kan maken, is algemene kennis.
+- `benzodiazepine-copd`: het advies staat in de KNMP; de demping van de ademhaling als verklaring is
+  algemene kennis.
+- `mb-ibuprofen-baby-2-maanden`: de leeftijdsgrens van 3 maanden staat in de KNMP; het advies om koorts
+  bij zo'n jonge baby door de huisarts te laten beoordelen, is algemene kennis.
+- `zolpidem-dosis-ouderen`: de dosering staat in de KNMP; de verklaring in de `mechanismeRegel` is
+  algemene kennis.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

@@ -217,3 +217,18 @@ en werken.
 | `finasteride-zwangere-partner` | casus | zwangerschap | IM finasteride: [S2428](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2428.html) |
 | `reken-paracetamol-zetpil-kind` | reken (240 mg) | kinderen | IM paracetamol: [S90](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S90.html) |
 | `triptan-ssri-receptoren` | mechanisme-middel | receptoren | MB triptanen + SSRI's: [877-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/877-1.html) |
+
+## Batch 10 (nagekeken op 11 november 2026)
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-acetylsalicylzuur-ibuprofen-balie` | medicatiebewaking (niet afleveren) | antistolling, zelfzorg | MB salicylaten antitrombotisch + ibuprofen: [588-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/588-1.html) |
+| `mb-nitrofurantoine-zwanger-16-weken` | medicatiebewaking (afleveren) | zwangerschap, antibiotica | MB zwangerschap: nitrofurantoïne: [2087-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/2087-1.html) |
+| `mb-ibuprofen-borstvoeding` | medicatiebewaking (afleveren) | zwangerschap, zelfzorg | IM ibuprofen: [S1281](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1281.html) |
+| `mb-ibuprofen-baby-2-maanden` | medicatiebewaking (niet afleveren) | kinderen, zelfzorg | IM ibuprofen: [S1281](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1281.html) |
+| `valproaat-kinderwens` | casus | zwangerschap, psychofarmaca | MB kinderwens (vrouw): valproïnezuur: [4605-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/4605-2.html) |
+| `benzodiazepine-copd` | casus | astma en COPD, ouderen | MB COPD: benzodiazepineagonisten: [5938-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/5938-1.html) |
+| `acetylsalicylzuur-irreversibel` | mechanisme-middel | receptoren, antistolling | IM antitrombotica: [G744](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G744.html) |
+| `ezetimib-mechanisme` | mechanisme-middel | receptoren | IM ezetimib: [S2924](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2924.html) |
+| `zolpidem-dosis-ouderen` | casus | ouderen | IM zolpidem: [S2241](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2241.html) |
+| `reken-morfine-naar-oxycodon` | reken (60 mg) | opioïden | IM oxycodon: [S71](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S71.html) |
