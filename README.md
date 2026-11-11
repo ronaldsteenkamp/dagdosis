@@ -81,7 +81,7 @@ Bij `"type": "reken"` vul je een getal in. Er zijn geen `opties` en geen `juist`
 | Veld | Regels |
 | --- | --- |
 | `antwoord` | Een getal, zonder aanhalingstekens. Decimalen met een punt: `0.5` |
-| `eenheid` | Tekst achter het invoerveld, bijvoorbeeld `ml/min` of `mg/kg` |
+| `eenheid` | Tekst achter het invoerveld, uit de vaste lijst `EENHEDEN` in `src/inhoud/valideer.ts` (onder meer `mg`, `microg`, `ml`, `ml/min`, `mg/kg`, `IE`, `uur`). Een nieuwe eenheid voeg je daar bewust toe |
 | `marge` | Toegestane afwijking in dezelfde eenheid; goed is `antwoord ± marge`, grenzen inbegrepen. `0` is precies |
 
 De gebruiker typt met een numeriek toetsenbord en mag een komma gebruiken. Zet in `waarom` de
@@ -146,7 +146,11 @@ vragen.json › sglt2-genitale-schimmel › juist: "E" is geen optie; kies uit A
 
 Daarnaast toont de controle waarschuwingen. Die houden de build niet tegen:
 
-- een `herzienVoor` die verstreken is;
+- een `herzienVoor` die verstreken is (de app toont zo'n vraag dan ook met het label "herziening
+  verlopen" en een zin in de bronregel);
+- een notatie die tot verkeerd lezen kan leiden: `mcg` of `µg` (schrijf `microg`), een punt in een
+  getal (`2.5 mg`, `1.000`; tijden als `16.00 uur` mogen), een getal dat met een komma begint (`,5`),
+  of een dosis met `,0` erachter (`5,0 mg`). De controle kijkt in alle teksten van vragen en kaarten;
 - het juiste antwoord is in meer dan 35% van de vragen het langste;
 - een letter is in minder dan 15% of meer dan 35% van de vragen het juiste antwoord.
 
@@ -296,3 +300,11 @@ die lijst. Zo'n test telt mee zoals "Test jezelf".
 daarna sluit zonder de uitleg uit te lezen. De leertijd van een vraag loopt van openen tot "Volgende"
 (maximaal 3 minuten). Bij een rekenvraag weigert de app een punt met precies drie cijfers erachter,
 zoals 18.000, omdat dat een duizendtal of een decimaal kan zijn; een komma is het decimaalteken.
+
+**Sneltoetsen.** Met toetsenbord en muis: A–D kiest een optie, Enter controleert, en op het
+uitlegscherm gaat Enter of → naar de volgende vraag. Ze werken niet terwijl je typt of als de dialoog
+"Fout melden" open is. Op een telefoon wordt de hint niet getoond.
+
+**Weergave.** De kleuren staan als tokens bovenaan `src/styles/app.css`, met een donkere variant die de
+instelling van het toestel volgt. Elk paar haalt WCAG AA; gebruik in componenten alleen tokens, geen
+losse kleurcodes. Vanaf 768 px breed is de kolom 640 px en zweeft de navigatiebalk onderaan.

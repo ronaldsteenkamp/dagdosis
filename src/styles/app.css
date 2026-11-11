@@ -13,10 +13,22 @@
   --blauw-vlak: #e3ecf8;
   --blauw-tekst: #1e4e8c;
   --waarschuwing: #c77700;
-  /* Tekst en rand bij een ongeldige invoer; minstens 4,5:1 op --bg en wit. */
+  /* Tekst en rand bij een ongeldige invoer; minstens 4,5:1 op --bg en --kaart. */
   --fout: #b3261e;
-  /* Focusring; op donkere vlakken wit, zie .vlak-donker. */
+  --fout-vlak: #fbe4e1;
+  /* Tekst en iconen op een vlak in --primair. */
+  --op-primair: #fff;
+  /* Focusring; op een vlak in --primair wordt hij --op-primair. */
   --focus: var(--blauw-tekst);
+  /* Randen van invoervelden en schakelaars: minstens 3:1 op --kaart. */
+  --rand: #76847f;
+  /* Leeg deel van een voortgangsbalk. */
+  --spoor: #d9ded8;
+  /* Achtergrond van een knop die (nog) niet kan. */
+  --uit: #e4e8e2;
+  --pil-op-primair: rgba(255, 255, 255, 0.14);
+  --achtergrond-dialoog: rgba(20, 35, 31, 0.5);
+  color-scheme: light dark;
   --r-kaart: 20px;
   --r-knop: 16px;
   --onderbalk: 68px;
@@ -25,6 +37,39 @@
   background: var(--bg);
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
+}
+
+/*
+ * Donkere modus volgt de instelling van het toestel. Alleen de tokens wisselen; alle paren halen
+ * WCAG AA (tekst 4,5:1, randen en focus 3:1). --primair wordt licht, dus tekst op een groen vlak
+ * wordt donker (--op-primair).
+ */
+/* Alleen op het scherm: een afdruk van het leeroverzicht blijft licht. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1715;
+    --tekst: #e6ece9;
+    --gedempt: #9fb0aa;
+    --kaart: #18221f;
+    --lijn: #2a3632;
+    --primair: #7fd1bd;
+    --primair-licht: #1d3a33;
+    --amber-vlak: #3d2c0f;
+    --amber-tekst: #f5cf8a;
+    --tip-vlak: #2e2512;
+    --tip-tekst: #f0d49b;
+    --blauw-vlak: #172a42;
+    --blauw-tekst: #a9c8f0;
+    --waarschuwing: #e59a2f;
+    --fout: #ff8a80;
+    --fout-vlak: #3f1b18;
+    --op-primair: #0b1f1a;
+    --rand: #7d8d87;
+    --spoor: #3d4a46;
+    --uit: #26302d;
+    --pil-op-primair: rgba(0, 0, 0, 0.12);
+    --achtergrond-dialoog: rgba(0, 0, 0, 0.6);
+  }
 }
 
 * { box-sizing: border-box; }
@@ -38,8 +83,8 @@ a { color: inherit; }
 h1:focus { outline: none; }
 .icon { flex: none; display: block; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-/* Op donkergroen valt de blauwe ring weg (1:1), dus daar een witte. */
-.doskaart, .uitslag-goed { --focus: #fff; }
+/* Op een groen vlak valt de blauwe ring weg (1:1), dus daar de tekstkleur van dat vlak. */
+.doskaart, .uitslag-goed { --focus: var(--op-primair); }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
@@ -57,6 +102,9 @@ h1:focus { outline: none; }
 .duw-omlaag { margin-top: auto; }
 
 .gedempt { color: var(--gedempt); }
+/* Een los element in een kolom dat niet de volle breedte moet nemen, zoals een pil. */
+.los { align-self: flex-start; }
+.blok { display: block; }
 .klein { font-size: 14px; }
 .sectiekop { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
 .titel-groot { font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
@@ -74,10 +122,10 @@ h1:focus { outline: none; }
   min-height: 52px; padding: 12px 18px; width: 100%;
   border-radius: var(--r-knop); font-weight: 800; font-size: 16px; text-decoration: none; text-align: center;
 }
-.knop-primair { background: var(--primair); color: #fff; }
-.knop-primair:disabled { background: #e4e8e2; color: var(--gedempt); cursor: not-allowed; }
+.knop-primair { background: var(--primair); color: var(--op-primair); }
+.knop-primair:disabled { background: var(--uit); color: var(--gedempt); cursor: not-allowed; }
 .knop-licht { background: var(--primair-licht); color: var(--primair); }
-.knop-wit { background: #fff; color: var(--primair); }
+.knop-wit { background: var(--kaart); color: var(--primair); }
 .icoonknop {
   width: 44px; height: 44px; flex: none; display: grid; place-items: center;
   border-radius: 14px; background: var(--kaart); color: var(--tekst);
@@ -95,6 +143,7 @@ h1:focus { outline: none; }
 .pil-amber { background: var(--amber-vlak); color: var(--amber-tekst); }
 .pil-groen { background: var(--primair-licht); color: var(--primair); }
 .pil-blauw { background: var(--blauw-vlak); color: var(--blauw-tekst); }
+.pil-fout { background: var(--fout-vlak); color: var(--fout); }
 .pil-rij { display: flex; flex-wrap: wrap; gap: 6px; }
 
 /* Onderbalk */
@@ -118,11 +167,11 @@ h1:focus { outline: none; }
 .vandaag-kop > div:first-child { flex: 1; min-width: 0; }
 
 /* Dagdosiskaart */
-.doskaart { background: var(--primair); color: #fff; gap: 14px; padding: 20px; }
+.doskaart { background: var(--primair); color: var(--op-primair); gap: 14px; padding: 20px; }
 .doskaart h2 { font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
 .doskaart-feiten { display: flex; gap: 16px; font-size: 15px; font-weight: 600; }
 .doskaart-feiten span { display: inline-flex; align-items: center; gap: 6px; }
-.doskaart .pil { background: rgba(255, 255, 255, 0.14); color: #fff; }
+.doskaart .pil { background: var(--pil-op-primair); color: var(--op-primair); }
 .doskaart .pil.pil-amber { background: var(--amber-vlak); color: var(--amber-tekst); }
 
 /* Weekoverzicht */
@@ -133,14 +182,14 @@ h1:focus { outline: none; }
   font-size: 13px; font-weight: 800; background: var(--bg); color: var(--gedempt);
 }
 .week-dag.gedaan { background: var(--primair-licht); color: var(--primair); }
-.week-dag.gemist { background: transparent; border: 1.5px dashed #76847f; }
+.week-dag.gemist { background: transparent; border: 1.5px dashed var(--rand); }
 .week-vandaag { color: var(--tekst) !important; }
 .week-vandaag .week-dag { box-shadow: 0 0 0 2px var(--primair); }
 
 /* Vraag */
 .sessiekop { display: flex; align-items: center; gap: 12px; }
 .balk-segmenten { flex: 1; display: flex; gap: 4px; }
-.balk-segmenten span { flex: 1; height: 8px; border-radius: 999px; background: #d9ded8; }
+.balk-segmenten span { flex: 1; height: 8px; border-radius: 999px; background: var(--spoor); }
 .balk-segmenten span.vol { background: var(--primair); }
 .sessiekop-teller { font-size: 14px; font-weight: 800; min-width: 28px; text-align: right; }
 .casus { font-size: 16px; }
@@ -157,9 +206,9 @@ h1:focus { outline: none; }
 }
 .optie-tekst { align-self: center; font-size: 15px; font-weight: 600; }
 .optie:has(input:checked) { border-color: var(--primair); background: var(--primair-licht); }
-.optie:has(input:checked) .optie-letter { background: var(--primair); color: #fff; }
+.optie:has(input:checked) .optie-letter { background: var(--primair); color: var(--op-primair); }
 .optie:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
-.vraagmeta { display: flex; align-items: center; gap: 6px; }
+.vraagmeta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .vraagmeta .pil { white-space: nowrap; padding: 5px 10px; }
 .vraagmeta .tekstknop { margin-left: auto; white-space: nowrap; }
 .onderkant-vast {
@@ -170,7 +219,7 @@ h1:focus { outline: none; }
 /* Uitleg */
 .uitslag { display: flex; gap: 12px; padding: 14px 16px; border-radius: var(--r-kaart); }
 .uitslag-titel { font-size: 18px; font-weight: 800; line-height: 1.3; display: block; }
-.uitslag-goed { background: var(--primair); color: #fff; }
+.uitslag-goed { background: var(--primair); color: var(--op-primair); }
 .uitslag-fout { background: var(--amber-vlak); color: var(--amber-tekst); }
 .uitslag-inhoud { display: flex; flex-direction: column; gap: 6px; }
 .uitslag-regel { display: flex; gap: 6px; align-items: flex-start; font-size: 15px; font-weight: 600; }
@@ -250,15 +299,15 @@ h1:focus { outline: none; }
   border-radius: 13px; font-size: 14px; font-weight: 700; color: var(--gedempt);
 }
 .segment-klein .segment-optie span { font-size: 13px; }
-.segment-optie input:checked + span { background: var(--primair); color: #fff; font-weight: 800; }
+.segment-optie input:checked + span { background: var(--primair); color: var(--op-primair); font-weight: 800; }
 .segment-optie input:focus-visible + span { outline: 3px solid var(--blauw-tekst); outline-offset: 1px; }
 .segment-optie:has(input:disabled) { cursor: not-allowed; }
 .schakelrij { display: flex; align-items: center; gap: 12px; }
 .schakelrij > div { flex: 1; min-width: 0; }
 .schakelrij-label { font-size: 16px; font-weight: 700; }
 .schakelaar { width: 60px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 14px; }
-.schakelaar-spoor { width: 50px; height: 30px; padding: 3px; border-radius: 999px; background: #76847f; display: flex; transition: background 0.15s; }
-.schakelaar-knop { width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: transform 0.15s; }
+.schakelaar-spoor { width: 50px; height: 30px; padding: 3px; border-radius: 999px; background: var(--rand); display: flex; transition: background 0.15s; }
+.schakelaar-knop { width: 24px; height: 24px; border-radius: 50%; background: var(--kaart); transition: transform 0.15s; }
 .schakelaar[aria-checked='true'] .schakelaar-spoor { background: var(--primair); }
 .schakelaar[aria-checked='true'] .schakelaar-knop { transform: translateX(20px); }
 .themakeuze { display: flex; flex-direction: column; gap: 6px; }
@@ -269,6 +318,7 @@ h1:focus { outline: none; }
 /* Team */
 .leeg { align-items: center; text-align: center; padding: 40px 24px; }
 .leeg-icoon { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; background: var(--primair-licht); color: var(--primair); }
+.leeg-icoon-klein { width: 44px; height: 44px; flex: none; }
 
 /* Inhoudsfouten */
 .foutenlijst { font-size: 14px; overflow-wrap: anywhere; }
@@ -278,17 +328,39 @@ h1:focus { outline: none; }
   border: 0; padding: 20px; width: min(100vw - 24px, 456px); margin: auto auto 12px;
   border-radius: var(--r-kaart); color: var(--tekst);
 }
-.dialoog::backdrop { background: rgba(20, 35, 31, 0.5); }
+.dialoog::backdrop { background: var(--achtergrond-dialoog); }
 .dialoog form { display: flex; flex-direction: column; gap: 12px; }
-.dialoog textarea { display: block; margin-top: 6px; width: 100%; min-height: 110px; padding: 12px; color: var(--tekst); border: 1.5px solid #76847f; border-radius: 14px; background: #fff; resize: vertical; }
+.dialoog textarea { display: block; margin-top: 6px; width: 100%; min-height: 110px; padding: 12px; color: var(--tekst); border: 1.5px solid var(--rand); border-radius: 14px; background: var(--kaart); resize: vertical; }
 .knoprij { display: flex; gap: 8px; }
+
+/* Sneltoetsen alleen tonen waar een toetsenbord en muis te verwachten zijn. */
+.sneltoetsen { display: none; text-align: center; margin-bottom: 8px; }
+@media (hover: hover) and (pointer: fine) {
+  .sneltoetsen { display: block; }
+}
+
+/*
+ * Desktop: een iets bredere kolom (regels blijven onder ±75 tekens) en een navigatiebalk die als
+ * los blok onderaan zweeft in plaats van over de hele schermbreedte te lopen.
+ */
+@media screen and (min-width: 768px) {
+  .scherm { max-width: 640px; padding-top: 32px; }
+  .vraagtekst { font-size: 22px; }
+  .onderbalk {
+    left: 50%; right: auto; bottom: 16px; transform: translateX(-50%);
+    width: 360px; border: 1px solid var(--lijn); border-radius: var(--r-kaart); padding-bottom: 0;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  }
+  .scherm-met-balk { padding-bottom: calc(var(--onderbalk) + 48px); }
+  .dialoog { margin: auto; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
 
 /* Invoervelden buiten een dialoog */
-.invoerveld { display: block; margin-top: 6px; width: 100%; min-height: 44px; padding: 10px 12px; color: var(--tekst); border: 1.5px solid #76847f; border-radius: 14px; background: #fff; }
+.invoerveld { display: block; margin-top: 6px; width: 100%; min-height: 44px; padding: 10px 12px; color: var(--tekst); border: 1.5px solid var(--rand); border-radius: 14px; background: var(--kaart); }
 textarea.invoerveld { min-height: 96px; resize: vertical; }
 
 /* Leeroverzicht */

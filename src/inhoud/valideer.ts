@@ -13,7 +13,15 @@ const MEERKEUZETYPES = ['casus', 'mechanisme-bijwerking', 'mechanisme-middel', '
 const VRAAGTYPES = [...MEERKEUZETYPES, 'reken', 'medicatiebewaking']
 const BESLISSINGEN = ['afleveren', 'afleveren-met-advies', 'overleggen', 'niet-afleveren']
 const OPTIE_IDS = ['A', 'B', 'C', 'D']
-const VERBODEN_OPTIE = /(alle|geen van de) (bovenstaande|bovengenoemde|voorgaande)/i
+/**
+ * Eenheden achter het invulveld van een rekenvraag. Een vaste lijst voorkomt varianten als mL, mcg
+ * of µg naast elkaar; µg lijkt bij snel lezen op mg. Uitbreiden mag, maar dan bewust.
+ */
+export const EENHEDEN = [
+  'mg', 'g', 'microg', 'ml', 'IE', 'mmol', 'mmol/l', 'mg/kg', 'mg/dag', 'mg per 24 uur', 'ml/min',
+  'ml/uur', 'druppels', 'tabletten', 'uur', 'dagen', '%',
+]
+const VERBODEN_OPTIE =/(alle|geen van de) (bovenstaande|bovengenoemde|voorgaande)/i
 
 const THEMA_VELDEN = ['id', 'naam', 'insteek']
 const KAART_VELDEN = [
@@ -190,6 +198,13 @@ function controleerReken(c: Controle, v: Item, plek: string) {
   if (!getal(v.antwoord)) c.fout(`${plek} › antwoord`, 'moet een getal zijn, zonder aanhalingstekens')
   if (!getal(v.marge) || (v.marge as number) < 0) c.fout(`${plek} › marge`, 'moet een getal van 0 of hoger zijn')
   c.tekst(v, 'eenheid', plek)
+  if (isTekst(v.eenheid) && !EENHEDEN.includes(v.eenheid)) {
+    c.fout(
+      `${plek} › eenheid`,
+      `"${v.eenheid}" staat niet in de lijst met eenheden (${EENHEDEN.join(', ')}). ` +
+        'Voeg een nieuwe eenheid bewust toe in src/inhoud/valideer.ts; schrijf microgram als "microg".',
+    )
+  }
 }
 
 export function valideerInhoud(ruw: RuweInhoud): string[] {

@@ -28,7 +28,7 @@ if (fouten.length > 0) {
 }
 
 const vragen = inhoud.vragen as Vraag[]
-const waarschuwingen = inhoudWaarschuwingen(vragen, datumVan())
+const waarschuwingen = inhoudWaarschuwingen(vragen, datumVan(), inhoud.kaarten as { id: string }[])
 if (waarschuwingen.length > 0) {
   console.warn(`\nLet op (${waarschuwingen.length} ${waarschuwingen.length === 1 ? 'waarschuwing' : 'waarschuwingen'}):\n`)
   for (const w of waarschuwingen) console.warn(`  - ${w}`)
