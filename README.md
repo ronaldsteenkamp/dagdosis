@@ -291,3 +291,8 @@ die lijst. Zo'n test telt mee zoals "Test jezelf".
 6. Vragen bij dezelfde kaart staan niet achter elkaar.
 
 "Test jezelf" telt mee voor herhaling, scores en leertijd, maar niet voor de streak.
+
+**Antwoorden.** Een antwoord wordt opgeslagen zodra je op "Controleer" tikt, dus ook als je de app
+daarna sluit zonder de uitleg uit te lezen. De leertijd van een vraag loopt van openen tot "Volgende"
+(maximaal 3 minuten). Bij een rekenvraag weigert de app een punt met precies drie cijfers erachter,
+zoals 18.000, omdat dat een duizendtal of een decimaal kan zijn; een komma is het decimaalteken.

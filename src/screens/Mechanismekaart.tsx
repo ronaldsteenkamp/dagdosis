@@ -27,6 +27,18 @@ export function Mechanismekaart({ id, onTerug }: { id: string; onTerug?: () => v
     return (
       <main className="scherm">
         <Terugkop titel="Kaart niet gevonden" onTerug={onTerug} />
+        <p>
+          Deze mechanismekaart bestaat niet (meer). Misschien is de link verouderd, of is de kaart hernoemd.
+        </p>
+        {onTerug ? (
+          <button type="button" className="knop knop-licht" onClick={onTerug}>
+            Terug naar de vraag
+          </button>
+        ) : (
+          <a href="#/" className="knop knop-licht">
+            Naar Vandaag
+          </a>
+        )}
       </main>
     )
   }
@@ -67,7 +79,7 @@ export function Mechanismekaart({ id, onTerug }: { id: string; onTerug?: () => v
           Test jezelf op deze groep
         </a>
       )}
-      <Bronregel bron={kaart.bron} />
+      <Bronregel bron={kaart.bron} controle={kaart} />
     </main>
   )
 }

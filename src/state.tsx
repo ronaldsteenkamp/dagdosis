@@ -13,6 +13,7 @@ import {
   bewaarMelding,
   bewaarMeta,
   bewaarReflectie,
+  bijwerkAntwoord,
   laadAlles,
   vervangAlles,
 } from './opslag'
@@ -36,7 +37,9 @@ interface AppState extends Gegevens {
     zekerheid: Zekerheid
     duurMs: number
     inDosis: boolean
-  }) => void
+  }) => string
+  /** Zet de leertijd van een al opgeslagen antwoord, inclusief het lezen van de uitleg. */
+  zetLeertijd: (antwoordId: string, duurMs: number) => void
   voegMeldingToe: (vraag: Vraag, notitie: string, keuze?: string) => void
   bevestigWelkom: () => void
   /** Slaat een reflectie op; een lege tekst verwijdert hem. */
@@ -138,6 +141,16 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         dosissen: nieuweDosis ? { ...gegevens.dosissen, [dosis.datum]: nieuweDosis } : gegevens.dosissen,
       })
       bewaarAntwoord(voortgang, antwoord, nieuweDosis).catch(meldFout)
+      return antwoord.id
+    },
+
+    zetLeertijd(antwoordId, duurMs) {
+      const oud = gegevens.antwoorden.find((a) => a.id === antwoordId)
+      if (!oud) return
+      const antwoord = { ...oud, duurMs: begrensDuur(duurMs) }
+      if (antwoord.duurMs === oud.duurMs) return
+      zetGegevens({ ...gegevens, antwoorden: gegevens.antwoorden.map((a) => (a.id === antwoordId ? antwoord : a)) })
+      bijwerkAntwoord(antwoord).catch(meldFout)
     },
 
     voegMeldingToe(vraag, notitie, keuze) {

@@ -186,6 +186,7 @@ function Uitlegscherm({
   keuze,
   positie,
   totaal,
+  dagen,
   onOpenKaart,
   onVolgende,
 }: {
@@ -193,15 +194,16 @@ function Uitlegscherm({
   keuze: string
   positie: number
   totaal: number
+  /** Over hoeveel dagen de vraag terugkomt; berekend op het moment van controleren. */
+  dagen: number
   onOpenKaart: (id: string) => void
   onVolgende: () => void
 }) {
-  const { instellingen, voortgang } = useAppState()
+  const { instellingen } = useAppState()
   const goed = isGoed(vraag, keuze)
   const kaart = kaarten.find((k) => k.id === vraag.kaartId)
   const toonRegel =
     vraag.mechanismeRegel && vraag.insteek === 'praktijk' && instellingen.uitlegMetMechanisme
-  const bakje = geldigeVoortgang(vraag, voortgang[vraag.id])?.bakje ?? 1
 
   return (
     <main className="scherm scherm-sessie">
@@ -250,7 +252,7 @@ function Uitlegscherm({
       )}
 
       <div className="uitleg-voet">
-        <Bronregel bron={vraag.bron} />
+        <Bronregel bron={vraag.bron} controle={vraag} />
         {vraag.status === 'concept' && <MeldFout vraag={vraag} keuze={keuze} />}
       </div>
       {kaart && (
@@ -262,7 +264,7 @@ function Uitlegscherm({
 
       <p className="gevolg" role="status">
         <Icon naam="herhaal" maat={18} />
-        {gevolgTekst(planVolgende(bakje, goed, 'zeker').dagen)}
+        {gevolgTekst(dagen)}
       </p>
 
       <button
@@ -330,18 +332,35 @@ function Samenvatting({
         <h2 id="overzicht-kop" className="sectiekop">
           Overzicht
         </h2>
+        <p className="gedempt klein">Tik op een vraag om het antwoord en de uitleg terug te lezen.</p>
         <ul>
-          {resultaten.map((r) => (
-            <li key={r.vraagId} className="samenvatting-rij">
-              <span className={`status-rond ${r.goed ? 'status-goed' : 'status-fout'}`}>
-                <Icon naam={r.goed ? 'check' : 'kruis'} maat={16} />
-              </span>
-              <span>
-                <span className="sr-only">{r.goed ? 'Goed: ' : 'Niet goed: '}</span>
-                {lijst.find((v) => v.id === r.vraagId)?.vraag}
-              </span>
-            </li>
-          ))}
+          {resultaten.map((r) => {
+            const v = lijst.find((x) => x.id === r.vraagId)
+            if (!v) return null
+            return (
+              <li key={r.vraagId} className="samenvatting-rij">
+                <details open={!r.goed && resultaten.filter((x) => !x.goed).length === 1}>
+                  <summary>
+                    <span className={`status-rond ${r.goed ? 'status-goed' : 'status-fout'}`}>
+                      <Icon naam={r.goed ? 'check' : 'kruis'} maat={16} />
+                    </span>
+                    <span className="samenvatting-vraag">
+                      <span className="sr-only">{r.goed ? 'Goed: ' : 'Niet goed: '}</span>
+                      {v.casus && <span className="samenvatting-casus">{v.casus}</span>}
+                      {v.vraag}
+                    </span>
+                  </summary>
+                  <div className="samenvatting-uitleg">
+                    <p>
+                      <strong>Juist antwoord:</strong> {juistTekst(v)}
+                    </p>
+                    <p>{v.waarom}</p>
+                    <Bronregel bron={v.bron} />
+                  </div>
+                </details>
+              </li>
+            )
+          })}
         </ul>
       </section>
       <ReflectieVeld id={reflectieId} soort={streak === undefined ? 'test' : 'dagdosis'} />
@@ -356,13 +375,17 @@ function Samenvatting({
 
 /** Een sessie is de dagdosis, of een losse test: per kaart of met teruggevallen vragen. */
 export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boolean }) {
-  const { beantwoord, dosis, dosissen, vandaag, voortgang } = useAppState()
+  const { beantwoord, dosis, dosissen, vandaag, voortgang, zetLeertijd } = useAppState()
   const isTest = !!kaartId || !!terugval
   // De lijst ligt vast bij de start, anders verdwijnt een vraag zodra je hem weer goed hebt.
   const [testId] = useState(() => `test-${crypto.randomUUID()}`)
   const [terugvalIds] = useState(() => (terugval ? teruggevallen(vragen, voortgang).map((t) => t.vraag.id) : []))
   const [testResultaten, zetTestResultaten] = useState<Resultaat[]>([])
-  const [keuze, zetKeuze] = useState<string | null>(null)
+  // Het antwoord is al opgeslagen zodra de uitleg verschijnt. Sluit je de sessie tijdens de uitleg
+  // (telefoon, klant aan de balie), dan telt het antwoord dus gewoon mee.
+  const [uitleg, zetUitleg] = useState<{ vraagId: string; keuze: string; antwoordId: string; dagen: number } | null>(
+    null,
+  )
   const [openKaart, zetOpenKaart] = useState<string | null>(null)
   const startTijd = useRef(0)
   const scrollVoorKaart = useRef(0)
@@ -371,21 +394,25 @@ export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boo
     ? vragen.filter((v) => v.kaartId === kaartId)
     : (terugval ? terugvalIds : dosis.vraagIds).flatMap((id) => vragen.filter((v) => v.id === id))
   const resultaten = isTest ? testResultaten : dosis.resultaten
-  const vraag = lijst.find((v) => !resultaten.some((r) => r.vraagId === v.id))
-  const positie = lijst.length - lijst.filter((v) => !resultaten.some((r) => r.vraagId === v.id)).length + 1
+  const aantalBeantwoord = lijst.filter((v) => resultaten.some((r) => r.vraagId === v.id)).length
+  const vraag = uitleg
+    ? lijst.find((v) => v.id === uitleg.vraagId)
+    : lijst.find((v) => !resultaten.some((r) => r.vraagId === v.id))
+  // Tijdens de uitleg is de vraag al beantwoord en dus meegeteld.
+  const positie = uitleg ? aantalBeantwoord : aantalBeantwoord + 1
 
   useEffect(() => {
     if (lijst.length === 0) ga('#/')
   }, [lijst.length])
 
-  // De leertijd loopt vanaf het openen van de vraag.
+  // De leertijd loopt vanaf het openen van de vraag tot "Volgende".
   useEffect(() => {
     startTijd.current = Date.now()
   }, [vraag?.id])
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [vraag?.id, keuze])
+  }, [vraag?.id, uitleg])
 
   useLayoutEffect(() => {
     window.scrollTo(0, openKaart ? 0 : scrollVoorKaart.current)
@@ -403,14 +430,28 @@ export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boo
     )
   }
 
-  if (keuze === null) {
+  if (!uitleg) {
     return (
       <Vraagscherm
         key={vraag.id}
         vraag={vraag}
         positie={positie}
         totaal={lijst.length}
-        onControleer={zetKeuze}
+        onControleer={(keuze) => {
+          const goed = isGoed(vraag, keuze)
+          // Plannen met de voortgang van vóór dit antwoord.
+          const bakje = geldigeVoortgang(vraag, voortgang[vraag.id])?.bakje ?? 1
+          const { dagen } = planVolgende(bakje, goed, 'zeker')
+          const antwoordId = beantwoord({
+            vraag,
+            keuze,
+            zekerheid: 'zeker',
+            duurMs: Date.now() - startTijd.current,
+            inDosis: !isTest,
+          })
+          if (isTest) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed }])
+          zetUitleg({ vraagId: vraag.id, keuze, antwoordId, dagen })
+        }}
       />
     )
   }
@@ -422,23 +463,17 @@ export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boo
         <Uitlegscherm
           key={vraag.id}
           vraag={vraag}
-          keuze={keuze}
+          keuze={uitleg.keuze}
           positie={positie}
           totaal={lijst.length}
+          dagen={uitleg.dagen}
           onOpenKaart={(id) => {
             scrollVoorKaart.current = window.scrollY
             zetOpenKaart(id)
           }}
           onVolgende={() => {
-            beantwoord({
-              vraag,
-              keuze,
-              zekerheid: 'zeker',
-              duurMs: Date.now() - startTijd.current,
-              inDosis: !isTest,
-            })
-            if (isTest) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed: isGoed(vraag, keuze) }])
-            zetKeuze(null)
+            zetLeertijd(uitleg.antwoordId, Date.now() - startTijd.current)
+            zetUitleg(null)
           }}
         />
       </div>
