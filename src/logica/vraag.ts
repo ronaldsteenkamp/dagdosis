@@ -24,12 +24,36 @@ export function juisteKeuze(vraag: Vraag): string {
   return vraag.juist
 }
 
-/** Leest een ingevoerd getal; een komma mag als decimaalteken. Geeft null bij geen geldig getal. */
+/**
+ * Een punt met precies drie cijfers erachter, zoals 18.000, is in het Nederlands een duizendtal,
+ * maar in de rest van de wereld een decimaal. Zo'n invoer is dubbelzinnig en lezen we niet.
+ * Met een 0 ervoor (0.125) kan het geen duizendtal zijn.
+ */
+const DUBBELZINNIGE_PUNT = /^-?[1-9]\d{0,2}\.\d{3}$/
+
+/** Waarom een invoer geen geldig getal is, of null als hij wel te lezen is. */
+export function getalProbleem(tekst: string): string | null {
+  const schoon = tekst.trim().replace(/\s/g, '')
+  if (DUBBELZINNIGE_PUNT.test(schoon)) {
+    return 'Bedoel je een duizendtal of een decimaal? Gebruik een komma als decimaalteken, bijvoorbeeld 18,5.'
+  }
+  return leesGetal(schoon) === null ? 'Vul een getal in, bijvoorbeeld 52 of 0,5.' : null
+}
+
+/**
+ * Leest een getal; een komma mag als decimaalteken. Geeft null bij geen geldig getal.
+ * Voor opgeslagen antwoorden, die als "1.125" bewaard zijn. Voor wat iemand typt: leesInvoer.
+ */
 export function leesGetal(tekst: string): number | null {
   const schoon = tekst.trim().replace(/\s/g, '').replace(',', '.')
   if (!/^-?(\d+\.?\d*|\.\d+)$/.test(schoon)) return null
   const getal = Number(schoon)
   return Number.isFinite(getal) ? getal : null
+}
+
+/** Leest wat iemand in het rekenveld typt. Weigert ook een dubbelzinnige punt, zoals 18.000. */
+export function leesInvoer(tekst: string): number | null {
+  return getalProbleem(tekst) === null ? leesGetal(tekst) : null
 }
 
 /** Afrondingsruis van zwevendekommagetallen mag een antwoord op de grens niet fout maken. */
@@ -42,10 +66,11 @@ export function isGoed(vraag: Vraag, keuze: string): boolean {
 }
 
 export function getalTekst(getal: number) {
-  return new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 6 }).format(getal)
+  // Zonder scheidingsteken voor duizendtallen: 1000, niet 1.000. Dat sluit aan bij wat de invoer accepteert.
+  return new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 6, useGrouping: false }).format(getal)
 }
 
-function rekenTekst(vraag: RekenVraag, getal: number) {
+export function rekenTekst(vraag: RekenVraag, getal: number) {
   return `${getalTekst(getal)} ${vraag.eenheid}`
 }
 

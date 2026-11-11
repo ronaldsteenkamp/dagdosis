@@ -5,7 +5,7 @@ import { Titel } from '../components/Kop'
 import { kaarten, vragen } from '../inhoud'
 import { geldigeVoortgang, gevolgTekst, planVolgende, teruggevallen } from '../logica/herhaling'
 import { meldingUrl } from '../logica/melding'
-import { isGoed, juistTekst, keuzeTekst, leesGetal, optiesVan } from '../logica/vraag'
+import { getalProbleem, isGoed, juistTekst, keuzeTekst, leesInvoer, optiesVan, rekenTekst } from '../logica/vraag'
 import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
 import { useAppState } from '../state'
@@ -22,7 +22,9 @@ const typeLabel: Record<VraagType, string> = {
   medicatiebewaking: 'Medicatiebewaking',
 }
 
-function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
+/** De balk telt beantwoorde vragen; de teller noemt de vraag waar je nu bent. */
+function Sessiekop({ positie, totaal, beantwoord }: { positie: number; totaal: number; beantwoord: boolean }) {
+  const gedaan = beantwoord ? positie : positie - 1
   return (
     <header className="sessiekop">
       <a href="#/" className="icoonknop" aria-label="Sluiten">
@@ -34,10 +36,11 @@ function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
         aria-label="Voortgang"
         aria-valuemin={0}
         aria-valuemax={totaal}
-        aria-valuenow={positie}
+        aria-valuenow={gedaan}
+        aria-valuetext={`${gedaan} van ${totaal} beantwoord`}
       >
         {Array.from({ length: totaal }, (_, i) => (
-          <span key={i} className={i < positie ? 'vol' : undefined} />
+          <span key={i} className={i < gedaan ? 'vol' : undefined} />
         ))}
       </div>
       <span className="sessiekop-teller">
@@ -108,10 +111,13 @@ function Vraagscherm({
   onControleer: (keuze: string) => void
 }) {
   const [keuze, zetKeuze] = useState<string | null>(null)
-  const geldig = keuze !== null && (vraag.type !== 'reken' || leesGetal(keuze) !== null)
+  const ingevuld = keuze !== null && keuze.trim() !== ''
+  const probleem = vraag.type === 'reken' && ingevuld ? getalProbleem(keuze) : null
+  const gelezen = vraag.type === 'reken' && ingevuld ? leesInvoer(keuze) : null
+  const geldig = keuze !== null && (vraag.type !== 'reken' || gelezen !== null)
   return (
     <main className="scherm scherm-sessie">
-      <Sessiekop positie={positie} totaal={totaal} />
+      <Sessiekop positie={positie} totaal={totaal} beantwoord={false} />
       <div className="vraagmeta">
         <span className="pil pil-blauw">{typeLabel[vraag.type]}</span>
         {vraag.status === 'concept' && <span className="pil pil-amber">concept</span>}
@@ -124,27 +130,35 @@ function Vraagscherm({
         onSubmit={(e) => {
           e.preventDefault()
           // Een rekenantwoord wordt als gewoon getal bewaard: "0,5" wordt "0.5".
-          if (geldig && keuze !== null) onControleer(vraag.type === 'reken' ? String(leesGetal(keuze)) : keuze)
+          if (geldig && keuze !== null) onControleer(vraag.type === 'reken' ? String(gelezen) : keuze)
         }}
       >
         {vraag.type === 'reken' ? (
-          <label className="rekeninvoer">
-            <span className="sr-only">Je antwoord, in {vraag.eenheid}</span>
-            <input
-              className="invoerveld"
-              type="text"
-              inputMode="decimal"
-              enterKeyHint="done"
-              autoComplete="off"
-              placeholder="Je antwoord"
-              value={keuze ?? ''}
-              onChange={(e) => zetKeuze(e.target.value)}
-              aria-invalid={keuze !== null && keuze.trim() !== '' && !geldig}
-            />
-            <span className="rekeninvoer-eenheid" aria-hidden="true">
-              {vraag.eenheid}
-            </span>
-          </label>
+          <>
+            <label className="rekeninvoer">
+              <span className="sr-only">Je antwoord, in {vraag.eenheid}</span>
+              <input
+                className="invoerveld"
+                type="text"
+                inputMode="decimal"
+                enterKeyHint="done"
+                autoComplete="off"
+                placeholder="Je antwoord"
+                value={keuze ?? ''}
+                onChange={(e) => zetKeuze(e.target.value)}
+                aria-invalid={probleem !== null}
+                aria-describedby="rekeninvoer-melding"
+              />
+              <span className="rekeninvoer-eenheid" aria-hidden="true">
+                {vraag.eenheid}
+              </span>
+            </label>
+            {/* Altijd aanwezig, zodat de schermlezer een nieuwe foutmelding voorleest. */}
+            <p id="rekeninvoer-melding" className={probleem ? 'veldmelding veldmelding-fout' : 'veldmelding'} aria-live="polite">
+              {probleem && <Icon naam="waarschuwing" maat={18} />}
+              {probleem ?? (gelezen !== null ? `Gelezen als ${rekenTekst(vraag, gelezen)}` : '')}
+            </p>
+          </>
         ) : (
           <fieldset className="opties">
             <legend className="sr-only">Antwoordopties</legend>
@@ -156,11 +170,6 @@ function Vraagscherm({
               </label>
             ))}
           </fieldset>
-        )}
-        {vraag.type === 'reken' && keuze !== null && keuze.trim() !== '' && !geldig && (
-          <p className="klein" role="status">
-            Vul een getal in, bijvoorbeeld 52 of 0,5.
-          </p>
         )}
         <div className="onderkant-vast">
           <button type="submit" className="knop knop-primair" disabled={!geldig}>
@@ -196,13 +205,26 @@ function Uitlegscherm({
 
   return (
     <main className="scherm scherm-sessie">
-      <Sessiekop positie={positie} totaal={totaal} />
+      <Sessiekop positie={positie} totaal={totaal} beantwoord />
       <div className={`uitslag ${goed ? 'uitslag-goed' : 'uitslag-fout'}`}>
         <Icon naam={goed ? 'check' : 'kruis'} />
-        <div>
+        <div className="uitslag-inhoud">
           <Titel className="uitslag-titel">{goed ? 'Goed' : 'Niet goed'}</Titel>
-          <p className="uitslag-tekst">{juistTekst(vraag)}</p>
-          {!goed && <p className="uitslag-tekst">Jouw antwoord: {keuzeTekst(vraag, keuze)}</p>}
+          <p className="uitslag-regel">
+            <Icon naam="check" maat={18} />
+            <span>
+              <strong>Juist antwoord:</strong> {juistTekst(vraag)}
+            </span>
+          </p>
+          {/* Bij een rekenvraag ook bij goed, zodat je ziet hoe je invoer gelezen is. */}
+          {(!goed || vraag.type === 'reken') && (
+            <p className="uitslag-regel uitslag-jouw">
+              <Icon naam={goed ? 'check' : 'kruis'} maat={18} />
+              <span>
+                <strong>Jouw antwoord:</strong> {keuzeTekst(vraag, keuze)}
+              </span>
+            </p>
+          )}
         </div>
       </div>
 

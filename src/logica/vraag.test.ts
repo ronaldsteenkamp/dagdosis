@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { MedicatiebewakingVraag, RekenVraag } from '../types'
 import { maakVraag } from './testhulp'
-import { isGoed, juisteKeuze, juistTekst, keuzeTekst, leesGetal, optiesVan } from './vraag'
+import { getalProbleem, getalTekst, isGoed, juisteKeuze, juistTekst, keuzeTekst, leesGetal, leesInvoer, optiesVan } from './vraag'
 
 const basis = {
   insteek: 'praktijk' as const,
@@ -26,12 +26,36 @@ describe('leesGetal', () => {
     [',5', 0.5],
     ['-3', -3],
     ['1 000', 1000],
+    ['0.125', 0.125],
+    ['18.5', 18.5],
+    ['18,000', 18],
+    ['1000', 1000],
   ])('leest %j als %d', (tekst, getal) => {
     expect(leesGetal(tekst)).toBe(getal)
+    expect(leesInvoer(tekst)).toBe(getal)
   })
 
   it.each(['', 'abc', '5 mg', '1,2,3', '1e3', '--1'])('weigert %j', (tekst) => {
     expect(leesGetal(tekst)).toBeNull()
+    expect(leesInvoer(tekst)).toBeNull()
+    expect(getalProbleem(tekst)).toMatch(/Vul een getal in/)
+  })
+
+  it.each(['18.000', '1.000', '-2.500', '250.000'])('weigert getypt %j met uitleg over de komma', (tekst) => {
+    expect(leesInvoer(tekst)).toBeNull()
+    expect(getalProbleem(tekst)).toMatch(/komma als decimaalteken/)
+  })
+
+  it('leest een opgeslagen antwoord als 1.125 gewoon als decimaal', () => {
+    expect(leesGetal(String(1.125))).toBe(1.125)
+    expect(isGoed({ ...reken, antwoord: 1.125, marge: 0 }, String(1.125))).toBe(true)
+  })
+})
+
+describe('getalTekst', () => {
+  it('zet geen punt tussen duizendtallen', () => {
+    expect(getalTekst(18000)).toBe('18000')
+    expect(getalTekst(1234.5)).toBe('1234,5')
   })
 })
 
