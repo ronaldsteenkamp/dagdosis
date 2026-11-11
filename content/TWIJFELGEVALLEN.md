@@ -293,6 +293,23 @@ nagekeken; het antwoord hangt alleen af van de grens van 50 mg.
 De KNMP zegt dat de spiegel daalt door rifampicine en "waarschijnlijk ook door andere inductoren". De
 vraag gebruikt carbamazepine; het advies (vermijden) geldt volgens dezelfde beslisregel.
 
+## Batch 12
+
+### Mechanismen uit algemene kennis
+- `digoxine-hypokaliemie`: dat hypokaliëmie de toxiciteit van digoxine verhoogt, staat in de KNMP; de
+  concurrentie tussen kalium en digoxine om de natrium-kaliumpomp is algemene kennis. De KNMP vindt de
+  combinatie zelf geen actie waard; de vraag gaat alleen over het mechanisme.
+- `lamotrigine-pil`: dat oestrogenen de lamotriginespiegel verlagen, staat in de KNMP; dat dit via een
+  snellere afbraak loopt (`mechanismeRegel`), is algemene kennis.
+- `mb-clozapine-omeprazol`: de KNMP noemt omeprazol in één beslisregel met de enzyminductoren; dat
+  omeprazol de afbraak versnelt (`mechanismeRegel`), volgt daaruit, maar het enzym wordt niet genoemd.
+- `mb-dextromethorfan-paroxetine`: het advies om een hoestmiddel zonder dextromethorfan te kiezen, is
+  een gangbaar balieadvies; de KNMP noemt geen alternatief.
+
+### `statine-fusidinezuur`
+De beslisregel noemt fusidinezuur zonder toedieningsvorm. De casus gebruikt daarom tabletten. Of het
+advies ook voor een crème geldt, heb ik niet nagekeken.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

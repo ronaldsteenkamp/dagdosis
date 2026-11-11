@@ -247,3 +247,18 @@ en werken.
 | `antidepressivum-werking-weken` | mechanisme-middel | receptoren, psychofarmaca | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
 | `promethazine-oudere` | casus | ouderen | IM promethazine: [S192](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S192.html) |
 | `opioid-baclofen` | casus | opioïden, interacties | MB opioïden + baclofen: [8648-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8648-1.html) |
+
+## Batch 12
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-dextromethorfan-paroxetine` | medicatiebewaking (niet afleveren) | zelfzorg, serotonerg | IM dextromethorfan: [S1347](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1347.html) |
+| `mb-tizanidine-ciprofloxacine` | medicatiebewaking (overleggen) | antibiotica, interacties | MB tizanidine + CYP1A2-remmers: [744-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/744-1.html) |
+| `mb-vka-sertraline-start` | medicatiebewaking (afleveren met advies) | antistolling, interacties | MB VKA's + SSRI's: [415-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/415-1.html) |
+| `mb-clozapine-omeprazol` | medicatiebewaking (overleggen) | psychofarmaca, interacties | MB clozapine + CYP3A4-inductoren/omeprazol: [847-5](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/847-5.html) |
+| `vka-acetylsalicylzuur-inr` | casus | antistolling, interacties | MB VKA's + salicylaten antitrombotisch: [542-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/542-1.html) |
+| `statine-fusidinezuur` | casus | interacties, antibiotica | MB statines + fusidinezuur: [1019-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/1019-1.html) |
+| `statine-colchicine` | casus | reuma en jicht, interacties | MB statines + colchicine: [993-3](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/993-3.html) |
+| `digoxine-hypokaliemie` | mechanisme-bijwerking | mechanisme | MB digoxine + diuretica: [420-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/420-1.html) |
+| `lamotrigine-pil` | casus | anticonceptie, interacties | MB lamotrigine + anticonceptiva: [742-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/742-2.html) |
+| `reken-cockcroft-gault-man-82` | reken (31 ml/min) | nierfunctie, ouderen | MB verminderde nierfunctie: [intro](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/verminderde_nierfunctie/intro.html) (formule: twijfel) |
