@@ -292,3 +292,18 @@ en werken.
 | `semaglutide-sulfonylureum` | casus | diabetes | IM semaglutide: [S5342](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5342.html) |
 | `semaglutide-maaglediging-opname` | kinetiek | farmacokinetiek | IM semaglutide: [S5342](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5342.html) |
 | `ace-angio-oedeem-na-jaren` | casus | zelfzorg | MB angio-oedeem: ACE-remmers: [4062-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/4062-1.html) |
+
+## Batch 15
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-tamoxifen-paroxetine` | medicatiebewaking (overleggen) | interacties, psychofarmaca | MB tamoxifen + CYP2D6-remmers: [924-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/924-1.html) |
+| `mb-tamoxifen-escitalopram` | medicatiebewaking (afleveren) | interacties, psychofarmaca | MB tamoxifen + CYP2D6-remmers: [924-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/924-1.html) |
+| `mb-isotretinoine-doxycycline` | medicatiebewaking (overleggen) | antibiotica, interacties | MB retinoïden + tetracyclines: [454-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/454-1.html) |
+| `mb-alendroninezuur-ijzer` | medicatiebewaking (afleveren met advies) | interacties, ouderen | MB bisfosfonaten + antacida/ijzer/calcium: [497-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/497-2.html) |
+| `denosumab-rankl` | mechanisme-middel | oncolytica en biologicals, nieuwe mechanismen | IM denosumab: [S5049](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5049.html) |
+| `denosumab-niet-zomaar-stoppen` | casus | ouderen | IM denosumab: [S5049](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5049.html) |
+| `adalimumab-zwangerschap-vaccins` | casus | zwangerschap | IM adalimumab: [S2900](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2900.html) |
+| `dupilumab-mechanisme` | mechanisme-middel | oncolytica en biologicals, nieuwe mechanismen | IM dupilumab: [S5327](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5327.html) |
+| `erenumab-cgrp-receptor` | mechanisme-middel | nieuwe mechanismen | IM erenumab: [S5352](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5352.html) |
+| `ulipristal-ppi` | casus | anticonceptie, zelfzorg | Zelfzorgstandaard Noodanticonceptie: [link](https://kennisbank.knmp.nl/article/zelfzorgstandaarden/noodanticonceptie.html) |

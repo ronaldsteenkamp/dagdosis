@@ -340,6 +340,18 @@ advies ook voor een crème geldt, heb ik niet nagekeken.
 - `mb-lisinopril-psoriasis`: de KNMP geeft geen mechanisme; de `mechanismeRegel` is daarom vaag
   gehouden.
 
+## Batch 15
+
+### Details uit algemene kennis
+- `denosumab-rankl` en `dupilumab-mechanisme`: het werkingsmechanisme staat in de KNMP; de
+  vergelijkingen met andere middelen (bisfosfonaat hecht aan bot, adalimumab remt TNF-alfa, omalizumab
+  bindt IgE) zijn algemene kennis.
+- `adalimumab-zwangerschap-vaccins`: het advies van Lareb staat in de KNMP-tekst; dat adalimumab
+  maanden in het bloed van de baby blijft, leid ik af uit dezelfde tekst. Het advies om het
+  consultatiebureau in te lichten is algemene kennis.
+- `ulipristal-ppi`: het advies staat in de Zelfzorgstandaard; dat ulipristal bij een hogere pH slechter
+  oplost (`mechanismeRegel`), is algemene kennis.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
