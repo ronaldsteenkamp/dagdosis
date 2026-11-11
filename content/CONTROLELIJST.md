@@ -232,3 +232,18 @@ en werken.
 | `ezetimib-mechanisme` | mechanisme-middel | receptoren | IM ezetimib: [S2924](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2924.html) |
 | `zolpidem-dosis-ouderen` | casus | ouderen | IM zolpidem: [S2241](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2241.html) |
 | `reken-morfine-naar-oxycodon` | reken (60 mg) | opioïden | IM oxycodon: [S71](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S71.html) |
+
+## Batch 11
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-apixaban-carbamazepine` | medicatiebewaking (overleggen) | antistolling, interacties | MB apixaban + CYP3A4-inductoren: [1114-4](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/1114-4.html) |
+| `mb-gliclazide-fluconazol` | medicatiebewaking (afleveren) | diabetes, interacties | MB sulfonylureumderivaten + azolen: [754-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/754-1.html) |
+| `mb-levofloxacine-calcium` | medicatiebewaking (afleveren) | antibiotica, interacties | MB levofloxacine/moxifloxacine/ofloxacine + calcium: [6138-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/6138-1.html) |
+| `mb-ciprofloxacine-zink` | medicatiebewaking (afleveren met advies) | antibiotica, zelfzorg | MB chinolonen + magnesium/zink/bismut: [430-3](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/430-3.html) |
+| `mb-alendroninezuur-refluxziekte` | medicatiebewaking (afleveren) | ouderen | MB refluxziekte: bisfosfonaten: [2209-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/2209-1.html) |
+| `pil-1-vergeten-week-2` | casus | anticonceptie, zelfzorg | Anticonceptie vraag en antwoord: [gebruik](https://kennisbank.knmp.nl/article/anticonceptie_vraag_en_antwoord/gebruik.html) |
+| `methadon-qt-risico` | casus | QT, opioïden | IM methadon: [S75](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S75.html) |
+| `antidepressivum-werking-weken` | mechanisme-middel | receptoren, psychofarmaca | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `promethazine-oudere` | casus | ouderen | IM promethazine: [S192](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S192.html) |
+| `opioid-baclofen` | casus | opioïden, interacties | MB opioïden + baclofen: [8648-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8648-1.html) |

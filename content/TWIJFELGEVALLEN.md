@@ -279,6 +279,20 @@ nagekeken; het antwoord hangt alleen af van de grens van 50 mg.
 - `zolpidem-dosis-ouderen`: de dosering staat in de KNMP; de verklaring in de `mechanismeRegel` is
   algemene kennis.
 
+## Batch 11
+
+### Mechanismen uit algemene kennis
+- `methadon-qt-risico`: de contra-indicatie en de risicofactoren staan in de KNMP; dat methadon zelf het
+  QT verlengt en dat torsade de pointes het gevolg kan zijn, is algemene kennis.
+- `promethazine-oudere`: de sterk sederende en anticholinerge werking staat in de KNMP; de gevolgen bij
+  ouderen (verwardheid, vallen) zijn algemene kennis, in lijn met de KNMP-tekst over TCA's bij ouderen.
+- `mb-gliclazide-fluconazol`: de KNMP noemt geen actie; dat fluconazol de afbraak remt, is een
+  verklaring uit algemene kennis.
+
+### `mb-apixaban-carbamazepine`
+De KNMP zegt dat de spiegel daalt door rifampicine en "waarschijnlijk ook door andere inductoren". De
+vraag gebruikt carbamazepine; het advies (vermijden) geldt volgens dezelfde beslisregel.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:
