@@ -325,6 +325,21 @@ advies ook voor een crème geldt, heb ik niet nagekeken.
 - `mb-gabapentine-klaring-45`: de doseringen staan in de KNMP; de bijwerkingen bij stapeling (sufheid,
   duizeligheid, vallen) zijn algemene kennis.
 
+## Batch 14
+
+### Mechanismen en details uit algemene kennis
+- `mb-enalapril-angio-oedeem` en `ace-angio-oedeem-na-jaren`: de contra-indicatie, het optreden na jaren
+  en de klachten staan in de KNMP; de rol van bradykinine (`mechanismeRegel`) is algemene kennis, in lijn
+  met de kaart ACE-remmers.
+- `raas-remmer-start-lisdiureticum`: het advies staat in de KNMP; de verklaring via een geactiveerd RAAS
+  is een uitwerking van de risicofactor die de KNMP noemt.
+- `ondansetron-qt-elektrolyten`: dat domperidon ook het QT verlengt, staat op een andere KNMP-pagina
+  (domperidon); de combinatie zelf heb ik niet apart nagekeken.
+- `semaglutide-maaglediging-opname`: dat bij onder meer metformine en orale anticonceptiva geen relevante
+  interactie is gevonden, lees ik af uit een KNMP-zin die ik maar gedeeltelijk zag. Controleer dit.
+- `mb-lisinopril-psoriasis`: de KNMP geeft geen mechanisme; de `mechanismeRegel` is daarom vaag
+  gehouden.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

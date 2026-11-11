@@ -277,3 +277,18 @@ en werken.
 | `methylfenidaat-niet-na-16-uur` | casus | psychofarmaca | IM methylfenidaat: [S1109](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1109.html) |
 | `antipsychotica-dementie` | casus | ouderen, psychofarmaca | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
 | `reken-oxycodon-oraal-subcutaan` | reken (20 mg) | opioïden | IM oxycodon: [S71](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S71.html) |
+
+## Batch 14
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-enalapril-angio-oedeem` | medicatiebewaking (overleggen) | interacties | MB angio-oedeem: ACE-remmers: [4062-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/4062-1.html) |
+| `mb-lisinopril-psoriasis` | medicatiebewaking (afleveren met advies) | interacties | MB psoriasis: RAAS-remmers: [2872-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/2872-1.html) |
+| `mb-vka-miconazol-orale-gel` | medicatiebewaking (niet afleveren) | antistolling, zelfzorg | MB VKA's + miconazol: [412-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/412-1.html) |
+| `mb-digoxine-furosemide` | medicatiebewaking (afleveren) | interacties, ouderen | MB digoxine + diuretica: [420-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/420-1.html) |
+| `raas-remmer-start-lisdiureticum` | casus | interacties, ouderen | MB RAAS-remmers + diuretica: [361-5](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/361-5.html) |
+| `nitrofurantoine-longreactie` | casus | antibiotica, ouderen | IM nitrofurantoïne: [S455](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S455.html) |
+| `ondansetron-qt-elektrolyten` | casus | QT | IM ondansetron: [S2308](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2308.html) |
+| `semaglutide-sulfonylureum` | casus | diabetes | IM semaglutide: [S5342](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5342.html) |
+| `semaglutide-maaglediging-opname` | kinetiek | farmacokinetiek | IM semaglutide: [S5342](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5342.html) |
+| `ace-angio-oedeem-na-jaren` | casus | zelfzorg | MB angio-oedeem: ACE-remmers: [4062-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/4062-1.html) |

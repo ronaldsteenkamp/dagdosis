@@ -6,8 +6,8 @@ describe('startinhoud', () => {
     expect(inhoudFouten).toEqual([])
   })
 
-  it('bevat 21 thema\'s, 12 kaarten en 166 vragen', () => {
-    expect([themas.length, kaarten.length, vragen.length]).toEqual([21, 12, 166])
+  it('bevat 21 thema\'s, 12 kaarten en 176 vragen', () => {
+    expect([themas.length, kaarten.length, vragen.length]).toEqual([21, 12, 176])
   })
 
   it('heeft van elk nieuw vraagtype minstens 2 voorbeeldvragen', () => {
