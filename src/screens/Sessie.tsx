@@ -3,11 +3,13 @@ import { Bronregel } from '../components/Bronregel'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
 import { kaarten, vragen } from '../inhoud'
-import { geldigeVoortgang, gevolgTekst, planVolgende } from '../logica/herhaling'
+import { geldigeVoortgang, gevolgTekst, planVolgende, teruggevallen } from '../logica/herhaling'
+import { meldingUrl } from '../logica/melding'
+import { isGoed, juistTekst, keuzeTekst, leesGetal, optiesVan } from '../logica/vraag'
 import { berekenStreak } from '../logica/voortgang'
 import { ga } from '../router'
 import { useAppState } from '../state'
-import type { Resultaat, Vraag, VraagType } from '../types'
+import type { Reflectie, Resultaat, Vraag, VraagType } from '../types'
 import { Mechanismekaart } from './Mechanismekaart'
 
 const typeLabel: Record<VraagType, string> = {
@@ -16,6 +18,8 @@ const typeLabel: Record<VraagType, string> = {
   'mechanisme-middel': 'Mechanisme → middel',
   vergelijk: 'Vergelijk',
   kinetiek: 'Kinetiek',
+  reken: 'Rekenen',
+  medicatiebewaking: 'Medicatiebewaking',
 }
 
 function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
@@ -43,7 +47,7 @@ function Sessiekop({ positie, totaal }: { positie: number; totaal: number }) {
   )
 }
 
-function MeldFout({ vraag }: { vraag: Vraag }) {
+function MeldFout({ vraag, keuze }: { vraag: Vraag; keuze?: string }) {
   const { meldingen, voegMeldingToe } = useAppState()
   const dialoog = useRef<HTMLDialogElement>(null)
   const [notitie, zetNotitie] = useState('')
@@ -58,22 +62,32 @@ function MeldFout({ vraag }: { vraag: Vraag }) {
       <dialog ref={dialoog} className="dialoog" aria-label="Fout melden">
         <form
           method="dialog"
-          onSubmit={() => {
-            voegMeldingToe(vraag, notitie)
+          onSubmit={(e) => {
+            const opGithub = (e.nativeEvent as SubmitEvent).submitter?.getAttribute('value') === 'github'
+            voegMeldingToe(vraag, notitie, keuze)
+            if (opGithub) window.open(meldingUrl(vraag, keuze), '_blank', 'noopener')
             zetNotitie('')
           }}
         >
           <h2 className="sectiekop">Fout melden</h2>
           <label className="klein gedempt">
-            Wat klopt er niet? De notitie blijft op dit toestel.
+            Wat klopt er niet? Je notitie blijft op dit toestel.
             <textarea value={notitie} required onChange={(e) => zetNotitie(e.target.value)} />
           </label>
+          <p className="klein gedempt">
+            Via GitHub zie de maker je melding. Daar staan de vraag, de versie en je keuze al ingevuld; je
+            notitie neem je zelf over. Je hebt er een GitHub-account voor nodig. Vermeld geen patiënt- of
+            persoonsgegevens.
+          </p>
+          <button type="submit" value="github" className="knop knop-primair" formNoValidate>
+            Opslaan en melden op GitHub
+          </button>
           <div className="knoprij">
             <button type="button" className="knop knop-licht" onClick={() => dialoog.current?.close()}>
               Annuleren
             </button>
-            <button type="submit" className="knop knop-primair">
-              Opslaan
+            <button type="submit" value="lokaal" className="knop knop-licht">
+              Alleen opslaan
             </button>
           </div>
         </form>
@@ -94,6 +108,7 @@ function Vraagscherm({
   onControleer: (keuze: string) => void
 }) {
   const [keuze, zetKeuze] = useState<string | null>(null)
+  const geldig = keuze !== null && (vraag.type !== 'reken' || leesGetal(keuze) !== null)
   return (
     <main className="scherm scherm-sessie">
       <Sessiekop positie={positie} totaal={totaal} />
@@ -104,26 +119,55 @@ function Vraagscherm({
       </div>
       {vraag.casus && <p className="casus">{vraag.casus}</p>}
       <Titel className="vraagtekst">{vraag.vraag}</Titel>
-      <fieldset className="opties">
-        <legend className="sr-only">Antwoordopties</legend>
-        {vraag.opties.map((o) => (
-          <label key={o.id} className="optie">
-            <input type="radio" name="antwoord" checked={keuze === o.id} onChange={() => zetKeuze(o.id)} />
-            <span className="optie-letter">{o.id}</span>
-            <span className="optie-tekst">{o.tekst}</span>
+      <form
+        className="vraagformulier"
+        onSubmit={(e) => {
+          e.preventDefault()
+          // Een rekenantwoord wordt als gewoon getal bewaard: "0,5" wordt "0.5".
+          if (geldig && keuze !== null) onControleer(vraag.type === 'reken' ? String(leesGetal(keuze)) : keuze)
+        }}
+      >
+        {vraag.type === 'reken' ? (
+          <label className="rekeninvoer">
+            <span className="sr-only">Je antwoord, in {vraag.eenheid}</span>
+            <input
+              className="invoerveld"
+              type="text"
+              inputMode="decimal"
+              enterKeyHint="done"
+              autoComplete="off"
+              placeholder="Je antwoord"
+              value={keuze ?? ''}
+              onChange={(e) => zetKeuze(e.target.value)}
+              aria-invalid={keuze !== null && keuze.trim() !== '' && !geldig}
+            />
+            <span className="rekeninvoer-eenheid" aria-hidden="true">
+              {vraag.eenheid}
+            </span>
           </label>
-        ))}
-      </fieldset>
-      <div className="onderkant-vast">
-        <button
-          type="button"
-          className="knop knop-primair"
-          disabled={keuze === null}
-          onClick={() => keuze && onControleer(keuze)}
-        >
-          Controleer
-        </button>
-      </div>
+        ) : (
+          <fieldset className="opties">
+            <legend className="sr-only">Antwoordopties</legend>
+            {optiesVan(vraag).map((o) => (
+              <label key={o.id} className="optie">
+                <input type="radio" name="antwoord" checked={keuze === o.id} onChange={() => zetKeuze(o.id)} />
+                <span className="optie-letter">{o.id}</span>
+                <span className="optie-tekst">{o.tekst}</span>
+              </label>
+            ))}
+          </fieldset>
+        )}
+        {vraag.type === 'reken' && keuze !== null && keuze.trim() !== '' && !geldig && (
+          <p className="klein" role="status">
+            Vul een getal in, bijvoorbeeld 52 of 0,5.
+          </p>
+        )}
+        <div className="onderkant-vast">
+          <button type="submit" className="knop knop-primair" disabled={!geldig}>
+            Controleer
+          </button>
+        </div>
+      </form>
     </main>
   )
 }
@@ -144,8 +188,7 @@ function Uitlegscherm({
   onVolgende: () => void
 }) {
   const { instellingen, voortgang } = useAppState()
-  const goed = keuze === vraag.juist
-  const juisteOptie = vraag.opties.find((o) => o.id === vraag.juist)
+  const goed = isGoed(vraag, keuze)
   const kaart = kaarten.find((k) => k.id === vraag.kaartId)
   const toonRegel =
     vraag.mechanismeRegel && vraag.insteek === 'praktijk' && instellingen.uitlegMetMechanisme
@@ -158,9 +201,8 @@ function Uitlegscherm({
         <Icon naam={goed ? 'check' : 'kruis'} />
         <div>
           <Titel className="uitslag-titel">{goed ? 'Goed' : 'Niet goed'}</Titel>
-          <p className="uitslag-tekst">
-            {vraag.juist}. {juisteOptie?.tekst}
-          </p>
+          <p className="uitslag-tekst">{juistTekst(vraag)}</p>
+          {!goed && <p className="uitslag-tekst">Jouw antwoord: {keuzeTekst(vraag, keuze)}</p>}
         </div>
       </div>
 
@@ -187,7 +229,7 @@ function Uitlegscherm({
 
       <div className="uitleg-voet">
         <Bronregel bron={vraag.bron} />
-        {vraag.status === 'concept' && <MeldFout vraag={vraag} />}
+        {vraag.status === 'concept' && <MeldFout vraag={vraag} keuze={keuze} />}
       </div>
       {kaart && (
         <button type="button" className="linkrij" onClick={() => onOpenKaart(kaart.id)}>
@@ -212,14 +254,39 @@ function Uitlegscherm({
   )
 }
 
+function ReflectieVeld({ id, soort }: { id: string; soort: Reflectie['soort'] }) {
+  const { reflecties, vandaag, zetReflectie } = useAppState()
+  const bestaand = reflecties.find((r) => r.id === id)
+  const [tekst, zetTekst] = useState(bestaand?.tekst ?? '')
+  const bewaar = () => zetReflectie({ id, datum: bestaand?.datum ?? vandaag, soort, tekst: tekst.trim() })
+  // Ook bewaren als iemand de sessie sluit zonder het veld te verlaten.
+  const laatste = useRef(bewaar)
+  laatste.current = bewaar
+  useEffect(() => () => laatste.current(), [])
+
+  return (
+    <section className="kaart" aria-labelledby="reflectie-kop">
+      <h2 id="reflectie-kop" className="sectiekop">
+        Wat neem ik mee naar de praktijk?
+      </h2>
+      <label className="klein gedempt">
+        Optioneel. Komt in je leerlog en je overzicht, en blijft op dit toestel. Schrijf geen patiëntgegevens op.
+        <textarea className="invoerveld" value={tekst} onChange={(e) => zetTekst(e.target.value)} onBlur={bewaar} />
+      </label>
+    </section>
+  )
+}
+
 function Samenvatting({
   lijst,
   resultaten,
   streak,
+  reflectieId,
 }: {
   lijst: Vraag[]
   resultaten: Resultaat[]
   streak?: number
+  reflectieId: string
 }) {
   const goed = resultaten.filter((r) => r.goed).length
   return (
@@ -255,6 +322,7 @@ function Samenvatting({
           ))}
         </ul>
       </section>
+      <ReflectieVeld id={reflectieId} soort={streak === undefined ? 'test' : 'dagdosis'} />
       <div className="onderkant-vast">
         <a href="#/" className="knop knop-primair">
           Klaar
@@ -264,8 +332,13 @@ function Samenvatting({
   )
 }
 
-export function Sessie({ kaartId }: { kaartId?: string }) {
-  const { beantwoord, dosis, dosissen, vandaag } = useAppState()
+/** Een sessie is de dagdosis, of een losse test: per kaart of met teruggevallen vragen. */
+export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boolean }) {
+  const { beantwoord, dosis, dosissen, vandaag, voortgang } = useAppState()
+  const isTest = !!kaartId || !!terugval
+  // De lijst ligt vast bij de start, anders verdwijnt een vraag zodra je hem weer goed hebt.
+  const [testId] = useState(() => `test-${crypto.randomUUID()}`)
+  const [terugvalIds] = useState(() => (terugval ? teruggevallen(vragen, voortgang).map((t) => t.vraag.id) : []))
   const [testResultaten, zetTestResultaten] = useState<Resultaat[]>([])
   const [keuze, zetKeuze] = useState<string | null>(null)
   const [openKaart, zetOpenKaart] = useState<string | null>(null)
@@ -274,8 +347,8 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
 
   const lijst = kaartId
     ? vragen.filter((v) => v.kaartId === kaartId)
-    : dosis.vraagIds.flatMap((id) => vragen.filter((v) => v.id === id))
-  const resultaten = kaartId ? testResultaten : dosis.resultaten
+    : (terugval ? terugvalIds : dosis.vraagIds).flatMap((id) => vragen.filter((v) => v.id === id))
+  const resultaten = isTest ? testResultaten : dosis.resultaten
   const vraag = lijst.find((v) => !resultaten.some((r) => r.vraagId === v.id))
   const positie = lijst.length - lijst.filter((v) => !resultaten.some((r) => r.vraagId === v.id)).length + 1
 
@@ -302,7 +375,8 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
       <Samenvatting
         lijst={lijst}
         resultaten={resultaten}
-        streak={kaartId ? undefined : berekenStreak(dosissen, vandaag)}
+        streak={isTest ? undefined : berekenStreak(dosissen, vandaag)}
+        reflectieId={isTest ? testId : `dagdosis-${dosis.datum}`}
       />
     )
   }
@@ -339,9 +413,9 @@ export function Sessie({ kaartId }: { kaartId?: string }) {
               keuze,
               zekerheid: 'zeker',
               duurMs: Date.now() - startTijd.current,
-              inDosis: !kaartId,
+              inDosis: !isTest,
             })
-            if (kaartId) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed: keuze === vraag.juist }])
+            if (isTest) zetTestResultaten((r) => [...r, { vraagId: vraag.id, goed: isGoed(vraag, keuze) }])
             zetKeuze(null)
           }}
         />

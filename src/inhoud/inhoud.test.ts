@@ -6,8 +6,14 @@ describe('startinhoud', () => {
     expect(inhoudFouten).toEqual([])
   })
 
-  it('bevat 10 thema\'s, 6 kaarten en 30 vragen', () => {
-    expect([themas.length, kaarten.length, vragen.length]).toEqual([10, 6, 30])
+  it('bevat 21 thema\'s, 12 kaarten en 196 vragen', () => {
+    expect([themas.length, kaarten.length, vragen.length]).toEqual([21, 12, 196])
+  })
+
+  it('heeft van elk nieuw vraagtype minstens 2 voorbeeldvragen', () => {
+    for (const type of ['reken', 'medicatiebewaking']) {
+      expect(vragen.filter((v) => v.type === type).length, type).toBeGreaterThanOrEqual(2)
+    }
   })
 
   it('geeft elke kaart minstens 2 eigen vragen', () => {
@@ -20,12 +26,12 @@ describe('startinhoud', () => {
     for (const t of themas) {
       expect(vragen.filter((v) => v.themaIds.includes(t.id)).length, t.id).toBeGreaterThanOrEqual(3)
     }
-    expect(new Set(vragen.map((v) => v.type)).size).toBe(5)
+    expect(new Set(vragen.map((v) => v.type)).size).toBeGreaterThanOrEqual(5)
   })
 
   it('verspreidt de juiste antwoorden over A tot en met D', () => {
     for (const letter of ['A', 'B', 'C', 'D']) {
-      expect(vragen.filter((v) => v.juist === letter).length, letter).toBeGreaterThanOrEqual(6)
+      expect(vragen.filter((v) => 'opties' in v && v.juist === letter).length, letter).toBeGreaterThanOrEqual(6)
     }
   })
 

@@ -168,10 +168,21 @@ describe('leerlog', () => {
       themas,
     )
     expect(csv.replace('﻿', '').trim().split('\r\n')).toEqual([
-      "Datum;Tijd besteed (min);Aantal vragen;Aantal goed;Thema's",
-      '2026-11-04;1,0;1;0;Farmacokinetiek',
-      '2026-11-05;2,0;2;1;Farmacokinetiek, Zelfzorg',
+      "Datum;Tijd besteed (min);Aantal vragen;Aantal goed;Thema's;Reflectie",
+      '2026-11-04;1,0;1;0;Farmacokinetiek;',
+      '2026-11-05;2,0;2;1;Farmacokinetiek, Zelfzorg;',
     ])
+  })
+
+  it('zet de reflecties van een dag in de laatste kolom', () => {
+    const r = (id: string, datum: string, tijdstip: string, tekst: string) =>
+      ({ id, datum, tijdstip, soort: 'test' as const, tekst })
+    const csv = maakLeerlogCsv(
+      [maakAntwoord({ datum: '2026-11-05', duurMs: 60_000 })],
+      themas,
+      [r('b', '2026-11-05', '2026-11-05T12:00:00Z', 'Later'), r('a', '2026-11-05', '2026-11-05T09:00:00Z', 'Eerst; met puntkomma')],
+    )
+    expect(csv).toContain('2026-11-05;1,0;1;1;Farmacokinetiek;"Eerst; met puntkomma | Later"')
   })
 
   it('begint met een BOM, zodat Excel de tekens goed leest', () => {
@@ -182,6 +193,12 @@ describe('leerlog', () => {
     const csv = maakMeldingenCsv([
       { id: 'm', datum: VANDAAG, vraagId: 'v', versie: 1, notitie: 'Klopt "niet"; zie\nregel 2' },
     ])
-    expect(csv).toContain('2026-11-05;v;1;"Klopt ""niet""; zie\nregel 2"')
+    expect(csv).toContain('2026-11-05;v;1;;"Klopt ""niet""; zie\nregel 2"')
+  })
+
+  it('zet de gekozen optie bij een melding', () => {
+    const csv = maakMeldingenCsv([{ id: 'm', datum: VANDAAG, vraagId: 'v', versie: 2, keuze: 'C', notitie: 'x' }])
+    expect(csv).toContain('Datum;Vraag;Versie;Gekozen;Notitie')
+    expect(csv).toContain('2026-11-05;v;2;C;x')
   })
 })

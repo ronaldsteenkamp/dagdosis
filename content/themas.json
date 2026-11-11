@@ -8,5 +8,16 @@
   { "id": "interacties", "naam": "Interacties in de praktijk", "insteek": "praktijk" },
   { "id": "nierfunctie", "naam": "Nierfunctie en dosering", "insteek": "praktijk" },
   { "id": "zwangerschap-lactatie", "naam": "Zwangerschap en lactatie", "insteek": "praktijk" },
-  { "id": "zelfzorg", "naam": "Zelfzorg", "insteek": "praktijk" }
+  { "id": "zelfzorg", "naam": "Zelfzorg", "insteek": "praktijk" },
+  { "id": "antistolling", "naam": "Antistolling", "insteek": "praktijk" },
+  { "id": "opioiden-pijn", "naam": "Opioïden en pijnstilling", "insteek": "praktijk" },
+  { "id": "qt-serotonerg", "naam": "QT-verlenging en serotonerge combinaties", "insteek": "praktijk" },
+  { "id": "antibiotica", "naam": "Antibiotica", "insteek": "praktijk" },
+  { "id": "psychofarmaca", "naam": "Psychofarmaca en lithium", "insteek": "praktijk" },
+  { "id": "ouderen", "naam": "Ouderen: vallen en anticholinerge last", "insteek": "praktijk" },
+  { "id": "kinderen", "naam": "Dosering bij kinderen", "insteek": "praktijk" },
+  { "id": "diabetes", "naam": "Diabetes", "insteek": "praktijk" },
+  { "id": "luchtwegen", "naam": "Astma en COPD", "insteek": "praktijk" },
+  { "id": "anticonceptie", "naam": "Anticonceptie", "insteek": "praktijk" },
+  { "id": "reuma-jicht", "naam": "Reuma en jicht", "insteek": "praktijk" }
 ]
