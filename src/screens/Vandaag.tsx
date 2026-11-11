@@ -155,7 +155,7 @@ export function Vandaag() {
 
       {!meta.welkomGezienOp && <Welkom />}
 
-      <p className="pil pil-amber" style={{ alignSelf: 'flex-start' }}>
+      <p className="pil pil-amber los">
         <Icon naam="vlam" maat={18} />
         {streak === 0 ? 'Begin vandaag je reeks' : `${streak} ${streak === 1 ? 'dag' : 'dagen'} op rij`}
       </p>
@@ -166,7 +166,7 @@ export function Vandaag() {
       </section>
 
       <a href={`#/kaart/${kaartVanDeWeek.id}`} className="kaart kaart-link">
-        <span className="leeg-icoon" style={{ width: 44, height: 44 }}>
+        <span className="leeg-icoon leeg-icoon-klein">
           <Icon naam="keten" />
         </span>
         <div>

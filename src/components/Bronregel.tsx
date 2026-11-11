@@ -1,3 +1,4 @@
+import { datumVan } from '../logica/datum'
 import type { Bron, Status } from '../types'
 import { Icon } from './Icon'
 
@@ -6,6 +7,12 @@ export interface Controle {
   status: Status
   gecontroleerdDoor?: string
   gecontroleerdOp?: string
+  herzienVoor?: string
+}
+
+/** De geplande herziening is voorbij: de inhoud kan verouderd zijn. */
+export function herzieningVerlopen(controle: Controle, vandaag = datumVan()) {
+  return !!controle.herzienVoor && controle.herzienVoor < vandaag
 }
 
 const datumTekst = (datum: string) =>
@@ -37,6 +44,12 @@ export function Bronregel({ bron, controle }: { bron: Bron; controle?: Controle 
           )}
         </p>
         {controle && <p className="bronregel-controle">{controleTekst(controle)}</p>}
+        {controle?.herzienVoor && herzieningVerlopen(controle) && (
+          <p className="bronregel-controle bronregel-verlopen">
+            Had vóór {datumTekst(controle.herzienVoor)} opnieuw nagekeken moeten zijn en kan verouderd zijn. Controleer
+            het advies in de bron.
+          </p>
+        )}
       </div>
     </div>
   )

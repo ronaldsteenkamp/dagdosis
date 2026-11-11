@@ -1,5 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Bronregel } from '../components/Bronregel'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { Bronregel, herzieningVerlopen } from '../components/Bronregel'
 import { Icon } from '../components/Icon'
 import { Titel } from '../components/Kop'
 import { kaarten, vragen } from '../inhoud'
@@ -99,6 +99,36 @@ function MeldFout({ vraag, keuze }: { vraag: Vraag; keuze?: string }) {
   )
 }
 
+/**
+ * Sneltoetsen voor wie achter de computer werkt. Doet niets terwijl je typt (rekenveld, notitie)
+ * of als de dialoog "Fout melden" open is, en laat Ctrl-, Cmd- en Alt-combinaties met rust.
+ * Enter op een knop, link of in het formulier laat de browser zelf afhandelen, anders telt hij dubbel.
+ */
+function useSneltoetsen(opToets: (toets: string) => boolean) {
+  const laatste = useRef(opToets)
+  laatste.current = opToets
+  useEffect(() => {
+    const luister = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey || e.repeat) return
+      const doel = e.target instanceof Element ? e.target : null
+      if (doel?.closest('textarea, select, [contenteditable], input:not([type=radio])')) return
+      if (document.querySelector('dialog[open]')) return
+      if (e.key === 'Enter' && doel?.closest('form, button, a')) return
+      if (laatste.current(e.key)) e.preventDefault()
+    }
+    window.addEventListener('keydown', luister)
+    return () => window.removeEventListener('keydown', luister)
+  }, [])
+}
+
+function SneltoetsHint({ children }: { children: ReactNode }) {
+  return (
+    <p className="sneltoetsen gedempt klein" aria-hidden="true">
+      {children}
+    </p>
+  )
+}
+
 function Vraagscherm({
   vraag,
   positie,
@@ -115,13 +145,31 @@ function Vraagscherm({
   const probleem = vraag.type === 'reken' && ingevuld ? getalProbleem(keuze) : null
   const gelezen = vraag.type === 'reken' && ingevuld ? leesInvoer(keuze) : null
   const geldig = keuze !== null && (vraag.type !== 'reken' || gelezen !== null)
+  const opties = optiesVan(vraag)
+  const verstuur = () => {
+    // Een rekenantwoord wordt als gewoon getal bewaard: "0,5" wordt "0.5".
+    if (geldig && keuze !== null) onControleer(vraag.type === 'reken' ? String(gelezen) : keuze)
+  }
+  useSneltoetsen((toets) => {
+    const optie = opties.find((o) => o.id === toets.toUpperCase())
+    if (optie) {
+      zetKeuze(optie.id)
+      return true
+    }
+    if (toets === 'Enter' && geldig) {
+      verstuur()
+      return true
+    }
+    return false
+  })
   return (
     <main className="scherm scherm-sessie">
       <Sessiekop positie={positie} totaal={totaal} beantwoord={false} />
       <div className="vraagmeta">
         <span className="pil pil-blauw">{typeLabel[vraag.type]}</span>
         {vraag.status === 'concept' && <span className="pil pil-amber">concept</span>}
-        {vraag.status === 'concept' && <MeldFout vraag={vraag} />}
+        {herzieningVerlopen(vraag) && <span className="pil pil-fout">herziening verlopen</span>}
+        {(vraag.status === 'concept' || herzieningVerlopen(vraag)) && <MeldFout vraag={vraag} />}
       </div>
       {vraag.casus && <p className="casus">{vraag.casus}</p>}
       <Titel className="vraagtekst">{vraag.vraag}</Titel>
@@ -129,8 +177,7 @@ function Vraagscherm({
         className="vraagformulier"
         onSubmit={(e) => {
           e.preventDefault()
-          // Een rekenantwoord wordt als gewoon getal bewaard: "0,5" wordt "0.5".
-          if (geldig && keuze !== null) onControleer(vraag.type === 'reken' ? String(gelezen) : keuze)
+          verstuur()
         }}
       >
         {vraag.type === 'reken' ? (
@@ -162,7 +209,7 @@ function Vraagscherm({
         ) : (
           <fieldset className="opties">
             <legend className="sr-only">Antwoordopties</legend>
-            {optiesVan(vraag).map((o) => (
+            {opties.map((o) => (
               <label key={o.id} className="optie">
                 <input type="radio" name="antwoord" checked={keuze === o.id} onChange={() => zetKeuze(o.id)} />
                 <span className="optie-letter">{o.id}</span>
@@ -172,6 +219,7 @@ function Vraagscherm({
           </fieldset>
         )}
         <div className="onderkant-vast">
+          {vraag.type !== 'reken' && <SneltoetsHint>Toets A–D om te kiezen en Enter om te controleren.</SneltoetsHint>}
           <button type="submit" className="knop knop-primair" disabled={!geldig}>
             Controleer
           </button>
@@ -187,6 +235,7 @@ function Uitlegscherm({
   positie,
   totaal,
   dagen,
+  sneltoetsen,
   onOpenKaart,
   onVolgende,
 }: {
@@ -196,10 +245,17 @@ function Uitlegscherm({
   totaal: number
   /** Over hoeveel dagen de vraag terugkomt; berekend op het moment van controleren. */
   dagen: number
+  /** Uit terwijl er een mechanismekaart over de uitleg ligt. */
+  sneltoetsen: boolean
   onOpenKaart: (id: string) => void
   onVolgende: () => void
 }) {
   const { instellingen } = useAppState()
+  useSneltoetsen((toets) => {
+    if (!sneltoetsen || (toets !== 'Enter' && toets !== 'ArrowRight')) return false
+    onVolgende()
+    return true
+  })
   const goed = isGoed(vraag, keuze)
   const kaart = kaarten.find((k) => k.id === vraag.kaartId)
   const toonRegel =
@@ -253,7 +309,7 @@ function Uitlegscherm({
 
       <div className="uitleg-voet">
         <Bronregel bron={vraag.bron} controle={vraag} />
-        {vraag.status === 'concept' && <MeldFout vraag={vraag} keuze={keuze} />}
+        {(vraag.status === 'concept' || herzieningVerlopen(vraag)) && <MeldFout vraag={vraag} keuze={keuze} />}
       </div>
       {kaart && (
         <button type="button" className="linkrij" onClick={() => onOpenKaart(kaart.id)}>
@@ -267,6 +323,7 @@ function Uitlegscherm({
         {gevolgTekst(dagen)}
       </p>
 
+      <SneltoetsHint>Enter of → voor verder.</SneltoetsHint>
       <button
         type="button"
         className="knop knop-primair"
@@ -322,7 +379,7 @@ function Samenvatting({
         </p>
         <p className="gedempt">vragen goed beantwoord</p>
         {streak !== undefined && (
-          <p className="pil pil-amber" style={{ alignSelf: 'flex-start' }}>
+          <p className="pil pil-amber los">
             <Icon naam="vlam" maat={18} />
             {streak} {streak === 1 ? 'dag' : 'dagen'} op rij
           </p>
@@ -467,6 +524,7 @@ export function Sessie({ kaartId, terugval }: { kaartId?: string; terugval?: boo
           positie={positie}
           totaal={lijst.length}
           dagen={uitleg.dagen}
+          sneltoetsen={!openKaart}
           onOpenKaart={(id) => {
             scrollVoorKaart.current = window.scrollY
             zetOpenKaart(id)

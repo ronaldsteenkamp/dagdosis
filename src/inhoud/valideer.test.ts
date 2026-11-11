@@ -92,6 +92,8 @@ describe('valideerInhoud', () => {
     it.each([
       ['antwoord als tekst', { antwoord: '52' }, 'antwoord'],
       ['geen eenheid', { eenheid: '' }, 'eenheid'],
+      ['mcg als eenheid', { eenheid: 'mcg' }, 'eenheid: "mcg" staat niet in de lijst'],
+      ['mL met hoofdletter', { eenheid: 'mL' }, 'eenheid: "mL" staat niet in de lijst'],
       ['negatieve marge', { marge: -1 }, 'marge'],
       ['ontbrekende marge', { marge: undefined }, 'marge'],
     ])('vindt: %s', (_naam, wijziging, veld) => {

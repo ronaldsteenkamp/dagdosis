@@ -125,7 +125,7 @@ export function Voortgang() {
                 </span>
                 <span>
                   <span className="sr-only">{t.hersteld ? 'Inmiddels weer goed: ' : 'Nog niet hersteld: '}</span>
-                  <span className="gedempt klein" style={{ display: 'block' }}>
+                  <span className="gedempt klein blok">
                     {themas.find((th) => th.id === t.vraag.themaIds[0])?.naam}
                   </span>
                   {t.vraag.vraag}

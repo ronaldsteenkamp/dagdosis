@@ -161,7 +161,7 @@ export function Overzicht() {
               <ul className="reflectielijst">
                 {o.reflecties.map((r) => (
                   <li key={r.id}>
-                    <span className="gedempt klein" style={{ display: 'block' }}>
+                    <span className="gedempt klein blok">
                       {datumTekst(r.datum)}
                     </span>
                     {r.tekst}
