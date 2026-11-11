@@ -352,6 +352,20 @@ advies ook voor een crème geldt, heb ik niet nagekeken.
 - `ulipristal-ppi`: het advies staat in de Zelfzorgstandaard; dat ulipristal bij een hogere pH slechter
   oplost (`mechanismeRegel`), is algemene kennis.
 
+## Batch 16
+
+### Details uit algemene kennis
+- `saxagliptine-hartfalen`: de contra-indicatie staat in de KNMP; de meer ziekenhuisopnamen voor
+  hartfalen in de `mechanismeRegel` komen uit mijn kennis van het grote veiligheidsonderzoek met
+  saxagliptine, niet uit de Kennisbank.
+- `levothyroxine-avond`: de twee innamemomenten staan in de KNMP (NHG); dat wisselen tussen ochtend en
+  avond schommelingen geeft, is algemene kennis.
+- `mb-pioglitazon-hartfalen`: de KNMP geeft geen mechanisme; de `mechanismeRegel` is daarom vaag
+  gehouden.
+- `nierfunctie-oudere-polyfarmacie`: de beslisregel heet in de Kennisbank "Nierfunctie: rosuvastatine"
+  (70-6), maar de adviestekst is algemeen voor 70-plussers met 5 of meer middelen. De vraag noemt
+  daarom geen middel.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

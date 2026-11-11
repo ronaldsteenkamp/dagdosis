@@ -307,3 +307,18 @@ en werken.
 | `dupilumab-mechanisme` | mechanisme-middel | oncolytica en biologicals, nieuwe mechanismen | IM dupilumab: [S5327](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5327.html) |
 | `erenumab-cgrp-receptor` | mechanisme-middel | nieuwe mechanismen | IM erenumab: [S5352](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5352.html) |
 | `ulipristal-ppi` | casus | anticonceptie, zelfzorg | Zelfzorgstandaard Noodanticonceptie: [link](https://kennisbank.knmp.nl/article/zelfzorgstandaarden/noodanticonceptie.html) |
+
+## Batch 16
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-hydrochloorthiazide-sulfonamide-allergie` | medicatiebewaking (afleveren) | interacties | IM hydrochloorthiazide: [S617](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S617.html) |
+| `mb-pioglitazon-hartfalen` | medicatiebewaking (overleggen) | diabetes | IM pioglitazon: [S2783](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2783.html) |
+| `mb-sglt2-bariatrie-2-jaar` | medicatiebewaking (afleveren) | diabetes | MB bariatrische chirurgie: SGLT-2-remmers: [8551-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8551-1.html) |
+| `mb-sglt2-bariatrie-6-maanden` | medicatiebewaking (overleggen) | diabetes | MB bariatrische chirurgie: SGLT-2-remmers: [8551-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/8551-1.html) |
+| `levothyroxine-avond` | casus | interacties | IM levothyroxine: [S1442](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1442.html) |
+| `dpp4-pancreatitis-voorgeschiedenis` | casus | diabetes | IM sitagliptine: [S3029](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3029.html) |
+| `nierfunctie-oudere-polyfarmacie` | casus | nierfunctie, ouderen | MB nierfunctie (70+ en polyfarmacie): [70-6](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/70-6.html) |
+| `saxagliptine-hartfalen` | vergelijk | diabetes | IM saxagliptine [S5031](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5031.html), linagliptine [S5086](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S5086.html), vildagliptine [S3042](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3042.html), sitagliptine [S3029](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S3029.html) |
+| `pioglitazon-bloed-in-urine` | casus | diabetes | IM pioglitazon: [S2783](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2783.html) |
+| `reken-azitromycine-kind-dag-2` | reken (3,75 ml) | kinderen, antibiotica | IM azitromycine: [S2424](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2424.html) |
