@@ -42,6 +42,8 @@ interface AppState extends Gegevens {
   zetLeertijd: (antwoordId: string, duurMs: number) => void
   voegMeldingToe: (vraag: Vraag, notitie: string, keuze?: string) => void
   bevestigWelkom: () => void
+  /** Verbergt de uitleg over het beginscherm op Vandaag; in Instellingen blijft hij staan. */
+  verbergInstallatieUitleg: () => void
   /** Slaat een reflectie op; een lege tekst verwijdert hem. */
   zetReflectie: (r: Omit<Reflectie, 'tijdstip'>) => void
   /** Maakt de back-up en onthoudt de datum. */
@@ -168,6 +170,12 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
     bevestigWelkom() {
       const meta = { ...gegevens.meta, welkomGezienOp: datumVan() }
+      zetGegevens({ ...gegevens, meta })
+      bewaarMeta(meta).catch(meldFout)
+    },
+
+    verbergInstallatieUitleg() {
+      const meta = { ...gegevens.meta, installatieUitlegWegOp: datumVan() }
       zetGegevens({ ...gegevens, meta })
       bewaarMeta(meta).catch(meldFout)
     },

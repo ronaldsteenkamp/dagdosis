@@ -1,5 +1,6 @@
 import { Disclaimer } from '../components/Disclaimer'
 import { Icon } from '../components/Icon'
+import { InstallatieKaart } from '../components/Installeren'
 import { Titel } from '../components/Kop'
 import { kaarten, themas, vragen } from '../inhoud'
 import { weeknummer, weekdagIndex } from '../logica/datum'
@@ -164,6 +165,9 @@ export function Vandaag() {
         <h2 id="dosis-kop">Dagdosis van vandaag</h2>
         <Doskaart />
       </section>
+
+      {/* Onder de dagdosis: de hoofdtaak blijft bovenaan in beeld. */}
+      <InstallatieKaart />
 
       <a href={`#/kaart/${kaartVanDeWeek.id}`} className="kaart kaart-link">
         <span className="leeg-icoon leeg-icoon-klein">

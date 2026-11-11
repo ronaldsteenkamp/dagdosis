@@ -315,6 +315,12 @@ h1:focus { outline: none; }
 .vaste-regel { display: flex; gap: 8px; font-size: 15px; font-weight: 700; color: var(--primair); padding: 2px 4px; }
 .scheiding { height: 1px; background: var(--lijn); border: 0; margin: 0; width: 100%; }
 
+/* Op je beginscherm */
+.stappen { list-style: decimal; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
+.stappen li::marker { font-weight: 800; color: var(--primair); }
+.icoon-inline { display: inline-block; vertical-align: -3px; }
+.letop-klein { display: flex; flex-direction: column; gap: 10px; background: var(--tip-vlak); }
+
 /* Team */
 .leeg { align-items: center; text-align: center; padding: 40px 24px; }
 .leeg-icoon { width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; background: var(--primair-licht); color: var(--primair); }

@@ -1,6 +1,7 @@
 import { BackupKaart } from '../components/Backup'
 import { Disclaimer } from '../components/Disclaimer'
 import { Icon } from '../components/Icon'
+import { InstallatieSectie } from '../components/Installeren'
 import { Schakelaar, Segment } from '../components/Keuzes'
 import { Terugkop } from '../components/Kop'
 import { themas } from '../inhoud'
@@ -97,6 +98,8 @@ export function Instellingen() {
         <Icon naam="herhaal" maat={20} />
         Vragen die je eerder fout had, komen altijd eerst terug.
       </p>
+
+      <InstallatieSectie />
 
       <BackupKaart />
 

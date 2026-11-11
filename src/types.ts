@@ -157,6 +157,8 @@ export interface Meta {
   opslagGevraagdOp?: string
   /** Datum van de laatste volledige back-up. */
   laatsteBackupOp?: string
+  /** Datum waarop de uitleg "zet op je beginscherm" op Vandaag is weggeklikt. */
+  installatieUitlegWegOp?: string
 }
 
 /** Alles wat de app op het toestel bewaart. */

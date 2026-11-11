@@ -193,6 +193,16 @@ Op een andere host, zoals een Render Static Site, gebruik je als buildcommando
 - **Android (Chrome):** open de site, kies in het menu "Toevoegen aan startscherm" of "App installeren".
 - **iPhone (Safari):** open de site, tik op Delen en kies "Zet op beginscherm".
 
+De app legt dit zelf uit. Op een telefoon staat na de welkomsttekst een kaart "Zet Dagdosis op je
+beginscherm" op Vandaag; die is weg te klikken en staat altijd onder Instellingen → Op je beginscherm.
+Biedt de browser een eigen installatievraag aan (Chrome, Edge), dan toont de app een knop
+"Installeer Dagdosis". Draait de app al vanaf het beginscherm, dan verdwijnt de uitleg.
+
+**Let op bij de iPhone:** de app op het beginscherm heeft eigen opslag, los van Safari. Wie al in
+Safari heeft geoefend, begint in de app leeg. De uitleg wijst daar dan op, met een knop voor een
+back-up die je in de app weer terugzet. Andersom is installeren op de iPhone juist gunstig: Safari
+kan gegevens van een site die je een tijd niet opent opruimen, een app op het beginscherm niet.
+
 ## Ontwikkelen
 
 ```bash

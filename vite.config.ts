@@ -15,6 +15,8 @@ export default defineConfig({
       injectRegister: false,
       includeAssets: ['icon.svg', 'favicon.ico', 'apple-touch-icon-180x180.png'],
       manifest: {
+        // Vaste identiteit, zodat een geïnstalleerde app dezelfde blijft als start_url ooit verandert.
+        id: base,
         name: 'Dagdosis',
         short_name: 'Dagdosis',
         description: 'Elke dag 5 vragen om je kennis als apotheker op peil te houden.',
