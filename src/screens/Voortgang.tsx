@@ -9,9 +9,12 @@ import {
   leertijdDitJaarMs,
   maakLeerlogCsv,
   maakMeldingenCsv,
+  MIN_VOOR_PERCENTAGE,
   morgenAandacht,
   percentageGoed,
+  tellingGoed,
   themaScore,
+  themaTelling,
   ZWAK_ONDER,
 } from '../logica/voortgang'
 import { useAppState } from '../state'
@@ -26,6 +29,8 @@ export function Voortgang() {
   const { antwoorden, meldingen, meta, reflecties, voortgang, vandaag } = useAppState()
   const herinnering = backupHerinnering(meta.laatsteBackupOp, vandaag, antwoorden.length > 0)
   const percentage = percentageGoed(antwoorden, vandaag)
+  const telling = tellingGoed(antwoorden, vandaag)
+  const weinig = telling.totaal < MIN_VOOR_PERCENTAGE
   const aandacht = morgenAandacht(vragen, themas, voortgang, antwoorden, vandaag)
   const terugval = teruggevallen(vragen, voortgang)
 
@@ -46,8 +51,12 @@ export function Voortgang() {
 
       <div className="stats">
         <section className="kaart">
-          <p className="stat-getal">{percentage === null ? '–' : `${percentage}%`}</p>
-          <p className="gedempt klein">goed, laatste 30 dagen</p>
+          <p className="stat-getal">
+            {percentage === null ? '–' : weinig ? `${telling.goed} van ${telling.totaal}` : `${percentage}%`}
+          </p>
+          <p className="gedempt klein">
+            goed, laatste 30 dagen{percentage !== null && !weinig && ` (${telling.goed} van ${telling.totaal})`}
+          </p>
         </section>
         <section className="kaart">
           <p className="stat-getal">{leertijd(leertijdDitJaarMs(antwoorden, vandaag))}</p>
@@ -62,11 +71,15 @@ export function Voortgang() {
         <ul className="themabalken">
           {themas.map((t) => {
             const score = themaScore(antwoorden, t.id)
+            const { goed, totaal } = themaTelling(antwoorden, t.id)
             return (
               <li key={t.id}>
                 <div className="themabalk-kop">
                   <span>{t.naam}</span>
-                  <span>{score === null ? 'nog geen' : `${score}%`}</span>
+                  <span className="themabalk-score">
+                    {score === null ? 'nog geen' : `${score}%`}
+                    {score !== null && <span className="gedempt"> · {goed} van {totaal}</span>}
+                  </span>
                 </div>
                 <div className="themabalk-spoor" aria-hidden="true">
                   <div

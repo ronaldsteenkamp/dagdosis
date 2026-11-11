@@ -10,7 +10,9 @@ import {
   maakMeldingenCsv,
   morgenAandacht,
   percentageGoed,
+  tellingGoed,
   themaScore,
+  themaTelling,
   weekOverzicht,
 } from './voortgang'
 
@@ -60,6 +62,17 @@ describe('scores', () => {
       maakAntwoord({ datum: VANDAAG, goed: false }),
     ]
     expect(percentageGoed(antwoorden, VANDAAG)).toBe(50)
+    expect(tellingGoed(antwoorden, VANDAAG)).toEqual({ goed: 1, totaal: 2 })
+  })
+
+  it('telt per thema dezelfde 20 antwoorden als het percentage', () => {
+    const antwoorden = [
+      ...Array.from({ length: 5 }, () => maakAntwoord({ goed: false })),
+      ...Array.from({ length: 20 }, (_, i) => maakAntwoord({ goed: i < 15 })),
+    ]
+    expect(themaTelling(antwoorden, 'f1')).toEqual({ goed: 15, totaal: 20 })
+    expect(themaScore(antwoorden, 'f1')).toBe(75)
+    expect(themaTelling(antwoorden, 'p1')).toEqual({ goed: 0, totaal: 0 })
   })
 
   it('geeft null zonder antwoorden', () => {

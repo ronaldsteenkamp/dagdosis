@@ -21,10 +21,36 @@ export function themaScore(antwoorden: Antwoord[], themaId: string) {
   return percentage(antwoorden.filter((a) => a.themaIds.includes(themaId)).slice(-THEMA_VENSTER))
 }
 
-export function percentageGoed(antwoorden: Antwoord[], vandaag: Datum) {
+function laatsteDagen(antwoorden: Antwoord[], vandaag: Datum) {
   const vanaf = plusDagen(vandaag, -(PERCENTAGE_DAGEN - 1))
-  return percentage(antwoorden.filter((a) => a.datum >= vanaf && a.datum <= vandaag))
+  return antwoorden.filter((a) => a.datum >= vanaf && a.datum <= vandaag)
 }
+
+export function percentageGoed(antwoorden: Antwoord[], vandaag: Datum) {
+  return percentage(laatsteDagen(antwoorden, vandaag))
+}
+
+export interface Telling {
+  goed: number
+  totaal: number
+}
+
+function tel(antwoorden: Antwoord[]): Telling {
+  return { goed: antwoorden.filter((a) => a.goed).length, totaal: antwoorden.length }
+}
+
+/** Waar percentageGoed op rust, zodat het scherm kan laten zien hoeveel antwoorden dat zijn. */
+export function tellingGoed(antwoorden: Antwoord[], vandaag: Datum): Telling {
+  return tel(laatsteDagen(antwoorden, vandaag))
+}
+
+/** Waar themaScore op rust: de laatste 20 antwoorden binnen het thema. */
+export function themaTelling(antwoorden: Antwoord[], themaId: string): Telling {
+  return tel(antwoorden.filter((a) => a.themaIds.includes(themaId)).slice(-THEMA_VENSTER))
+}
+
+/** Onder dit aantal antwoorden zegt een percentage weinig; toon dan liever de aantallen. */
+export const MIN_VOOR_PERCENTAGE = 10
 
 export function leertijdDitJaarMs(antwoorden: Antwoord[], vandaag: Datum) {
   const jaar = vandaag.slice(0, 4)

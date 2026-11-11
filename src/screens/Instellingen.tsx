@@ -95,7 +95,7 @@ export function Instellingen() {
 
       <p className="vaste-regel">
         <Icon naam="herhaal" maat={20} />
-        Herhalingen van eerder fout of gegokt gaan altijd voor.
+        Vragen die je eerder fout had, komen altijd eerst terug.
       </p>
 
       <BackupKaart />

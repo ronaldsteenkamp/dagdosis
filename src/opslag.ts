@@ -64,6 +64,11 @@ export async function bewaarAntwoord(voortgang: VraagVoortgang, antwoord: Antwoo
   ])
 }
 
+/** Werkt één antwoord bij, bijvoorbeeld de leertijd nadat de uitleg gelezen is. */
+export async function bijwerkAntwoord(antwoord: Antwoord) {
+  await (await db()).put('antwoorden', antwoord)
+}
+
 export async function bewaarDosis(dosis: Dosis) {
   await (await db()).put('dosissen', dosis)
 }
