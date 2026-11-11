@@ -310,6 +310,21 @@ vraag gebruikt carbamazepine; het advies (vermijden) geldt volgens dezelfde besl
 De beslisregel noemt fusidinezuur zonder toedieningsvorm. De casus gebruikt daarom tabletten. Of het
 advies ook voor een crème geldt, heb ik niet nagekeken.
 
+## Batch 13
+
+### Mechanismen en details uit algemene kennis
+- `mirtazapine-sedatie-gewicht`: de bijwerkingen en de sterke sedatie staan in de KNMP, net als dat sterk
+  antihistaminerg werkende antidepressiva sederen. Dat het bij mirtazapine specifiek om H1-blokkade gaat,
+  is algemene kennis.
+- `methylfenidaat-niet-na-16-uur`: de tijdgrens en de controle van bloeddruk en hartfrequentie staan in
+  de KNMP; dat het om slapeloosheid gaat en dat de eetlust vaak afneemt, is algemene kennis.
+- `antipsychotica-dementie`: de verhoogde sterfte en het risico op een beroerte staan in de KNMP; het
+  advies "kort, laag en regelmatig evalueren" is algemene kennis.
+- `valaciclovir-koortslip-nierfunctie`: de doseringen staan in de KNMP; de omzetting naar aciclovir en de
+  neurotoxiciteit bij stapeling zijn algemene kennis.
+- `mb-gabapentine-klaring-45`: de doseringen staan in de KNMP; de bijwerkingen bij stapeling (sufheid,
+  duizeligheid, vallen) zijn algemene kennis.
+
 ## Opgelost met de KNMP Kennisbank
 
 Deze stonden eerder onder "controleer extra goed". De KNMP bevestigt ze nu:

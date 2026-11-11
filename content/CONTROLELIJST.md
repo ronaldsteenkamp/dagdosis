@@ -262,3 +262,18 @@ en werken.
 | `digoxine-hypokaliemie` | mechanisme-bijwerking | mechanisme | MB digoxine + diuretica: [420-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/420-1.html) |
 | `lamotrigine-pil` | casus | anticonceptie, interacties | MB lamotrigine + anticonceptiva: [742-2](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/742-2.html) |
 | `reken-cockcroft-gault-man-82` | reken (31 ml/min) | nierfunctie, ouderen | MB verminderde nierfunctie: [intro](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/verminderde_nierfunctie/intro.html) (formule: twijfel) |
+
+## Batch 13
+
+| Vraag | Type | Thema | Bron |
+| --- | --- | --- | --- |
+| `mb-gabapentine-klaring-45` | medicatiebewaking (overleggen) | nierfunctie, opioïden en pijn | IM gabapentine: [S2448](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2448.html) |
+| `mb-glaucoom-budesonide-langdurig` | medicatiebewaking (afleveren met advies) | astma en COPD | MB glaucoom: glucocorticoïden inhalatie/nasaal: [2371-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/2371-1.html) |
+| `mb-mycofenolzuur-antacidum` | medicatiebewaking (afleveren) | interacties | MB mycofenolzuur + antacida: [534-1](https://kennisbank.knmp.nl/article/medisch_farmaceutische_beslisregels/protocol/534-1.html) |
+| `mb-xylometazoline-menthol-kind-8` | medicatiebewaking (niet afleveren) | kinderen, zelfzorg | IM xylometazoline: [S1234](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1234.html) |
+| `allopurinol-nierfunctie` | casus | reuma en jicht, nierfunctie | IM allopurinol: [S102](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S102.html) |
+| `valaciclovir-koortslip-nierfunctie` | casus | nierfunctie | IM valaciclovir: [S2527](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2527.html) |
+| `mirtazapine-sedatie-gewicht` | mechanisme-bijwerking | mechanisme, psychofarmaca | IM mirtazapine: [S2437](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S2437.html); IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `methylfenidaat-niet-na-16-uur` | casus | psychofarmaca | IM methylfenidaat: [S1109](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S1109.html) |
+| `antipsychotica-dementie` | casus | ouderen, psychofarmaca | IM psychofarmaca: [G586](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/G586.html) |
+| `reken-oxycodon-oraal-subcutaan` | reken (20 mg) | opioïden | IM oxycodon: [S71](https://kennisbank.knmp.nl/article/Informatorium_Medicamentorum/S71.html) |
