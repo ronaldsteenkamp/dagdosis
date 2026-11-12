@@ -198,7 +198,10 @@ h1:focus { outline: none; }
 .balk-segmenten span { flex: 1; height: 8px; border-radius: 999px; background: var(--spoor); }
 .balk-segmenten span.vol { background: var(--primair); }
 .sessiekop-teller { font-size: 14px; font-weight: 800; min-width: 28px; text-align: right; }
-.casus { font-size: 16px; }
+.casus {
+  background: var(--kaart); border-left: 4px solid var(--primair); border-radius: 0 var(--r-knop) var(--r-knop) 0;
+  padding: 12px 14px; font-size: 17px;
+}
 .vraagtekst { font-size: 20px; font-weight: 800; line-height: 1.3; letter-spacing: -0.01em; }
 .opties { display: flex; flex-direction: column; gap: 8px; border: 0; margin: 0; padding: 0; }
 .optie {
